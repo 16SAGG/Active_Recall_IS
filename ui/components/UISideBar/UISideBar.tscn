@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/components/UISideBar/UISideBar.gd" type="Script" id=1]
+[ext_resource path="res://ui/components/UISideBar/Content.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/components/UISideBar/SelectorRect.tscn" type="PackedScene" id=5]
+
+[node name="UISideBar" type="Control"]
+margin_right = 88.0
+margin_bottom = 640.0
+rect_min_size = Vector2( 88, 0 )
+script = ExtResource( 1 )
+
+[node name="MarginController" type="MarginContainer" parent="."]
+margin_right = 88.0
+margin_bottom = 640.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 24
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 24
+
+[node name="Content" parent="MarginController" instance=ExtResource( 2 )]
+
+[node name="SelectorRect" parent="MarginController" instance=ExtResource( 5 )]
+position = Vector2( 0, 216 )

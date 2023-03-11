@@ -1,0 +1,123 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/screens/Home/Home.gd" type="Script" id=1]
+[ext_resource path="res://ui/components/SearchBar/SearchBar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/screens/Home/components/PendingTasks/PendingTasks.tscn" type="PackedScene" id=3]
+
+[node name="Home" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -88.0
+rect_min_size = Vector2( 817, 0 )
+script = ExtResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 13
+custom_constants/margin_top = 24
+custom_constants/margin_left = 24
+custom_constants/margin_bottom = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 804.0
+margin_bottom = 640.0
+scroll_horizontal_enabled = false
+
+[node name="Content" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+margin_right = 488.0
+margin_bottom = 864.0
+custom_constants/separation = 24
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/ScrollContainer/Content"]
+margin_right = 488.0
+margin_bottom = 272.0
+rect_min_size = Vector2( 488, 272 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="Columns" type="HBoxContainer" parent="MarginContainer/ScrollContainer/Content"]
+margin_top = 296.0
+margin_right = 488.0
+margin_bottom = 864.0
+custom_constants/separation = 16
+
+[node name="LeftColumn" type="VBoxContainer" parent="MarginContainer/ScrollContainer/Content/Columns"]
+margin_right = 236.0
+margin_bottom = 568.0
+rect_min_size = Vector2( 236, 0 )
+custom_constants/separation = 24
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/ScrollContainer/Content/Columns/LeftColumn"]
+margin_right = 236.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 0, 124 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/ScrollContainer/Content/Columns/LeftColumn"]
+margin_top = 148.0
+margin_right = 236.0
+margin_bottom = 272.0
+rect_min_size = Vector2( 0, 124 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect3" type="ColorRect" parent="MarginContainer/ScrollContainer/Content/Columns/LeftColumn"]
+margin_top = 296.0
+margin_right = 236.0
+margin_bottom = 420.0
+rect_min_size = Vector2( 0, 124 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="MarginContainer/ScrollContainer/Content/Columns/LeftColumn"]
+margin_top = 444.0
+margin_right = 236.0
+margin_bottom = 568.0
+rect_min_size = Vector2( 0, 124 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="RightColumn" type="VBoxContainer" parent="MarginContainer/ScrollContainer/Content/Columns"]
+margin_left = 252.0
+margin_right = 488.0
+margin_bottom = 568.0
+rect_min_size = Vector2( 236, 0 )
+custom_constants/separation = 24
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/ScrollContainer/Content/Columns/RightColumn"]
+margin_right = 236.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 0, 124 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/ScrollContainer/Content/Columns/RightColumn"]
+margin_top = 148.0
+margin_right = 236.0
+margin_bottom = 272.0
+rect_min_size = Vector2( 0, 124 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect3" type="ColorRect" parent="MarginContainer/ScrollContainer/Content/Columns/RightColumn"]
+margin_top = 296.0
+margin_right = 236.0
+margin_bottom = 420.0
+rect_min_size = Vector2( 0, 124 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="MarginContainer/ScrollContainer/Content/Columns/RightColumn"]
+margin_top = 444.0
+margin_right = 236.0
+margin_bottom = 568.0
+rect_min_size = Vector2( 0, 124 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="FloatingColumn" type="VBoxContainer" parent="."]
+margin_left = 536.0
+margin_top = 24.0
+margin_right = 780.0
+margin_bottom = 640.0
+rect_min_size = Vector2( 244, 0 )
+custom_constants/separation = 24
+
+[node name="SearchBar" parent="FloatingColumn" instance=ExtResource( 2 )]
+
+[node name="PendingTasks" parent="FloatingColumn" instance=ExtResource( 3 )]
