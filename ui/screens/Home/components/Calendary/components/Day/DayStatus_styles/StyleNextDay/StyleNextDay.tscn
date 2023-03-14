@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/screens/Home/components/Calendary/components/Day/DayStatus_styles/StyleNextDay/Circle.gd" type="Script" id=1]
+
+[node name="StyleNextDay" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -865.0
+margin_bottom = -600.0
+
+[node name="Circle" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0.498039 )
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )

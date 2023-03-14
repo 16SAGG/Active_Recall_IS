@@ -1,8 +1,8 @@
-extends Position2D
+extends Control
 
 onready var _current_theme = USERDATA.current_theme as String
-onready var _size : Vector2 = get_parent().rect_size
-onready var _pos : Vector2 = -get_parent().rect_size/2
+onready var _size : Vector2 = rect_size
+onready var _pos : Vector2 = Vector2.ZERO
 
 func _draw() -> void:
 	var _style_box : StyleBoxFlat = StyleBoxFlat.new()

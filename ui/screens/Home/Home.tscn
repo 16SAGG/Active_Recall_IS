@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ui/screens/Home/Home.gd" type="Script" id=1]
 [ext_resource path="res://ui/components/SearchBar/SearchBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/screens/Home/components/PendingTasks/PendingTasks.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/screens/Home/components/Calendary/Calendary.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/components/DeckBox/DeckBox.tscn" type="PackedScene" id=5]
 
 [node name="Home" type="Control"]
 anchor_right = 1.0
@@ -28,14 +30,14 @@ scroll_horizontal_enabled = false
 
 [node name="Content" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
 margin_right = 488.0
-margin_bottom = 864.0
+margin_bottom = 896.0
 custom_constants/separation = 24
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/ScrollContainer/Content"]
+[node name="Calendary" parent="MarginContainer/ScrollContainer/Content" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 488.0
 margin_bottom = 272.0
-rect_min_size = Vector2( 488, 272 )
-color = Color( 0, 0, 0, 1 )
 
 [node name="Columns" type="HBoxContainer" parent="MarginContainer/ScrollContainer/Content"]
 margin_top = 296.0
@@ -49,32 +51,36 @@ margin_bottom = 568.0
 rect_min_size = Vector2( 236, 0 )
 custom_constants/separation = 24
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/ScrollContainer/Content/Columns/LeftColumn"]
+[node name="DeckBox" parent="MarginContainer/ScrollContainer/Content/Columns/LeftColumn" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 236.0
 margin_bottom = 124.0
-rect_min_size = Vector2( 0, 124 )
-color = Color( 0, 0, 0, 1 )
+mouse_filter = 1
 
-[node name="ColorRect2" type="ColorRect" parent="MarginContainer/ScrollContainer/Content/Columns/LeftColumn"]
+[node name="DeckBox2" parent="MarginContainer/ScrollContainer/Content/Columns/LeftColumn" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 148.0
 margin_right = 236.0
 margin_bottom = 272.0
-rect_min_size = Vector2( 0, 124 )
-color = Color( 0, 0, 0, 1 )
+mouse_filter = 1
 
-[node name="ColorRect3" type="ColorRect" parent="MarginContainer/ScrollContainer/Content/Columns/LeftColumn"]
+[node name="DeckBox3" parent="MarginContainer/ScrollContainer/Content/Columns/LeftColumn" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 296.0
 margin_right = 236.0
 margin_bottom = 420.0
-rect_min_size = Vector2( 0, 124 )
-color = Color( 0, 0, 0, 1 )
+mouse_filter = 1
 
-[node name="ColorRect4" type="ColorRect" parent="MarginContainer/ScrollContainer/Content/Columns/LeftColumn"]
+[node name="DeckBox4" parent="MarginContainer/ScrollContainer/Content/Columns/LeftColumn" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 444.0
 margin_right = 236.0
 margin_bottom = 568.0
-rect_min_size = Vector2( 0, 124 )
-color = Color( 0, 0, 0, 1 )
+mouse_filter = 1
 
 [node name="RightColumn" type="VBoxContainer" parent="MarginContainer/ScrollContainer/Content/Columns"]
 margin_left = 252.0
@@ -83,32 +89,42 @@ margin_bottom = 568.0
 rect_min_size = Vector2( 236, 0 )
 custom_constants/separation = 24
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/ScrollContainer/Content/Columns/RightColumn"]
+[node name="DeckBox5" parent="MarginContainer/ScrollContainer/Content/Columns/RightColumn" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 236.0
 margin_bottom = 124.0
-rect_min_size = Vector2( 0, 124 )
-color = Color( 0, 0, 0, 1 )
+mouse_filter = 1
 
-[node name="ColorRect2" type="ColorRect" parent="MarginContainer/ScrollContainer/Content/Columns/RightColumn"]
+[node name="DeckBox6" parent="MarginContainer/ScrollContainer/Content/Columns/RightColumn" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 148.0
 margin_right = 236.0
 margin_bottom = 272.0
-rect_min_size = Vector2( 0, 124 )
-color = Color( 0, 0, 0, 1 )
+mouse_filter = 1
 
-[node name="ColorRect3" type="ColorRect" parent="MarginContainer/ScrollContainer/Content/Columns/RightColumn"]
+[node name="DeckBox7" parent="MarginContainer/ScrollContainer/Content/Columns/RightColumn" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 296.0
 margin_right = 236.0
 margin_bottom = 420.0
-rect_min_size = Vector2( 0, 124 )
-color = Color( 0, 0, 0, 1 )
+mouse_filter = 1
 
-[node name="ColorRect4" type="ColorRect" parent="MarginContainer/ScrollContainer/Content/Columns/RightColumn"]
+[node name="DeckBox8" parent="MarginContainer/ScrollContainer/Content/Columns/RightColumn" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 444.0
 margin_right = 236.0
 margin_bottom = 568.0
-rect_min_size = Vector2( 0, 124 )
-color = Color( 0, 0, 0, 1 )
+mouse_filter = 1
+
+[node name="Control" type="Control" parent="MarginContainer/ScrollContainer/Content"]
+margin_top = 888.0
+margin_right = 488.0
+margin_bottom = 896.0
+rect_min_size = Vector2( 0, 8 )
 
 [node name="FloatingColumn" type="VBoxContainer" parent="."]
 margin_left = 536.0

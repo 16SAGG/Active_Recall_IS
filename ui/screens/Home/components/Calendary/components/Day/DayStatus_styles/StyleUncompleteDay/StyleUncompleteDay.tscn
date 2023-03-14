@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/screens/Home/components/Calendary/components/Day/DayStatus_styles/StyleUncompleteDay/Line.gd" type="Script" id=1]
+[ext_resource path="res://ui/screens/Home/components/Calendary/components/Day/DayStatus_styles/StyleUncompleteDay/Circle.gd" type="Script" id=2]
+
+[node name="StyleUnfilledDay" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -865.0
+margin_bottom = -600.0
+
+[node name="Circle" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+
+[node name="Pivot" type="Position2D" parent="Circle"]
+
+[node name="Line" type="Control" parent="Circle/Pivot"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )

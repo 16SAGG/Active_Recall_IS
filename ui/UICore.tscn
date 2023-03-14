@@ -33,6 +33,3 @@ rect_min_size = Vector2( 817, 0 )
 
 [node name="Home" parent="Layout/Screens" instance=ExtResource( 3 )]
 margin_right = 0.0
-
-[editable path="Layout/Screens/Home"]
-[editable path="Layout/Screens/Home/FloatingColumn/PendingTasks"]

@@ -21,6 +21,7 @@ USERDATA="*res://autoloads/UserData.gd"
 
 window/size/width=905
 window/size/height=640
+window/size/resizable=false
 window/dpi/allow_hidpi=true
 window/vsync/use_vsync=false
 window/stretch/mode="2d"

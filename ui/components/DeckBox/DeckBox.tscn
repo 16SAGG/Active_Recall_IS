@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/body_1.tres" type="DynamicFont" id=1]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/body_2.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/components/DeckBox/Style.gd" type="Script" id=3]
+[ext_resource path="res://ui/components/DeckBox/DeckBox.gd" type="Script" id=4]
+[ext_resource path="res://ui/components/ButtonBase/ButtonBase.tscn" type="PackedScene" id=5]
+
+[node name="DeckBox" instance=ExtResource( 5 )]
+margin_right = -669.0
+margin_bottom = -516.0
+rect_min_size = Vector2( 0, 124 )
+script = ExtResource( 4 )
+
+[node name="Pivot" parent="." index="0"]
+position = Vector2( 118, 62 )
+
+[node name="Style" parent="Pivot" index="0"]
+margin_left = -118.0
+margin_top = -62.0
+margin_right = 118.0
+margin_bottom = 62.0
+script = ExtResource( 3 )
+
+[node name="MarginContainer" parent="Pivot" index="1"]
+margin_left = -118.0
+margin_top = -62.0
+margin_right = 118.0
+margin_bottom = 62.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
+
+[node name="Layout" type="VBoxContainer" parent="Pivot/MarginContainer" index="0"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 224.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 0, 60 )
+custom_constants/separation = 0
+
+[node name="Title" type="Label" parent="Pivot/MarginContainer/Layout" index="0"]
+margin_right = 208.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 0, 60 )
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Matematicas"
+align = 1
+valign = 1
+
+[node name="Cards" type="HBoxContainer" parent="Pivot/MarginContainer/Layout" index="1"]
+margin_top = 60.0
+margin_right = 208.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 0, 32 )
+
+[node name="New" type="Label" parent="Pivot/MarginContainer/Layout/Cards" index="0"]
+margin_right = 102.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 102, 32 )
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 0.498039 )
+custom_fonts/font = ExtResource( 2 )
+text = "New: 1000"
+valign = 1
+
+[node name="Due" type="Label" parent="Pivot/MarginContainer/Layout/Cards" index="1"]
+margin_left = 106.0
+margin_right = 208.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 102, 32 )
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 0.498039 )
+custom_fonts/font = ExtResource( 2 )
+text = "Due: 1000"
+align = 2
+valign = 1

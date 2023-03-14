@@ -1,4 +1,4 @@
-extends Button
+extends Control
 
 onready var _current_theme = USERDATA.current_theme as String
 
