@@ -1,44 +1,25 @@
 extends Control
 
-const STYLE_NEXT = preload ("res://ui/screens/Home/components/Calendary/components/Day/DayStatus_styles/StyleNextDay/StyleNextDay.tscn")
-const STYLE_UNCOMPLETE = preload ("res://ui/screens/Home/components/Calendary/components/Day/DayStatus_styles/StyleUncompleteDay/StyleUncompleteDay.tscn")
-const STYLE_COMPLETED = preload("res://ui/screens/Home/components/Calendary/components/Day/DayStatus_styles/StyleCompletedDay/StyleCompletedDay.tscn")
+export (String, 'COMPLETED', 'UNCOMPLETE', 'NEXT') var status = 'NEXT'
+export (String, 'L', 'M', 'J', 'V', 'S', 'D') var char_day = 'L'
 
-enum style {NEXT, COMPLETED, UNCOMPLETE}
-enum char_day {L, M, J, V, S, D}
-
-export (style) var current_style = style.NEXT
-export (char_day) var current_char_day = char_day.L
-
-onready var _style = $Content/DayStatus/Style as Control
-onready var _char_day = $Content/CharDay as Label
+onready var _day_label = $Content/DayLabel as Label
+onready var _style_completed = $Content/Style/Completed as Control
+onready var _style_uncomplete = $Content/Style/Uncomplete as Control
+onready var _style_next = $Content/Style/Next as Control
 
 func _ready() -> void:
-	_setting_style(current_style)
-	_setting_char_day(current_char_day)
+	_set_day_status(status)
+	_set_char_day(char_day)
 
-func _setting_style(style) -> void:
-	var _new_style : Control
-	match style:
-		0:
-			_new_style = STYLE_NEXT.instance()
-		1:
-			_new_style = STYLE_COMPLETED.instance()
-		2: 
-			_new_style = STYLE_UNCOMPLETE.instance()
-	_style.add_child(_new_style)
+func _set_day_status(new_status : String) -> void:
+	match new_status:
+		'COMPLETED':
+			_style_completed.visible = true
+		'UNCOMPLETE':
+			_style_uncomplete.visible = true
+		'NEXT':
+			_style_next.visible = true
 
-func _setting_char_day(day) -> void:
-	match day:
-		0:
-			_char_day.text = 'L'
-		1:
-			_char_day.text = 'M'
-		2:
-			_char_day.text = 'J'
-		3:
-			_char_day.text = 'V'
-		4:
-			_char_day.text = 'S'
-		5:
-			_char_day.text = 'D'
+func _set_char_day(char_d : String) -> void:
+	_day_label.text = char_d

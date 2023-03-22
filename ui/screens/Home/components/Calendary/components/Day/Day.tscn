@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://miscellaneous/fonts/dynamic_fonts/body_2.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ui/screens/Home/components/Calendary/components/Day/Day.gd" type="Script" id=2]
+[ext_resource path="res://ui/stylized_shape/Circle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=4]
 
 [node name="Day" type="Control"]
 margin_right = 40.0
@@ -14,7 +16,7 @@ margin_right = 40.0
 margin_bottom = 68.0
 custom_constants/separation = 0
 
-[node name="CharDay" type="Label" parent="Content"]
+[node name="DayLabel" type="Label" parent="Content"]
 margin_right = 40.0
 margin_bottom = 28.0
 rect_min_size = Vector2( 0, 28 )
@@ -24,12 +26,78 @@ text = "S"
 align = 1
 valign = 1
 
-[node name="DayStatus" type="Control" parent="Content"]
+[node name="Style" type="Control" parent="Content"]
 margin_top = 28.0
 margin_right = 40.0
 margin_bottom = 68.0
 rect_min_size = Vector2( 40, 40 )
 
-[node name="Style" type="Control" parent="Content/DayStatus"]
+[node name="Completed" type="Control" parent="Content/Style"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
+
+[node name="Circle" parent="Content/Style/Completed" instance=ExtResource( 3 )]
+background_color = "TERTIARY"
+corner_radius = 40
+corner_detail = 6
+
+[node name="Check" type="Position2D" parent="Content/Style/Completed"]
+position = Vector2( 19, 22 )
+
+[node name="Rectangle" parent="Content/Style/Completed/Check" instance=ExtResource( 4 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -4.0
+margin_top = 4.50001
+margin_right = 16.0
+margin_bottom = 9.50001
+rect_rotation = -46.0
+background_color = "SECONDARY"
+corner_radius = [ 0, 0, 0, 0 ]
+
+[node name="Rectangle2" parent="Content/Style/Completed/Check" instance=ExtResource( 4 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -0.5
+margin_top = 8.5
+margin_right = 14.5
+margin_bottom = 13.5
+rect_rotation = 222.5
+background_color = "SECONDARY"
+corner_radius = [ 0, 0, 0, 0 ]
+
+[node name="Uncomplete" type="Control" parent="Content/Style"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Circle" parent="Content/Style/Uncomplete" instance=ExtResource( 3 )]
+background_color = "DANGER"
+corner_radius = 40
+corner_detail = 6
+
+[node name="Rectangle" parent="Content/Style/Uncomplete" instance=ExtResource( 4 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -10.0
+margin_top = -2.5
+margin_right = 10.0
+margin_bottom = 2.5
+background_color = "SECONDARY"
+
+[node name="Next" type="Control" parent="Content/Style"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Circle" parent="Content/Style/Next" instance=ExtResource( 3 )]
+background_color = "SHADOW"
+corner_radius = 40
+corner_detail = 6

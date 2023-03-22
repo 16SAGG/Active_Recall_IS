@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/components/ButtonBase/ButtonBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/components/ActionPopUp/components/ActionPUButton/ActionPUButton.gd" type="Script" id=3]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/body_1.tres" type="DynamicFont" id=4]
+
+[node name="ActionPUButton" instance=ExtResource( 1 )]
+margin_right = -735.0
+margin_bottom = -588.0
+rect_min_size = Vector2( 170, 52 )
+script = ExtResource( 3 )
+title = "Fichas"
+
+[node name="Pivot" parent="." index="0"]
+position = Vector2( 85, 26 )
+
+[node name="Front" parent="Pivot" index="0"]
+margin_left = -85.0
+margin_top = -26.0
+margin_right = 85.0
+margin_bottom = 26.0
+
+[node name="Rectangle" parent="Pivot/Front/Style" index="0" instance=ExtResource( 2 )]
+background_color = "DARK"
+border_color = "PRIMARY"
+border_width = [ 1, 1, 1, 1 ]
+
+[node name="Title" type="Label" parent="Pivot/Front/MarginContainer" index="0"]
+margin_top = 15.0
+margin_right = 170.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 4 )
+align = 1
+valign = 1

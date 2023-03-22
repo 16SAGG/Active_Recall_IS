@@ -5,11 +5,9 @@ const DICT_THEMES = {
 		'PRIMARY': "CFEBCE",
 		'SECONDARY': "FFFFFF",
 		'TERTIARY': "FF9500",
+		'DARK': "2C2C2C",
 		'DANGER': "FF004D",
+		'TRANSLUCENT': "00FFFFFF",
+		'SHADOW': "802C2C2C"
 	}
 }
-const DICT_RADIUS = {
-	'PRIMARY': 10,
-	'ROUNDED': 200,
-}
-

@@ -3,7 +3,7 @@
 [ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H4_headline.tres" type="DynamicFont" id=1]
 [ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H6_headline.tres" type="DynamicFont" id=2]
 [ext_resource path="res://ui/screens/Home/components/Calendary/components/Day/Day.tscn" type="PackedScene" id=3]
-[ext_resource path="res://ui/screens/Home/components/Calendary/Style.gd" type="Script" id=4]
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/screens/Home/components/Calendary/Calendary.gd" type="Script" id=5]
 [ext_resource path="res://ui/components/ButtonBase/ButtonBase.tscn" type="PackedScene" id=6]
 
@@ -16,38 +16,35 @@ script = ExtResource( 5 )
 [node name="Pivot" parent="." index="0"]
 position = Vector2( 244, 136 )
 
-[node name="Style" parent="Pivot" index="0"]
+[node name="Front" parent="Pivot" index="0"]
 margin_left = -244.0
 margin_top = -136.0
 margin_right = 244.0
 margin_bottom = 136.0
 rect_min_size = Vector2( 488, 272 )
-script = ExtResource( 4 )
 
-[node name="MarginContainer" parent="Pivot" index="1"]
-margin_left = -244.0
-margin_top = -136.0
-margin_right = 244.0
-margin_bottom = 136.0
-rect_min_size = Vector2( 488, 272 )
-custom_constants/margin_right = 44
-custom_constants/margin_top = 24
-custom_constants/margin_left = 44
-custom_constants/margin_bottom = 24
+[node name="Rectangle" parent="Pivot/Front/Style" index="0" instance=ExtResource( 4 )]
 
-[node name="Content" type="VBoxContainer" parent="Pivot/MarginContainer" index="0"]
-margin_left = 44.0
-margin_top = 24.0
-margin_right = 444.0
-margin_bottom = 248.0
+[node name="MarginContainer" parent="Pivot/Front" index="1"]
+custom_constants/margin_right = 24
+custom_constants/margin_top = 12
+custom_constants/margin_left = 24
+custom_constants/margin_bottom = 12
+
+[node name="Content" type="VBoxContainer" parent="Pivot/Front/MarginContainer" index="0"]
+margin_left = 24.0
+margin_top = 12.0
+margin_right = 464.0
+margin_bottom = 260.0
 custom_constants/separation = 0
 
-[node name="DaysStreak" type="HBoxContainer" parent="Pivot/MarginContainer/Content" index="0"]
-margin_right = 400.0
+[node name="DaysStreak" type="HBoxContainer" parent="Pivot/Front/MarginContainer/Content" index="0"]
+margin_right = 440.0
 margin_bottom = 54.0
+rect_min_size = Vector2( 0, 54 )
 custom_constants/separation = 0
 
-[node name="DaysCount" type="Label" parent="Pivot/MarginContainer/Content/DaysStreak" index="0"]
+[node name="DaysCount" type="Label" parent="Pivot/Front/MarginContainer/Content/DaysStreak" index="0"]
 margin_right = 61.0
 margin_bottom = 54.0
 rect_min_size = Vector2( 28, 54 )
@@ -56,7 +53,7 @@ custom_fonts/font = ExtResource( 1 )
 text = "100 "
 valign = 1
 
-[node name="Title" type="Label" parent="Pivot/MarginContainer/Content/DaysStreak" index="1"]
+[node name="Title" type="Label" parent="Pivot/Front/MarginContainer/Content/DaysStreak" index="1"]
 margin_left = 61.0
 margin_right = 361.0
 margin_bottom = 54.0
@@ -66,9 +63,9 @@ custom_fonts/font = ExtResource( 1 )
 text = "Dias en racha"
 valign = 1
 
-[node name="Message" type="Label" parent="Pivot/MarginContainer/Content" index="1"]
+[node name="Message" type="Label" parent="Pivot/Front/MarginContainer/Content" index="1"]
 margin_top = 54.0
-margin_right = 400.0
+margin_right = 440.0
 margin_bottom = 79.0
 rect_min_size = Vector2( 0, 25 )
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
@@ -76,54 +73,55 @@ custom_fonts/font = ExtResource( 2 )
 text = " Buen trabajo!"
 valign = 1
 
-[node name="Space" type="Control" parent="Pivot/MarginContainer/Content" index="2"]
+[node name="Space" type="Control" parent="Pivot/Front/MarginContainer/Content" index="2"]
 margin_top = 79.0
-margin_right = 400.0
+margin_right = 440.0
 margin_bottom = 156.0
 rect_min_size = Vector2( 0, 77 )
 
-[node name="Weekdays" type="HBoxContainer" parent="Pivot/MarginContainer/Content" index="3"]
+[node name="Weekdays" type="HBoxContainer" parent="Pivot/Front/MarginContainer/Content" index="3"]
 margin_top = 156.0
-margin_right = 400.0
+margin_right = 440.0
 margin_bottom = 224.0
 rect_min_size = Vector2( 0, 68 )
 custom_constants/separation = 20
+alignment = 1
 
-[node name="Monday" parent="Pivot/MarginContainer/Content/Weekdays" index="0" instance=ExtResource( 3 )]
-current_style = 1
+[node name="Monday" parent="Pivot/Front/MarginContainer/Content/Weekdays" index="0" instance=ExtResource( 3 )]
+margin_left = 20.0
+margin_right = 60.0
+status = "UNCOMPLETE"
 
-[node name="Tuesday" parent="Pivot/MarginContainer/Content/Weekdays" index="1" instance=ExtResource( 3 )]
-margin_left = 60.0
-margin_right = 100.0
-current_style = 1
-current_char_day = 1
+[node name="Tuesday" parent="Pivot/Front/MarginContainer/Content/Weekdays" index="1" instance=ExtResource( 3 )]
+margin_left = 80.0
+margin_right = 120.0
+status = "COMPLETED"
+char_day = "M"
 
-[node name="Wednesday" parent="Pivot/MarginContainer/Content/Weekdays" index="2" instance=ExtResource( 3 )]
-margin_left = 120.0
-margin_right = 160.0
-current_style = 1
-current_char_day = 1
+[node name="Wednesday" parent="Pivot/Front/MarginContainer/Content/Weekdays" index="2" instance=ExtResource( 3 )]
+margin_left = 140.0
+margin_right = 180.0
+status = "COMPLETED"
+char_day = "M"
 
-[node name="Thursday" parent="Pivot/MarginContainer/Content/Weekdays" index="3" instance=ExtResource( 3 )]
-margin_left = 180.0
-margin_right = 220.0
-current_style = 1
-current_char_day = 2
+[node name="Thursday" parent="Pivot/Front/MarginContainer/Content/Weekdays" index="3" instance=ExtResource( 3 )]
+margin_left = 200.0
+margin_right = 240.0
+status = "COMPLETED"
+char_day = "J"
 
-[node name="Friday" parent="Pivot/MarginContainer/Content/Weekdays" index="4" instance=ExtResource( 3 )]
-margin_left = 240.0
-margin_right = 280.0
-current_style = 1
-current_char_day = 3
+[node name="Friday" parent="Pivot/Front/MarginContainer/Content/Weekdays" index="4" instance=ExtResource( 3 )]
+margin_left = 260.0
+margin_right = 300.0
+status = "UNCOMPLETE"
+char_day = "V"
 
-[node name="Saturday" parent="Pivot/MarginContainer/Content/Weekdays" index="5" instance=ExtResource( 3 )]
-margin_left = 300.0
-margin_right = 340.0
-current_style = 1
-current_char_day = 4
+[node name="Saturday" parent="Pivot/Front/MarginContainer/Content/Weekdays" index="5" instance=ExtResource( 3 )]
+margin_left = 320.0
+margin_right = 360.0
+char_day = "S"
 
-[node name="Sunday" parent="Pivot/MarginContainer/Content/Weekdays" index="6" instance=ExtResource( 3 )]
-margin_left = 360.0
-margin_right = 400.0
-current_style = 1
-current_char_day = 5
+[node name="Sunday" parent="Pivot/Front/MarginContainer/Content/Weekdays" index="6" instance=ExtResource( 3 )]
+margin_left = 380.0
+margin_right = 420.0
+char_day = "D"
