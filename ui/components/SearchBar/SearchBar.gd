@@ -1,5 +1,7 @@
 extends "res://ui/components/ButtonBase/ButtonBase.gd"
 
+signal search(text)
+
 onready var _search_container = $Pivot/Back/Style/SearchContainer as Control
 onready var _search_line = $Pivot/Back/MarginContainer/SearchLine as LineEdit
 onready var _flip_timer_player = $FlipTimerPlayer as AnimationPlayer
@@ -9,6 +11,8 @@ onready var _trigger = $Trigger as Button
 func _on_SearchLine_text_changed(new_text) -> void:
 	_flip_timer_player.stop()
 	_flip_timer_player.play("FLIP_TIMER")
+	
+	emit_signal("search", new_text)
 	
 	var _unused_vars = [new_text] #To avoid warnings
 

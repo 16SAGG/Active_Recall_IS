@@ -6,10 +6,10 @@ onready var _ui_side_bar = $Layout/UISideBar as Control
 
 onready var _home = $Layout/Screens/Home as Control
 
-onready var _action_pop_up = $Floats/ActionPopUp as Control
-onready var _shadow = $Floats/Shadow as Control
-onready var _selector_rect = $Floats/SelectorRect as Control
-onready var _new_deck_pop_up = $Floats/NewDeckPopUp as Control
+onready var _action_pop_up = $ActionPopUp as Control
+onready var _shadow = $Shadow as Control
+onready var _selector_rect = $SelectorRect as Control
+onready var _new_deck_pop_up = $NewDeckPopUp as Control
 
 
 func _ready() -> void:
@@ -46,7 +46,7 @@ func _on_new_deck(_title : String) -> void:
 	if _new_deck_pop_up.showed:
 		_new_deck_pop_up.animation_player.play("HIDE")
 		_shadow.animation_player.play("HIDE")
-		_home.on_insert_deck_box(_title, 0, 0) 
+		print("Connect new deck with the data base") 
 
 func _on_show_action_pop_up_requested() -> void:
 	_change_screen("HOME")

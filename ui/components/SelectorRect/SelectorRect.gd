@@ -15,7 +15,6 @@ onready var _tween = $Tween as Tween
 var anim_ready : bool = true
 
 func _ready():
-	print("SelectorRECT WANTS TO BE A FLOAT IN UI CORE. IS BETTER TO HIM STAY IN THIS PLACE BECAUSE NOT ONLY THE SIDE BAR CAN CHANGE THE SCENE")
 	go_to('HOME')
 
 func go_to(destiny : String) -> void:

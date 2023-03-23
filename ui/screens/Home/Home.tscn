@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://ui/screens/Home/Home.gd" type="Script" id=1]
 [ext_resource path="res://ui/components/SearchBar/SearchBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H5_headline.tres" type="DynamicFont" id=3]
 [ext_resource path="res://ui/screens/Home/components/Calendary/Calendary.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=6]
-[ext_resource path="res://ui/screens/Home/components/Deck2Review/Deck2Review.tscn" type="PackedScene" id=7]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -100,42 +99,42 @@ anchor_bottom = 0.0
 margin_right = 244.0
 margin_bottom = 62.0
 
-[node name="PendingTasks" type="Control" parent="FloatingColumn"]
+[node name="PendingDecks" type="Control" parent="FloatingColumn"]
 margin_top = 86.0
 margin_right = 244.0
 margin_bottom = 473.0
 rect_min_size = Vector2( 0, 387 )
 
-[node name="Style" type="Control" parent="FloatingColumn/PendingTasks"]
+[node name="Style" type="Control" parent="FloatingColumn/PendingDecks"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Rectangle" parent="FloatingColumn/PendingTasks/Style" instance=ExtResource( 6 )]
+[node name="Rectangle" parent="FloatingColumn/PendingDecks/Style" instance=ExtResource( 6 )]
 background_color = "TRANSLUCENT"
 border_color = "PRIMARY"
 border_width = [ 1, 1, 1, 1 ]
 
-[node name="Layout" type="VBoxContainer" parent="FloatingColumn/PendingTasks"]
+[node name="Layout" type="VBoxContainer" parent="FloatingColumn/PendingDecks"]
 margin_right = 40.0
 margin_bottom = 40.0
 custom_constants/separation = 0
 
-[node name="Header" type="Control" parent="FloatingColumn/PendingTasks/Layout"]
+[node name="Header" type="Control" parent="FloatingColumn/PendingDecks/Layout"]
 margin_right = 244.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 0, 62 )
 
-[node name="Style" type="Control" parent="FloatingColumn/PendingTasks/Layout/Header"]
+[node name="Style" type="Control" parent="FloatingColumn/PendingDecks/Layout/Header"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Rectangle" parent="FloatingColumn/PendingTasks/Layout/Header/Style" instance=ExtResource( 6 )]
+[node name="Rectangle" parent="FloatingColumn/PendingDecks/Layout/Header/Style" instance=ExtResource( 6 )]
 background_color = "TRANSLUCENT"
 border_color = "PRIMARY"
 corner_radius = [ 0, 0, 0, 0 ]
 border_width = [ 0, 0, 0, 1 ]
 
-[node name="Title" type="Label" parent="FloatingColumn/PendingTasks/Layout/Header"]
+[node name="Title" type="Label" parent="FloatingColumn/PendingDecks/Layout/Header"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
@@ -144,7 +143,7 @@ text = "PENDIENTES"
 align = 1
 valign = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="FloatingColumn/PendingTasks/Layout"]
+[node name="MarginContainer" type="MarginContainer" parent="FloatingColumn/PendingDecks/Layout"]
 margin_top = 62.0
 margin_right = 244.0
 margin_bottom = 385.0
@@ -152,58 +151,20 @@ rect_min_size = Vector2( 0, 323 )
 custom_constants/margin_right = 16
 custom_constants/margin_left = 16
 
-[node name="ScrollContainer" type="ScrollContainer" parent="FloatingColumn/PendingTasks/Layout/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="FloatingColumn/PendingDecks/Layout/MarginContainer"]
 margin_left = 16.0
 margin_right = 228.0
 margin_bottom = 323.0
 theme = SubResource( 6 )
 scroll_horizontal_enabled = false
 
-[node name="Content" type="VBoxContainer" parent="FloatingColumn/PendingTasks/Layout/MarginContainer/ScrollContainer"]
+[node name="Content" type="VBoxContainer" parent="FloatingColumn/PendingDecks/Layout/MarginContainer/ScrollContainer"]
 margin_right = 212.0
-margin_bottom = 392.0
+margin_bottom = 8.0
 rect_min_size = Vector2( 212, 0 )
 custom_constants/separation = 16
 
-[node name="Space" type="Control" parent="FloatingColumn/PendingTasks/Layout/MarginContainer/ScrollContainer/Content"]
+[node name="Space" type="Control" parent="FloatingColumn/PendingDecks/Layout/MarginContainer/ScrollContainer/Content"]
 margin_right = 212.0
 margin_bottom = 8.0
-rect_min_size = Vector2( 0, 8 )
-
-[node name="Deck2Review" parent="FloatingColumn/PendingTasks/Layout/MarginContainer/ScrollContainer/Content" instance=ExtResource( 7 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 24.0
-margin_right = 212.0
-margin_bottom = 98.0
-mouse_filter = 1
-
-[node name="Deck2Review2" parent="FloatingColumn/PendingTasks/Layout/MarginContainer/ScrollContainer/Content" instance=ExtResource( 7 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 114.0
-margin_right = 212.0
-margin_bottom = 188.0
-mouse_filter = 1
-
-[node name="Deck2Review3" parent="FloatingColumn/PendingTasks/Layout/MarginContainer/ScrollContainer/Content" instance=ExtResource( 7 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 204.0
-margin_right = 212.0
-margin_bottom = 278.0
-mouse_filter = 1
-
-[node name="Deck2Review4" parent="FloatingColumn/PendingTasks/Layout/MarginContainer/ScrollContainer/Content" instance=ExtResource( 7 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 294.0
-margin_right = 212.0
-margin_bottom = 368.0
-mouse_filter = 1
-
-[node name="Space2" type="Control" parent="FloatingColumn/PendingTasks/Layout/MarginContainer/ScrollContainer/Content"]
-margin_top = 384.0
-margin_right = 212.0
-margin_bottom = 392.0
 rect_min_size = Vector2( 0, 8 )

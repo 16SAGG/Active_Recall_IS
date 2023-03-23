@@ -38,16 +38,10 @@ rect_min_size = Vector2( 817, 0 )
 [node name="Home" parent="Layout/Screens" instance=ExtResource( 3 )]
 margin_right = 0.0
 
-[node name="Floats" type="Control" parent="."]
+[node name="ActionPopUp" parent="." instance=ExtResource( 4 )]
 
-[node name="ActionPopUp" parent="Floats" instance=ExtResource( 4 )]
+[node name="Shadow" parent="." instance=ExtResource( 6 )]
 
-[node name="Shadow" parent="Floats" instance=ExtResource( 6 )]
+[node name="SelectorRect" parent="." instance=ExtResource( 5 )]
 
-[node name="SelectorRect" parent="Floats" instance=ExtResource( 5 )]
-
-[node name="NewDeckPopUp" parent="Floats" instance=ExtResource( 7 )]
-margin_left = 204.0
-margin_top = 256.0
-margin_right = 700.0
-margin_bottom = 380.0
+[node name="NewDeckPopUp" parent="." instance=ExtResource( 7 )]
