@@ -70,7 +70,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[node name="DeckBox" groups=["DECK"] instance=ExtResource( 1 )]
+[node name="DeckBox" groups=["DECK", "PENDING"] instance=ExtResource( 1 )]
 margin_right = -693.0
 margin_bottom = -566.0
 rect_min_size = Vector2( 0, 74 )

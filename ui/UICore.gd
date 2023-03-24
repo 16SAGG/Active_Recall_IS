@@ -46,7 +46,12 @@ func _on_new_deck(_title : String) -> void:
 	if _new_deck_pop_up.showed:
 		_new_deck_pop_up.animation_player.play("HIDE")
 		_shadow.animation_player.play("HIDE")
-		print("Connect new deck with the data base") 
+		var _dict : Dictionary = {
+			"user_id" : 1,
+			"title" : _title,
+		}
+		USERDATA.commit_data("Deck", _dict)
+		_home.start()
 
 func _on_show_action_pop_up_requested() -> void:
 	_change_screen("HOME")
