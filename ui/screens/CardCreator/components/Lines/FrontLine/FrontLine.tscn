@@ -1,0 +1,266 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://ui/components/Image/Image.tscn" type="PackedScene" id=1]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H7_headline.tres" type="DynamicFont" id=2]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/body_1.tres" type="DynamicFont" id=3]
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/screens/CardCreator/components/Lines/Line.gd" type="Script" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="Animation" id=8]
+resource_name = "HIDE_IMAGE"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_min_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 756, 186 ), Vector2( 756, 80 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 756, 186 ), Vector2( 756, 80 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Style/FrontBox:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 756, 186 ), Vector2( 756, 80 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MarginContainer/Content/Image:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_min_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 756, 80 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 756, 80 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Style/FrontBox:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 756, 80 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Style/FrontBox:rect_min_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MarginContainer/Content/Image:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "SHOW_IMAGE"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_min_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 756, 80 ), Vector2( 756, 186 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 756, 80 ), Vector2( 756, 186 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Style/FrontBox:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 756, 80 ), Vector2( 756, 186 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MarginContainer/Content/Image:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="FrontLine" type="Control"]
+margin_right = 756.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 756, 80 )
+script = ExtResource( 5 )
+
+[node name="Style" type="Control" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -378.0
+margin_right = 378.0
+margin_bottom = 80.0
+
+[node name="FrontBox" parent="Style" instance=ExtResource( 4 )]
+margin_right = 756.0
+margin_bottom = 80.0
+background_color = "SECONDARY"
+border_color = "PRIMARY"
+border_width = [ 1, 1, 1, 1 ]
+
+[node name="HeadBox" parent="Style" instance=ExtResource( 4 )]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -378.0
+margin_right = 378.0
+margin_bottom = 30.0
+corner_radius = [ 2, 2, 0, 0 ]
+
+[node name="Line" parent="Style" instance=ExtResource( 4 )]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -362.0
+margin_top = 79.0
+margin_right = 362.0
+margin_bottom = 80.0
+corner_radius = [ 2, 2, 0, 0 ]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 8
+
+[node name="Content" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 16.0
+margin_right = 740.0
+margin_bottom = 80.0
+custom_constants/separation = 8
+
+[node name="Head" type="Label" parent="MarginContainer/Content"]
+margin_right = 724.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "FRONT"
+valign = 1
+
+[node name="FrontEdit" type="LineEdit" parent="MarginContainer/Content"]
+margin_top = 38.0
+margin_right = 724.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 0, 34 )
+custom_colors/cursor_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 3 )
+custom_styles/read_only = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+placeholder_text = "Escribe una pregunta..."
+placeholder_alpha = 0.5
+
+[node name="Image" parent="MarginContainer/Content" instance=ExtResource( 1 )]
+margin_left = 0.0
+margin_top = 80.0
+margin_bottom = 80.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "HIDE_IMAGE"
+anims/HIDE_IMAGE = SubResource( 8 )
+anims/RESET = SubResource( 7 )
+anims/SHOW_IMAGE = SubResource( 5 )

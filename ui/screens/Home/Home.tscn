@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://ui/screens/Home/Home.gd" type="Script" id=1]
-[ext_resource path="res://ui/components/SearchBar/SearchBar.tscn" type="PackedScene" id=2]
-[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H5_headline.tres" type="DynamicFont" id=3]
-[ext_resource path="res://ui/screens/Home/components/Calendary/Calendary.tscn" type="PackedScene" id=4]
-[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/screens/ScreenBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/screens/Home/components/Calendary/Calendary.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/components/SearchBar/SearchBar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H5_headline.tres" type="DynamicFont" id=5]
+[ext_resource path="res://ui/screens/Home/Home.gd" type="Script" id=6]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -29,63 +30,51 @@ VScrollBar/styles/grabber_pressed = SubResource( 3 )
 VScrollBar/styles/scroll = SubResource( 4 )
 VScrollBar/styles/scroll_focus = SubResource( 5 )
 
-[node name="Home" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = -88.0
-rect_min_size = Vector2( 817, 0 )
-script = ExtResource( 1 )
+[node name="Home" instance=ExtResource( 1 )]
+script = ExtResource( 6 )
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_constants/margin_right = 13
-custom_constants/margin_top = 24
-custom_constants/margin_left = 24
-custom_constants/margin_bottom = 0
-
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer" index="0"]
 margin_left = 24.0
 margin_top = 24.0
 margin_right = 804.0
 margin_bottom = 640.0
 scroll_horizontal_enabled = false
 
-[node name="Content" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+[node name="Content" type="VBoxContainer" parent="MarginContainer/ScrollContainer" index="0"]
 margin_right = 488.0
 margin_bottom = 328.0
 custom_constants/separation = 24
 
-[node name="Calendary" parent="MarginContainer/ScrollContainer/Content" instance=ExtResource( 4 )]
+[node name="Calendary" parent="MarginContainer/ScrollContainer/Content" index="0" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 488.0
 margin_bottom = 272.0
 
-[node name="Columns" type="HBoxContainer" parent="MarginContainer/ScrollContainer/Content"]
+[node name="Columns" type="HBoxContainer" parent="MarginContainer/ScrollContainer/Content" index="1"]
 margin_top = 296.0
 margin_right = 488.0
 margin_bottom = 296.0
 custom_constants/separation = 16
 
-[node name="Column_0" type="VBoxContainer" parent="MarginContainer/ScrollContainer/Content/Columns" groups=["COLUMN"]]
+[node name="Column_0" type="VBoxContainer" parent="MarginContainer/ScrollContainer/Content/Columns" index="0" groups=["COLUMN"]]
 margin_right = 236.0
 rect_min_size = Vector2( 236, 0 )
 custom_constants/separation = 24
 
-[node name="Column_1" type="VBoxContainer" parent="MarginContainer/ScrollContainer/Content/Columns" groups=["COLUMN"]]
+[node name="Column_1" type="VBoxContainer" parent="MarginContainer/ScrollContainer/Content/Columns" index="1" groups=["COLUMN"]]
 margin_left = 252.0
 margin_right = 488.0
 rect_min_size = Vector2( 236, 0 )
 custom_constants/separation = 24
 
-[node name="Space" type="Control" parent="MarginContainer/ScrollContainer/Content"]
+[node name="Space" type="Control" parent="MarginContainer/ScrollContainer/Content" index="2"]
 margin_top = 320.0
 margin_right = 488.0
 margin_bottom = 328.0
 rect_min_size = Vector2( 0, 8 )
 
-[node name="FloatingColumn" type="VBoxContainer" parent="."]
+[node name="FloatingColumn" type="VBoxContainer" parent="." index="1"]
 margin_left = 536.0
 margin_top = 24.0
 margin_right = 780.0
@@ -93,57 +82,57 @@ margin_bottom = 640.0
 rect_min_size = Vector2( 244, 0 )
 custom_constants/separation = 24
 
-[node name="SearchBar" parent="FloatingColumn" instance=ExtResource( 2 )]
+[node name="SearchBar" parent="FloatingColumn" index="0" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 244.0
 margin_bottom = 62.0
 
-[node name="PendingDecks" type="Control" parent="FloatingColumn"]
+[node name="PendingDecks" type="Control" parent="FloatingColumn" index="1"]
 margin_top = 86.0
 margin_right = 244.0
 margin_bottom = 473.0
 rect_min_size = Vector2( 0, 387 )
 
-[node name="Style" type="Control" parent="FloatingColumn/PendingDecks"]
+[node name="Style" type="Control" parent="FloatingColumn/PendingDecks" index="0"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Rectangle" parent="FloatingColumn/PendingDecks/Style" instance=ExtResource( 6 )]
+[node name="Rectangle" parent="FloatingColumn/PendingDecks/Style" index="0" instance=ExtResource( 3 )]
 background_color = "TRANSLUCENT"
 border_color = "PRIMARY"
 border_width = [ 1, 1, 1, 1 ]
 
-[node name="Layout" type="VBoxContainer" parent="FloatingColumn/PendingDecks"]
+[node name="Layout" type="VBoxContainer" parent="FloatingColumn/PendingDecks" index="1"]
 margin_right = 40.0
 margin_bottom = 40.0
 custom_constants/separation = 0
 
-[node name="Header" type="Control" parent="FloatingColumn/PendingDecks/Layout"]
+[node name="Header" type="Control" parent="FloatingColumn/PendingDecks/Layout" index="0"]
 margin_right = 244.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 0, 62 )
 
-[node name="Style" type="Control" parent="FloatingColumn/PendingDecks/Layout/Header"]
+[node name="Style" type="Control" parent="FloatingColumn/PendingDecks/Layout/Header" index="0"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Rectangle" parent="FloatingColumn/PendingDecks/Layout/Header/Style" instance=ExtResource( 6 )]
+[node name="Rectangle" parent="FloatingColumn/PendingDecks/Layout/Header/Style" index="0" instance=ExtResource( 3 )]
 background_color = "TRANSLUCENT"
 border_color = "PRIMARY"
 corner_radius = [ 0, 0, 0, 0 ]
 border_width = [ 0, 0, 0, 1 ]
 
-[node name="Title" type="Label" parent="FloatingColumn/PendingDecks/Layout/Header"]
+[node name="Title" type="Label" parent="FloatingColumn/PendingDecks/Layout/Header" index="1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 5 )
 text = "PENDIENTES"
 align = 1
 valign = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="FloatingColumn/PendingDecks/Layout"]
+[node name="MarginContainer" type="MarginContainer" parent="FloatingColumn/PendingDecks/Layout" index="1"]
 margin_top = 62.0
 margin_right = 244.0
 margin_bottom = 385.0
@@ -151,20 +140,20 @@ rect_min_size = Vector2( 0, 323 )
 custom_constants/margin_right = 16
 custom_constants/margin_left = 16
 
-[node name="ScrollContainer" type="ScrollContainer" parent="FloatingColumn/PendingDecks/Layout/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="FloatingColumn/PendingDecks/Layout/MarginContainer" index="0"]
 margin_left = 16.0
 margin_right = 228.0
 margin_bottom = 323.0
 theme = SubResource( 6 )
 scroll_horizontal_enabled = false
 
-[node name="Content" type="VBoxContainer" parent="FloatingColumn/PendingDecks/Layout/MarginContainer/ScrollContainer"]
+[node name="Content" type="VBoxContainer" parent="FloatingColumn/PendingDecks/Layout/MarginContainer/ScrollContainer" index="0"]
 margin_right = 212.0
 margin_bottom = 8.0
 rect_min_size = Vector2( 212, 0 )
 custom_constants/separation = 16
 
-[node name="Space" type="Control" parent="FloatingColumn/PendingDecks/Layout/MarginContainer/ScrollContainer/Content"]
+[node name="Space" type="Control" parent="FloatingColumn/PendingDecks/Layout/MarginContainer/ScrollContainer/Content" index="0"]
 margin_right = 212.0
 margin_bottom = 8.0
 rect_min_size = Vector2( 0, 8 )

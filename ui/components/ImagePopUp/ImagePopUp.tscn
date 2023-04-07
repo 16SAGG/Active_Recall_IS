@@ -1,0 +1,276 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://ui/components/MouseDetector/MouseDetector.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/components/ImagePopUp/components/NewImage.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/components/Image/Image.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/components/ImagePopUp/ImagePopUp.gd" type="Script" id=5]
+
+[sub_resource type="Animation" id=4]
+resource_name = "HIDE"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pivot:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:showed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pivot:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:showed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "SHOW"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pivot:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:showed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="ImagePopUp" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -248.0
+margin_top = -124.0
+margin_right = 248.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 496, 248 )
+script = ExtResource( 5 )
+
+[node name="MouseDetector" parent="." instance=ExtResource( 1 )]
+rect_min_size = Vector2( 496, 248 )
+
+[node name="Pivot" type="Position2D" parent="."]
+position = Vector2( 248, 124 )
+
+[node name="Style" type="Control" parent="Pivot"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -248.0
+margin_top = -124.0
+margin_right = 248.0
+margin_bottom = 124.0
+
+[node name="BackgroundBox" parent="Pivot/Style" instance=ExtResource( 2 )]
+background_color = "DARK"
+
+[node name="MarginContainer" type="MarginContainer" parent="Pivot"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -248.0
+margin_top = -124.0
+margin_right = 248.0
+margin_bottom = 124.0
+custom_constants/margin_right = 24
+custom_constants/margin_top = 16
+custom_constants/margin_left = 24
+custom_constants/margin_bottom = 16
+
+[node name="Content" type="VBoxContainer" parent="Pivot/MarginContainer"]
+margin_left = 24.0
+margin_top = 16.0
+margin_right = 472.0
+margin_bottom = 232.0
+custom_constants/separation = 16
+
+[node name="NewImage" parent="Pivot/MarginContainer/Content" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 448.0
+margin_bottom = 62.0
+
+[node name="Images" type="ScrollContainer" parent="Pivot/MarginContainer/Content"]
+margin_top = 78.0
+margin_right = 448.0
+margin_bottom = 216.0
+rect_min_size = Vector2( 0, 138 )
+
+[node name="Layout" type="HBoxContainer" parent="Pivot/MarginContainer/Content/Images"]
+margin_right = 848.0
+margin_bottom = 138.0
+rect_min_size = Vector2( 0, 138 )
+size_flags_horizontal = 3
+
+[node name="Image" parent="Pivot/MarginContainer/Content/Images/Layout" instance=ExtResource( 4 )]
+margin_left = 0.0
+margin_right = 138.0
+margin_bottom = 138.0
+rect_min_size = Vector2( 138, 0 )
+size_flags_horizontal = 1
+
+[node name="Image2" parent="Pivot/MarginContainer/Content/Images/Layout" instance=ExtResource( 4 )]
+margin_left = 142.0
+margin_right = 280.0
+margin_bottom = 138.0
+rect_min_size = Vector2( 138, 0 )
+size_flags_horizontal = 1
+
+[node name="Image3" parent="Pivot/MarginContainer/Content/Images/Layout" instance=ExtResource( 4 )]
+margin_left = 284.0
+margin_right = 422.0
+margin_bottom = 138.0
+rect_min_size = Vector2( 138, 0 )
+size_flags_horizontal = 1
+
+[node name="Image4" parent="Pivot/MarginContainer/Content/Images/Layout" instance=ExtResource( 4 )]
+margin_left = 426.0
+margin_right = 564.0
+margin_bottom = 138.0
+rect_min_size = Vector2( 138, 0 )
+size_flags_horizontal = 1
+
+[node name="Image5" parent="Pivot/MarginContainer/Content/Images/Layout" instance=ExtResource( 4 )]
+margin_left = 568.0
+margin_right = 706.0
+margin_bottom = 138.0
+rect_min_size = Vector2( 138, 0 )
+size_flags_horizontal = 1
+
+[node name="Image6" parent="Pivot/MarginContainer/Content/Images/Layout" instance=ExtResource( 4 )]
+margin_left = 710.0
+margin_right = 848.0
+margin_bottom = 138.0
+rect_min_size = Vector2( 138, 0 )
+size_flags_horizontal = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "HIDE"
+anims/HIDE = SubResource( 4 )
+anims/RESET = SubResource( 3 )
+anims/SHOW = SubResource( 2 )

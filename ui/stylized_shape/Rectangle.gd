@@ -9,7 +9,7 @@ const TEST_COLOR = {
 
 export (String, 'PRIMARY', 'SECONDARY', 'TERTIARY', 'DARK', 'DANGER', 'TRANSLUCENT', 'SHADOW') var background_color = 'PRIMARY'
 export (String, 'PRIMARY', 'SECONDARY', 'TERTIARY', 'DARK', 'DANGER', 'TRANSLUCENT', 'SHADOW') var border_color = 'TRANSLUCENT'
-export (Array, int, 'None', '5', '10', '15', '20') var corner_radius = [2, 2, 2, 2] #[0]: TOP_LEFT #[1]: TOP_RIGHT #[2]: BOT_LEFT #[3]: BOT_RIGHT
+export (Array, int, 'None', '5', '10', '15', '20', '25', '30') var corner_radius = [2, 2, 2, 2] #[0]: TOP_LEFT #[1]: TOP_RIGHT #[2]: BOT_LEFT #[3]: BOT_RIGHT
 export (Array, int, 'None', '1', '2', '3') var border_width = [0, 0, 0, 0] #[0]: LEFT #[1]: RIGHT #[2]: TOP #[3]: BOTTOM
 export (String, 'NONE', 'BLACK', 'WHITE', 'GRAY') var test_background_color = 'NONE'
 export (String, 'NONE', 'BLACK', 'WHITE', 'GRAY') var test_border_color = 'NONE'

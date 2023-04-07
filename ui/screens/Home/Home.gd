@@ -40,14 +40,13 @@ func _load_data() -> Array:
 
 func _create_deck_box(_title: String, _new_cards: int, _due_cards: int) -> Control:
 	var _deck_box: Control = DECK_BOX.instance()
-	var _deck_column: VBoxContainer = _deck_columns.get_node("Column_" + str(_next_column_id))
 	
 	_deck_box.title = _title
 	_deck_box.new_cards_count = _new_cards
 	_deck_box.due_cards_count = _due_cards
 	
 # warning-ignore:return_value_discarded
-	_deck_box.connect("box_flip", self, "_on_switch_box_to_front")
+	_deck_box.connect("back_flip", self, "_on_switch_box_to_front")
 # warning-ignore:return_value_discarded
 	_deck_box.connect("deck_pressed", self, "_on_deck_pressed")
 	
@@ -60,7 +59,7 @@ func _create_pending_deck(_title : String, _pending_cards : int) -> Control:
 	_pending_deck.pending_cards_count = _pending_cards
 	
 # warning-ignore:return_value_discarded
-	_pending_deck.connect("box_flip", self, "_on_switch_box_to_front")
+	_pending_deck.connect("back_flip", self, "_on_switch_box_to_front")
 # warning-ignore:return_value_discarded
 	_pending_deck.connect("deck_pressed", self, "_on_deck_pressed")
 	

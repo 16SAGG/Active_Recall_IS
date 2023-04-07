@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H5_headline.tres" type="DynamicFont" id=1]
+[ext_resource path="res://ui/components/ButtonBase/ButtonBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=3]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends \"res://ui/components/ButtonBase/ButtonBase.gd\"
+
+onready var _title = $Pivot/Front/MarginContainer/Title as Label
+
+func set_title(new_title : String) -> void:
+	_title.text = new_title
+"
+
+[node name="ChangeDeck" instance=ExtResource( 2 )]
+margin_right = -149.0
+margin_bottom = -578.0
+rect_min_size = Vector2( 756, 62 )
+script = SubResource( 1 )
+
+[node name="Pivot" parent="." index="0"]
+position = Vector2( 378, 31 )
+
+[node name="Front" parent="Pivot" index="0"]
+margin_left = -378.0
+margin_top = -31.0
+margin_right = 378.0
+margin_bottom = 31.0
+
+[node name="Rectangle" parent="Pivot/Front/Style" index="0" instance=ExtResource( 3 )]
+background_color = "TRANSLUCENT"
+border_color = "PRIMARY"
+corner_radius = [ 6, 6, 6, 6 ]
+border_width = [ 1, 1, 1, 1 ]
+
+[node name="MarginContainer" parent="Pivot/Front" index="1"]
+custom_constants/margin_right = 24
+custom_constants/margin_left = 24
+
+[node name="Title" type="Label" parent="Pivot/Front/MarginContainer" index="0"]
+margin_left = 24.0
+margin_top = 16.0
+margin_right = 732.0
+margin_bottom = 46.0
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Deck"
+align = 1
+valign = 1
+
+[node name="Back" parent="Pivot" index="1"]
+margin_left = -378.0
+margin_top = -31.0
+margin_right = 378.0
+margin_bottom = 31.0
+
+[node name="Style" parent="Pivot/Back" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="MarginContainer" parent="Pivot/Back" index="1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 0.0
+margin_bottom = 0.0
+custom_constants/margin_right = 24
+custom_constants/margin_left = 24
+
+[connection signal="back_flip" from="." to="." method="_on_DeckScroller_back_flip"]

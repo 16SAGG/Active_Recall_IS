@@ -328,9 +328,5 @@ anims/HIDE = SubResource( 3 )
 anims/RESET = SubResource( 2 )
 anims/SHOW = SubResource( 1 )
 
-[node name="Label" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
-
 [connection signal="mouse_entered" from="." to="." method="_on_ActionPopUp_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_ActionPopUp_mouse_exited"]

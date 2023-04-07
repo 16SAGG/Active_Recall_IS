@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://ui/components/UISideBar/UISideBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/UICore.gd" type="Script" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://ui/components/SelectorRect/SelectorRect.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ui/components/Shadow/Shadow.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ui/components/NewDeckPopUp/NewDeckPopUp.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ui/screens/CardCreator/CardCreator.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ui/components/ChangeDeckPopUp/ChangeDeckPopUp.tscn" type="PackedScene" id=9]
+[ext_resource path="res://ui/components/ImagePopUp/ImagePopUp.tscn" type="PackedScene" id=10]
+[ext_resource path="res://ui/screens/Decks/Decks.tscn" type="PackedScene" id=11]
 
 [node name="UICore" type="Control"]
 anchor_right = 1.0
@@ -36,7 +40,14 @@ margin_bottom = 640.0
 rect_min_size = Vector2( 817, 0 )
 
 [node name="Home" parent="Layout/Screens" instance=ExtResource( 3 )]
+visible = false
 margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="CardCreator" parent="Layout/Screens" instance=ExtResource( 8 )]
+visible = false
+
+[node name="Decks" parent="Layout/Screens" instance=ExtResource( 11 )]
 
 [node name="ActionPopUp" parent="." instance=ExtResource( 4 )]
 
@@ -45,3 +56,7 @@ margin_right = 0.0
 [node name="SelectorRect" parent="." instance=ExtResource( 5 )]
 
 [node name="NewDeckPopUp" parent="." instance=ExtResource( 7 )]
+
+[node name="ChangeDeckPopUp" parent="." instance=ExtResource( 9 )]
+
+[node name="ImagePopUp" parent="." instance=ExtResource( 10 )]

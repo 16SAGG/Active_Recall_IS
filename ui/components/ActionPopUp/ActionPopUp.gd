@@ -1,7 +1,7 @@
 extends Control
 
 signal go_to_new_card_screen_requested(deck)
-signal create_new_deck_box_requested
+signal go_to_new_deck_pop_up_requested
 signal hide_action_pop_up_requested
 
 export var showed : bool = false
@@ -16,11 +16,13 @@ func _ready() -> void:
 	_deck_button.connect("normal_flip", self, "_on_deck_button_pressed")
 	_mouse_detector.connect("click_outside", self, "_on_click_outside")
 
-func _on_card_button_pressed() -> void:
+# warning-ignore:unused_argument
+func _on_card_button_pressed(button : Control) -> void:
 	emit_signal("go_to_new_card_screen_requested", null)
 
-func _on_deck_button_pressed() -> void:
-	emit_signal("create_new_deck_box_requested")
+# warning-ignore:unused_argument
+func _on_deck_button_pressed(button : Control) -> void:
+	emit_signal("go_to_new_deck_pop_up_requested")
 
 func _on_click_outside() -> void:
 	emit_signal("hide_action_pop_up_requested")

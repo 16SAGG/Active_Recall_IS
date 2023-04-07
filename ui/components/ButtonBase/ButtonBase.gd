@@ -1,14 +1,15 @@
 extends Control
 
-signal normal_flip
-signal back_flip
-signal front_flip
+signal normal_flip (button)
+signal back_flip (button)
+signal front_flip (button)
 
 export (bool) var has_back = false
 export (String, "FRONT", "BACK") var side = "FRONT"
 
+onready var _trigger = $Trigger as Button
 onready var button_base_player = $ButtonBasePlayer as AnimationPlayer
-onready var _button_recharge = $ButtonRecharge
+onready var _button_recharge = $ButtonRecharge as Timer
 
 func flip_action() -> void:
 	button_base_player.play("FLIP")
@@ -36,8 +37,8 @@ func _on_ButtonBasePlayer_animation_finished(anim_name) -> void:
 	_button_recharge.start()
 	match anim_name:
 		"FLIP":
-			emit_signal("normal_flip")
+			emit_signal("normal_flip", self)
 		"FLIP_TO_BACK":
-			emit_signal("back_flip")
+			emit_signal("back_flip", self)
 		"FLIP_TO_FRONT":
-			emit_signal("front_flip")
+			emit_signal("front_flip", self)

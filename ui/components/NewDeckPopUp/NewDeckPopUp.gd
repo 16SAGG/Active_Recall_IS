@@ -15,7 +15,7 @@ func _ready() -> void:
 	_ok_button.connect("normal_flip", self, "_on_ok_button_pressed")
 	_mouse_detector.connect("click_outside", self, "_on_click_outside")
 
-func _on_ok_button_pressed() -> void:
+func _on_ok_button_pressed(_button : Control) -> void:
 	emit_signal("new_deck", _new_title.text)
 
 func _on_click_outside() -> void:
