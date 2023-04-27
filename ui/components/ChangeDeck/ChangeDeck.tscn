@@ -18,6 +18,7 @@ margin_right = -149.0
 margin_bottom = -578.0
 rect_min_size = Vector2( 756, 62 )
 script = SubResource( 1 )
+has_back = false
 
 [node name="Pivot" parent="." index="0"]
 position = Vector2( 378, 31 )

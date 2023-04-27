@@ -9,7 +9,7 @@
 [ext_resource path="res://ui/components/NewDeckPopUp/NewDeckPopUp.tscn" type="PackedScene" id=7]
 [ext_resource path="res://ui/screens/CardCreator/CardCreator.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ui/components/ChangeDeckPopUp/ChangeDeckPopUp.tscn" type="PackedScene" id=9]
-[ext_resource path="res://ui/components/ImagePopUp/ImagePopUp.tscn" type="PackedScene" id=10]
+[ext_resource path="res://ui/screens/Practice/Practice.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ui/screens/Decks/Decks.tscn" type="PackedScene" id=11]
 
 [node name="UICore" type="Control"]
@@ -40,7 +40,6 @@ margin_bottom = 640.0
 rect_min_size = Vector2( 817, 0 )
 
 [node name="Home" parent="Layout/Screens" instance=ExtResource( 3 )]
-visible = false
 margin_right = 0.0
 margin_bottom = 0.0
 
@@ -48,6 +47,10 @@ margin_bottom = 0.0
 visible = false
 
 [node name="Decks" parent="Layout/Screens" instance=ExtResource( 11 )]
+visible = false
+
+[node name="Practice" parent="Layout/Screens" instance=ExtResource( 10 )]
+visible = false
 
 [node name="ActionPopUp" parent="." instance=ExtResource( 4 )]
 
@@ -58,5 +61,3 @@ visible = false
 [node name="NewDeckPopUp" parent="." instance=ExtResource( 7 )]
 
 [node name="ChangeDeckPopUp" parent="." instance=ExtResource( 9 )]
-
-[node name="ImagePopUp" parent="." instance=ExtResource( 10 )]

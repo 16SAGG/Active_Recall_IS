@@ -7,12 +7,17 @@ onready var _change_deck = $MarginContainer/Content/ChangeDeck as Control
 onready var _add_image = $MarginContainer/Content/AddImage as Control
 onready var _add_card = $MarginContainer/Content/Footer/Content/AddCard as Control
 
+onready var _add_card_title = $MarginContainer/Content/Footer/Content/AddCard/Pivot/Front/MarginContainer/Title as Label
+
 onready var _front_line = $MarginContainer/Content/LineBoxes/Content/FrontLine
 onready var _front_line_edit = $MarginContainer/Content/LineBoxes/Content/FrontLine/MarginContainer/Content/FrontEdit
 
 onready var _back_line = $MarginContainer/Content/LineBoxes/Content/BackLine
 onready var _back_line_edit = $MarginContainer/Content/LineBoxes/Content/BackLine/MarginContainer/Content/BackEdit
 onready var _back_line_desc = $MarginContainer/Content/LineBoxes/Content/BackLine/MarginContainer/Content/HBoxContainer/Description
+
+var status : String = "CREATOR" #EDITOR
+var editable_card : Control
 
 var _current_focus : String = "NONE"
 
@@ -28,17 +33,32 @@ func _ready() -> void:
 	start()
 
 func start() -> void:
-	_clean_lines()
 	_update_current_deck()
+	
+	match status:
+		"CREATOR":
+			_clean_lines()
+			_set_button_title("Añadir")
+		"EDITOR":
+			_set_lines_to_edit()
+			_set_button_title("Editar")
+
+func _update_current_deck() -> void:
+	if USERDATA.current_deck_data:
+		_change_deck.set_title(USERDATA.current_deck_data["title"])
 
 func _clean_lines() -> void:
 	_front_line_edit.text = ""
 	_back_line_edit.text = ""
 	_back_line_desc.text = ""
 
-func _update_current_deck() -> void:
-	if USERDATA.current_deck_data:
-		_change_deck.set_title(USERDATA.current_deck_data["title"])
+func _set_lines_to_edit() -> void:
+	_front_line_edit.text = editable_card.question_title
+	_back_line_edit.text = editable_card.answer_title
+	_back_line_desc.text = editable_card.answer_description
+
+func _set_button_title(var title : String) -> void:
+	_add_card_title.text = title
 
 func _on_change_deck_pressed(_button : Control) -> void:
 	emit_signal("change_deck_requested", _button)
@@ -61,11 +81,15 @@ func _on_add_card_pressed(_button : Control) -> void:
 		"description" : _back_line_desc.text
 	}
 	
-	if question["title"] == "" or answer["title"] == "" or USERDATA.current_deck_data == {}:
+	if question["title"] == "" or answer["title"] == "" or !USERDATA.current_deck_data:
 		_valid_card = false
 	
 	if _valid_card:
-		emit_signal("new_card", question, answer, USERDATA.current_deck_data["deck_id"])
+		match status:
+			"CREATOR":
+				emit_signal("new_card", question, answer, USERDATA.current_deck_data["deck_id"])
+			"EDITOR":
+				pass
 	else:
 		print("FICHA INVALIDA")
 

@@ -168,67 +168,20 @@ tracks/4/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=2]
-length = 0.001
+[sub_resource type="Animation" id=10]
+length = 5.0
+step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("Pivot:scale")
+tracks/0/path = NodePath("Pivot:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 2.5, 2.55, 2.6, 2.65, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Pivot:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Pivot/Back:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Pivot/Front:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ true ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath(".:side")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ "FRONT" ]
+"values": [ 0.0, -1.0, 0.0, 1.0, 0.0 ]
 }
 
 [node name="ButtonBase" type="Control"]
@@ -237,6 +190,7 @@ anchor_bottom = 1.0
 margin_right = -605.0
 margin_bottom = -340.0
 script = ExtResource( 1 )
+has_back = true
 
 [node name="Pivot" type="Position2D" parent="."]
 
@@ -252,6 +206,18 @@ anchor_bottom = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
+[node name="FrontTrigger" type="Button" parent="Pivot/Front"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 14.0
+mouse_filter = 1
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+flat = true
+
 [node name="Back" type="Control" parent="Pivot"]
 visible = false
 margin_right = 40.0
@@ -265,9 +231,10 @@ margin_bottom = 40.0
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="Trigger" type="Button" parent="."]
+[node name="BackTrigger" type="Button" parent="Pivot/Back"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_bottom = 14.0
 mouse_filter = 1
 custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 4 )
@@ -280,11 +247,15 @@ flat = true
 anims/FLIP = SubResource( 1 )
 anims/FLIP_TO_BACK = SubResource( 8 )
 anims/FLIP_TO_FRONT = SubResource( 9 )
-anims/RESET = SubResource( 2 )
 
 [node name="ButtonRecharge" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
 
-[connection signal="pressed" from="Trigger" to="." method="_on_Trigger_pressed"]
+[node name="FlipTimerPlayer" type="AnimationPlayer" parent="."]
+anims/FLIP_TIMER = SubResource( 10 )
+
+[connection signal="pressed" from="Pivot/Front/FrontTrigger" to="." method="_on_FrontTrigger_pressed"]
+[connection signal="pressed" from="Pivot/Back/BackTrigger" to="." method="_on_BackTrigger_pressed"]
 [connection signal="animation_finished" from="ButtonBasePlayer" to="." method="_on_ButtonBasePlayer_animation_finished"]
+[connection signal="animation_finished" from="FlipTimerPlayer" to="." method="_on_FlipTimerPlayer_animation_finished"]

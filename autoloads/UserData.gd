@@ -20,9 +20,9 @@ func _ready() -> void:
 	_database = SQLITE.new()
 	_database.path = _db_name
 	
-	_set_basic_data()
+	set_basic_data()
 
-func _set_basic_data() -> void: 
+func set_basic_data() -> void: 
 	turn_('ON')
 	
 	_set_history_data()
@@ -61,25 +61,17 @@ func set_current_deck_data(_deck_id : int) -> void:
 		var _answer_id = _data['cards'][_c]['answer_id']
 		var _question_id = _data['cards'][_c]['question_id']
 		
-		var _da_q : String = "SELECT Answer.title, Answer.image_id, Answer.description FROM Answer LEFT JOIN Card ON Answer.answer_id = Card.answer_id WHERE Answer.answer_id = " + str(_answer_id)
+		var _da_q : String = "SELECT Answer.title, Answer.image, Answer.description FROM Answer LEFT JOIN Card ON Answer.answer_id = Card.answer_id WHERE Answer.answer_id = " + str(_answer_id)
 		_data['cards'][_c]['answer'] = get_by_query(_da_q)[0]
 		
-		var _dq_q : String = "SELECT Question.title, Question.image_id FROM Question LEFT JOIN Card ON Question.question_id = Card.question_id WHERE Question.question_id = " + str(_question_id)
+		var _dq_q : String = "SELECT Question.title, Question.image FROM Question LEFT JOIN Card ON Question.question_id = Card.question_id WHERE Question.question_id = " + str(_question_id)
 		_data['cards'][_c]['question'] = get_by_query(_dq_q)[0]
-		
-		if _data['cards'][_c]['answer']['image_id']:
-			var _dai_q : String = "SELECT Image.width, Image.height, Image.format, Image.data FROM Image LEFT JOIN Answer ON Image.image_id = Answer.answer_id WHERE Answer.answer_id = " + str(_answer_id)
-			_data['cards'][_c]['answer']['image'] = get_by_query(_dai_q)[0]
-		
-		if _data['cards'][_c]['question']['image_id']:
-			var _dqi_q : String = "SELECT Image.width, Image.height, Image.format, Image.data FROM Image LEFT JOIN Question ON Image.image_id = Question.question_id WHERE Question.question_id = " + str(_question_id)
-			_data['cards'][_c]['answer']['image'] = get_by_query(_dqi_q)[0]
 	
 	turn_('OFF')
 	
 	current_deck_data = _data
 	
-	#all_deck_data = {
+	#current_deck_data = {
 	#	'cards': [
 	#		{
 	#			'answer': {

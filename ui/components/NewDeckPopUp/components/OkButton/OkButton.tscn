@@ -8,6 +8,7 @@
 margin_right = -845.0
 margin_bottom = -580.0
 rect_min_size = Vector2( 60, 60 )
+has_back = false
 
 [node name="Pivot" parent="." index="0"]
 position = Vector2( 30, 30 )

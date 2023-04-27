@@ -1,6 +1,6 @@
 extends Control
 
-signal go_to_new_card_screen_requested(deck)
+signal go_to_new_card_screen_requested(card)
 signal go_to_new_deck_pop_up_requested
 signal hide_action_pop_up_requested
 

@@ -42,6 +42,7 @@ window/stretch/aspect="keep_height"
 [global]
 
 input=false
+touch=false
 
 [gui]
 

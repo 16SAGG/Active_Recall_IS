@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/components/ButtonBase/ButtonBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/screens/Practice/components/OptionBox/OptionBox.gd" type="Script" id=2]
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/body_1.tres" type="DynamicFont" id=4]
+
+[node name="OptionBox" instance=ExtResource( 1 )]
+margin_right = -725.0
+margin_bottom = -516.0
+rect_min_size = Vector2( 180, 124 )
+script = ExtResource( 2 )
+
+[node name="Pivot" parent="." index="0"]
+position = Vector2( 90, 62 )
+
+[node name="Front" parent="Pivot" index="0"]
+margin_left = -90.0
+margin_top = -62.0
+margin_right = 90.0
+margin_bottom = 62.0
+
+[node name="BackgroundBox" parent="Pivot/Front/Style" index="0" instance=ExtResource( 3 )]
+background_color = "SECONDARY"
+border_color = "PRIMARY"
+border_width = [ 1, 1, 1, 1 ]
+
+[node name="MarginContainer" parent="Pivot/Front" index="1"]
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
+
+[node name="Title" type="Label" parent="Pivot/Front/MarginContainer" index="0"]
+margin_left = 16.0
+margin_top = 51.0
+margin_right = 164.0
+margin_bottom = 72.0
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Title"
+align = 1
+valign = 1
+
+[node name="FrontTrigger" parent="Pivot/Front" index="2"]
+margin_bottom = 0.0
+
+[node name="Back" parent="Pivot" index="1"]
+margin_left = -90.0
+margin_top = -62.0
+margin_right = 90.0
+margin_bottom = 62.0
+
+[node name="Style" parent="Pivot/Back" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="BackgroundBox" parent="Pivot/Back/Style" index="0" instance=ExtResource( 3 )]
+
+[node name="MarginContainer" parent="Pivot/Back" index="1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 0.0
+margin_bottom = 0.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
+
+[node name="Title" type="Label" parent="Pivot/Back/MarginContainer" index="0"]
+margin_left = 16.0
+margin_top = 51.0
+margin_right = 164.0
+margin_bottom = 72.0
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Title"
+align = 1
+valign = 1
+
+[node name="BackTrigger" parent="Pivot/Back" index="2"]
+margin_bottom = 0.0

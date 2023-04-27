@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/screens/ScreenBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/screens/Practice/components/OptionPreview/OptionPreview.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/screens/Practice/Practice.gd" type="Script" id=3]
+[ext_resource path="res://ui/components/ChangeDeck/ChangeDeck.tscn" type="PackedScene" id=4]
+
+[node name="Practice" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="Layout" type="VBoxContainer" parent="MarginContainer" index="0"]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 804.0
+margin_bottom = 640.0
+custom_constants/separation = 24
+
+[node name="ChangeDeck" parent="MarginContainer/Layout" index="0" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 780.0
+margin_bottom = 62.0
+
+[node name="OptionPreview" parent="MarginContainer/Layout" index="1" instance=ExtResource( 2 )]
+margin_top = 86.0
+margin_right = 780.0
+margin_bottom = 428.0
+
+[node name="OptionScroll" type="ScrollContainer" parent="MarginContainer/Layout" index="2"]
+margin_top = 452.0
+margin_right = 780.0
+margin_bottom = 616.0
+rect_min_size = Vector2( 0, 164 )
+scroll_vertical_enabled = false
+
+[node name="Content" type="HBoxContainer" parent="MarginContainer/Layout/OptionScroll" index="0"]
+custom_constants/separation = 12

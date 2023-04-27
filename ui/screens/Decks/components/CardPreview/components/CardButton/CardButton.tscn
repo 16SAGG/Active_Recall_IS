@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H5_headline.tres" type="DynamicFont" id=1]
 [ext_resource path="res://miscellaneous/fonts/dynamic_fonts/body_2.tres" type="DynamicFont" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://ui/components/ButtonBase/ButtonBase.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/screens/Decks/components/CardPreview/components/CardButton/CardButton.gd" type="Script" id=5]
 [ext_resource path="res://ui/screens/Decks/components/CardPreview/components/CardButton/components/FlipButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/components/Image/Image.tscn" type="PackedScene" id=7]
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
@@ -42,12 +43,22 @@ margin_left = 16.0
 margin_top = 32.0
 margin_right = 298.0
 margin_bottom = 305.0
-custom_constants/separation = 0
+custom_constants/separation = 12
 
-[node name="Title" type="Label" parent="Pivot/Front/MarginContainer/Content" index="0"]
+[node name="ActualCard" type="Label" parent="Pivot/Front/MarginContainer/Content" index="0"]
+margin_right = 282.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 0, 12 )
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "3/3"
+
+[node name="Title" type="Label" parent="Pivot/Front/MarginContainer/Content" index="1"]
+margin_top = 29.0
 margin_right = 282.0
 margin_bottom = 229.0
 rect_min_size = Vector2( 281, 0 )
+size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 1 )
@@ -57,13 +68,22 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="Space" type="Control" parent="Pivot/Front/MarginContainer/Content" index="1"]
-margin_top = 229.0
+[node name="ExtraContent" type="HBoxContainer" parent="Pivot/Front/MarginContainer/Content" index="2"]
+visible = false
+margin_top = 75.0
 margin_right = 282.0
-margin_bottom = 241.0
-rect_min_size = Vector2( 0, 12 )
+margin_bottom = 229.0
+rect_min_size = Vector2( 0, 154 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 12
 
-[node name="FlipButton" parent="Pivot/Front/MarginContainer/Content" index="2" instance=ExtResource( 6 )]
+[node name="Image" parent="Pivot/Front/MarginContainer/Content/ExtraContent" index="0" instance=ExtResource( 7 )]
+margin_left = 0.0
+margin_right = 282.0
+margin_bottom = 154.0
+
+[node name="FlipButton" parent="Pivot/Front/MarginContainer/Content" index="3" instance=ExtResource( 6 )]
 
 [node name="Back" parent="Pivot" index="1"]
 margin_left = -157.0
@@ -93,12 +113,21 @@ margin_left = 16.0
 margin_top = 32.0
 margin_right = 298.0
 margin_bottom = 305.0
-custom_constants/separation = 0
+custom_constants/separation = 12
 
-[node name="Title" type="Label" parent="Pivot/Back/MarginContainer/Content" index="0"]
+[node name="ActualCard" type="Label" parent="Pivot/Back/MarginContainer/Content" index="0"]
+margin_right = 282.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 0, 17 )
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "3/3"
+
+[node name="Title" type="Label" parent="Pivot/Back/MarginContainer/Content" index="1"]
 margin_right = 282.0
 margin_bottom = 63.0
 rect_min_size = Vector2( 281, 0 )
+size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 1 )
@@ -108,17 +137,22 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="Space" type="Control" parent="Pivot/Back/MarginContainer/Content" index="1"]
-margin_top = 63.0
-margin_right = 282.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 0, 12 )
+[node name="ExtraContent" type="HBoxContainer" parent="Pivot/Back/MarginContainer/Content" index="2"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 154 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 12
 
-[node name="Description" type="TextEdit" parent="Pivot/Back/MarginContainer/Content" index="2"]
+[node name="Description" type="TextEdit" parent="Pivot/Back/MarginContainer/Content/ExtraContent" index="0"]
 margin_top = 75.0
 margin_right = 282.0
 margin_bottom = 241.0
 rect_min_size = Vector2( 0, 154 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_colors/font_color_readonly = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 2 )
@@ -126,16 +160,10 @@ custom_styles/read_only = SubResource( 4 )
 custom_styles/focus = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
 custom_styles/completion = SubResource( 7 )
+text = "sdasdasdsadasdasdasdasdasdasdassadsadasdsads"
 readonly = true
 wrap_enabled = true
 
-[node name="Space2" type="Control" parent="Pivot/Back/MarginContainer/Content" index="3"]
-margin_top = 63.0
-margin_right = 282.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 0, 12 )
+[node name="Image" parent="Pivot/Back/MarginContainer/Content/ExtraContent" index="1" instance=ExtResource( 7 )]
 
-[node name="FlipButton" parent="Pivot/Back/MarginContainer/Content" index="4" instance=ExtResource( 6 )]
-
-[node name="Trigger" parent="." index="1"]
-visible = false
+[node name="FlipButton" parent="Pivot/Back/MarginContainer/Content" index="3" instance=ExtResource( 6 )]

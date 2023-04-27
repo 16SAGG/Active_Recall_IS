@@ -4,11 +4,12 @@
 [ext_resource path="res://ui/components/ChangeDeck/ChangeDeck.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/screens/Decks/components/CardPreview/CardPreview.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ui/components/SearchBar/SearchBar.tscn" type="PackedScene" id=4]
-[ext_resource path="res://ui/screens/Decks/components/Card/Card.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ui/screens/Decks/components/DeckActionButton/DeckActionButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ui/screens/Decks/Decks.gd" type="Script" id=8]
 
 [node name="Decks" instance=ExtResource( 1 )]
+script = ExtResource( 8 )
 
 [node name="Layout" type="VBoxContainer" parent="MarginContainer" index="0"]
 margin_left = 24.0
@@ -31,43 +32,16 @@ rect_min_size = Vector2( 0, 530 )
 
 [node name="Content" type="VBoxContainer" parent="MarginContainer/Layout/ScrollContainer" index="0"]
 margin_right = 488.0
-margin_bottom = 621.0
-custom_constants/separation = 12
+margin_bottom = 329.0
+custom_constants/separation = 24
 
 [node name="CardPreview" parent="MarginContainer/Layout/ScrollContainer/Content" index="0" instance=ExtResource( 3 )]
 
-[node name="Space" type="Control" parent="MarginContainer/Layout/ScrollContainer/Content" index="1"]
-margin_top = 317.0
-margin_right = 488.0
-margin_bottom = 317.0
-
-[node name="Card" parent="MarginContainer/Layout/ScrollContainer/Content" index="2" instance=ExtResource( 5 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="CardColumn" type="VBoxContainer" parent="MarginContainer/Layout/ScrollContainer/Content" index="1"]
 margin_top = 329.0
 margin_right = 488.0
-margin_bottom = 393.0
-
-[node name="Card2" parent="MarginContainer/Layout/ScrollContainer/Content" index="3" instance=ExtResource( 5 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 405.0
-margin_right = 488.0
-margin_bottom = 469.0
-
-[node name="Card3" parent="MarginContainer/Layout/ScrollContainer/Content" index="4" instance=ExtResource( 5 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 481.0
-margin_right = 488.0
-margin_bottom = 545.0
-
-[node name="Card4" parent="MarginContainer/Layout/ScrollContainer/Content" index="5" instance=ExtResource( 5 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 557.0
-margin_right = 488.0
-margin_bottom = 621.0
+margin_bottom = 329.0
+custom_constants/separation = 12
 
 [node name="FloatingColumn" type="VBoxContainer" parent="." index="1"]
 margin_left = 536.0
@@ -117,6 +91,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 212.0
 margin_bottom = 52.0
+has_back = false
 title = "Añadir"
 
 [node name="Practice" parent="FloatingColumn/ButtonsBar/MarginContainer/Layout" index="1" instance=ExtResource( 7 )]
@@ -125,6 +100,7 @@ anchor_bottom = 0.0
 margin_top = 68.0
 margin_right = 212.0
 margin_bottom = 120.0
+has_back = false
 title = "Practica"
 
 [node name="Stats" parent="FloatingColumn/ButtonsBar/MarginContainer/Layout" index="2" instance=ExtResource( 7 )]
@@ -133,6 +109,7 @@ anchor_bottom = 0.0
 margin_top = 136.0
 margin_right = 212.0
 margin_bottom = 188.0
+has_back = false
 title = "Estadisticas"
 
 [node name="Settings" parent="FloatingColumn/ButtonsBar/MarginContainer/Layout" index="3" instance=ExtResource( 7 )]
@@ -141,4 +118,5 @@ anchor_bottom = 0.0
 margin_top = 204.0
 margin_right = 212.0
 margin_bottom = 256.0
+has_back = false
 title = "Opciones"

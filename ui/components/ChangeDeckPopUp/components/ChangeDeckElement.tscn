@@ -1,26 +1,15 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://ui/components/ButtonBase/ButtonBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://miscellaneous/fonts/dynamic_fonts/body_1.tres" type="DynamicFont" id=2]
 [ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ui/components/ChangeDeckPopUp/components/ChangeDeckElement.gd" type="Script" id=4]
 
-[sub_resource type="StyleBoxEmpty" id=1]
-
-[sub_resource type="StyleBoxEmpty" id=2]
-
-[sub_resource type="StyleBoxEmpty" id=3]
-
-[sub_resource type="StyleBoxEmpty" id=4]
-
-[sub_resource type="StyleBoxEmpty" id=5]
-
 [node name="ChangeDeckElement" instance=ExtResource( 1 )]
 margin_right = -905.0
 margin_bottom = -578.0
 rect_min_size = Vector2( 448, 62 )
 script = ExtResource( 4 )
-has_back = true
 
 [node name="Pivot" parent="." index="0"]
 position = Vector2( 224, 31 )
@@ -81,17 +70,3 @@ custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "DECK"
 valign = 1
-
-[node name="GoTo" type="Button" parent="." index="4"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/disabled = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
-flat = true
-
-[connection signal="back_flip" from="." to="." method="_on_ChangeDeckElement_back_flip"]
-[connection signal="pressed" from="GoTo" to="." method="_on_GoTo_pressed"]

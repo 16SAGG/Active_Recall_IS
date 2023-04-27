@@ -2,6 +2,7 @@ extends Control
 
 const DICT_POSITION = {
 	'HOME': Vector2(16,216),
+	'CARD': Vector2(16,216),
 	'DECK': Vector2(16,280),
 	'PRACTICE': Vector2(16,344),
 	'STATS': Vector2(16,408),
@@ -18,7 +19,6 @@ func _ready():
 	go_to('HOME')
 
 func go_to(destiny : String) -> void:
-	print('The Selector Rect will be able to move to ' + destiny)
 	anim_ready = false
 	_tween.interpolate_property(
 		self, 
