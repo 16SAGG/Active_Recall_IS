@@ -9,7 +9,7 @@ onready var _right_button = $MarginContainer/Layout/CardPreview/RightButton as C
 onready var _card_button = $CardButton as Control
 onready var _card_anim = $CardAnim as AnimationPlayer
 
-var _in_lap : bool = true
+var _hits : int = 0
 var _side_button_state : String = "ANSWERING"
 var _current_card : Dictionary
 var _cover_card : Dictionary
@@ -21,23 +21,17 @@ func _ready() -> void:
 	_card_button.connect("first_flip", self, "_on_first_flip_has_happened")
 
 func start() -> void:
-	if _study_array.size() - 1 >= _study_array_index and _in_lap:
-		print("STUDY LAP")
+	if _study_array:
 		_study_lap()
 	else:
-		match _another_lap():
-			true:
-				print("WEE NEED ANOTHER LAP")
-				_in_lap = true
-				start()
-			false:
-				print("THE END OF EVANGELION")
+		_hits = 0
+		print("THE END OF EVANGELION")
 
 func _study_lap() -> void:
-	_current_card = _study_array[_study_array_index]
+	_current_card = _study_array.pop_front()
 	
-	_header.change_text(USERDATA.current_deck_data["title"] + " (" + str(_study_array_index + 1) + " de " + str(_study_array.size()) + ")")
-	_cover_card = _generate_cover(_study_array)
+	_header.change_text(USERDATA.current_deck_data["title"] + "(" + str(_hits) + " de " + str(_registered_array.size()) + ")")
+	_cover_card = _generate_cover(_registered_array)
 	
 	_base.start()
 	_card_button.start(_current_card["question"], _current_card["answer"], _cover_card["answer"])
@@ -51,23 +45,6 @@ func _study_lap() -> void:
 	
 	_side_button_state = "ANSWERING"
 	_card_anim.play("MOVE_TO_ORIGIN")
-
-func _another_lap() -> bool:
-	print("ANOTHER LAP???")
-	var _another_lap_needed : bool = false
-	var _enough_for_today : Array 
-	
-	for _c in _study_array:
-		if _c["space_btwn_sessions"] == 0:
-			_another_lap_needed = true
-		else:
-			print(_c)
-			_enough_for_today.append(_c)
-	
-	for _c in _enough_for_today:
-		_study_array.erase(_c)
-	
-	return _another_lap_needed
 
 func _generate_cover(var _card_array : Array) -> Dictionary:
 	var _cover : Dictionary
@@ -102,21 +79,18 @@ func _side_button_behavior(var _side : String) -> void:
 			if _correct_answer == _side:
 				_header.change_text("Respuesta correcta")
 				_card_button.show_answer("CORRECT")
-				_current_card = _submit_answer(_current_card["card_id"], "CORRECT")
+				_current_card = _submit_answer(_current_card, "CORRECT")
+				_hits += 1
 			else:
 				_header.change_text("Respuesta incorrecta")
 				_card_button.show_answer("WRONG")
-				_current_card = _submit_answer(_current_card["card_id"], "WRONG")
+				_current_card = _submit_answer(_current_card, "WRONG")
+				_study_array.append(_current_card)
 			_left_button.set_icon("LEFT")
 			_right_button.set_icon("RIGHT")
 			_side_button_state = "CONTINUING"
 			
 			_base.set_values(_current_card["question"]["title"], _current_card["space_btwn_sessions"])
-			_study_array_index += 1
-			if _study_array_index > _study_array.size() - 1:
-				_study_array_index = 0
-				_in_lap = false
-			print("Array size - 1 : " + str(_study_array.size() - 1) + " index: " + str(_study_array_index))
 		"CONTINUING":
 			_header.change_text("Click para continuar")
 			_card_anim.play("MOVE_TO_" + _side)

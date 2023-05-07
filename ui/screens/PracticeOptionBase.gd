@@ -2,8 +2,8 @@ extends "res://ui/screens/ScreenBase.gd"
 
 signal edit_card(question, answer, card, card_properties, update_deck)
 
+var _registered_array : Array
 var _study_array : Array
-var _study_array_index : int = 0
 
 func start() -> void:
 	pass
@@ -11,6 +11,7 @@ func start() -> void:
 func start_study_array(var _type : String, var _card_limit : int) -> void:
 	#print("We need to finish the start_study_array in PRACTICE OPTION BASE")
 	_study_array = []
+	_registered_array = []
 	
 	match _type:
 		"CUSTOM":
@@ -70,20 +71,23 @@ func _daily_study(var _card_limit : int) -> void:
 		_else_cards.shuffle()
 		for _d in range(0, _diference):
 			_study_array.append(_else_cards.pop_back())
+	
+	_registered_array = _study_array.duplicate()
 
-func _submit_answer(var _card_id : int, var _result : String) -> Dictionary:
+func _submit_answer(var _card : Dictionary, var _result : String) -> Dictionary:
 	var _updated_card : Dictionary
 	
-	for _c in _study_array: 
-		if _c["card_id"] == _card_id:
-			var _today_date : int = OS.get_unix_time()
-			_c["last_session"] = _today_date
-			match _result:
-				"CORRECT":
-					_c["space_btwn_sessions"] = _c["space_btwn_sessions"] + 1
-				"WRONG":
-					_c["space_btwn_sessions"] = 0
-			_updated_card = _c
+	if _card:
+		var _today_date : int = OS.get_unix_time()
+		_card["last_session"] = _today_date
+		match _result:
+			"CORRECT":
+				_card["space_btwn_sessions"] = _card["space_btwn_sessions"] + 1
+				_card["hits"] = _card["hits"] + 1
+			"WRONG":
+				_card["space_btwn_sessions"] = 0
+				_card["fails"] = _card["fails"] + 1
+		_updated_card = _card
 	
 	var _commit_card : Dictionary = _updated_card.duplicate()
 # warning-ignore:return_value_discarded

@@ -134,8 +134,8 @@ rect_min_size = Vector2( 31, 0 )
 [node name="CardButton" parent="." index="2" instance=ExtResource( 6 )]
 margin_left = 152.0
 margin_top = 72.0
-margin_right = 676.0
-margin_bottom = 536.0
+margin_right = 202.957
+margin_bottom = 72.0
 
 [node name="CardAnim" type="AnimationPlayer" parent="." index="3"]
 anims/MOVE_TO_LEFT = SubResource( 1 )
