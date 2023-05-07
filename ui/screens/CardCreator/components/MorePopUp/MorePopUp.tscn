@@ -1,0 +1,258 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/components/MouseDetector/MouseDetector.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/stylized_shape/Triangle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/screens/CardCreator/components/MorePopUp/components/PopUpButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/screens/CardCreator/components/MorePopUp/MorePopUp.gd" type="Script" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "HIDE"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 535, 440 ), Vector2( 535, 440 ), Vector2( 924, 440 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:showed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PopUp/PickerLayout:rect_min_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 16 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("PopUp/PickerLayout:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 535, 440 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PopUp/PickerLayout:rect_min_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 16 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "SHOW"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 535, 440 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:showed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PopUp/PickerLayout:rect_min_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 16 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("PopUp/PickerLayout:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="MorePopUp" type="Control"]
+margin_left = 535.0
+margin_top = 440.0
+margin_right = 779.0
+margin_bottom = 536.0
+script = ExtResource( 5 )
+showed = true
+
+[node name="MouseDetector" parent="." instance=ExtResource( 2 )]
+rect_min_size = Vector2( 244, 96 )
+
+[node name="PopUp" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Layout" type="Control" parent="PopUp"]
+margin_right = 244.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="Style" type="Control" parent="PopUp/Layout"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BackgroundBox" parent="PopUp/Layout/Style" instance=ExtResource( 1 )]
+background_color = "DARK"
+
+[node name="MarginContainer" type="MarginContainer" parent="PopUp/Layout"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 47
+custom_constants/margin_top = 12
+custom_constants/margin_left = 47
+custom_constants/margin_bottom = 12
+
+[node name="Content" type="HBoxContainer" parent="PopUp/Layout/MarginContainer"]
+margin_left = 47.0
+margin_top = 12.0
+margin_right = 197.0
+margin_bottom = 68.0
+custom_constants/separation = 46
+
+[node name="Delete" parent="PopUp/Layout/MarginContainer/Content" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 52.0
+margin_bottom = 56.0
+
+[node name="Information" parent="PopUp/Layout/MarginContainer/Content" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 98.0
+margin_right = 150.0
+margin_bottom = 56.0
+
+[node name="PickerLayout" type="Control" parent="PopUp"]
+margin_top = 84.0
+margin_right = 244.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 16 )
+
+[node name="Content" type="HBoxContainer" parent="PopUp/PickerLayout"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Space" type="Control" parent="PopUp/PickerLayout/Content"]
+margin_right = 198.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+
+[node name="Picker" type="Control" parent="PopUp/PickerLayout/Content"]
+margin_left = 202.0
+margin_right = 234.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 32, 0 )
+
+[node name="Triangle" parent="PopUp/PickerLayout/Content/Picker" instance=ExtResource( 3 )]
+margin_top = -4.0
+margin_right = -32.0
+margin_bottom = -20.0
+rect_min_size = Vector2( 32, 16 )
+background_color = "DARK"
+points_multiplier = [ Vector2( 0.5, 1 ), Vector2( 0, 0 ), Vector2( 1, 0 ) ]
+
+[node name="Space2" type="Control" parent="PopUp/PickerLayout/Content"]
+margin_left = 238.0
+margin_right = 244.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 6, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "HIDE"
+anims/HIDE = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+anims/SHOW = SubResource( 3 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://ui/components/MouseDetector/MouseDetector.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=2]
@@ -60,57 +60,6 @@ tracks/3/keys = {
 "times": PoolRealArray( 0.2 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=10]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Pivot:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Pivot:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ true ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath(".:showed")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
 "values": [ false ]
 }
 
@@ -177,6 +126,7 @@ margin_right = 248.0
 margin_bottom = 186.0
 rect_min_size = Vector2( 496, 372 )
 script = ExtResource( 4 )
+showed = true
 
 [node name="MouseDetector" parent="." instance=ExtResource( 1 )]
 rect_min_size = Vector2( 496, 372 )
@@ -257,7 +207,6 @@ custom_constants/separation = 0
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "HIDE"
 anims/HIDE = SubResource( 9 )
-anims/RESET = SubResource( 10 )
 anims/SHOW = SubResource( 11 )
 
 [connection signal="text_changed" from="Pivot/MarginContainer/Layout/SearchLine" to="." method="_on_SearchLine_text_changed"]

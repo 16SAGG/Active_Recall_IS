@@ -1,37 +1,21 @@
-extends Control
+extends "res://ui/screens/ScreenBase.gd"
 
 const OPTION_BOX = preload("res://ui/screens/Practice/components/OptionBox/OptionBox.tscn")
 
-signal change_deck_requested
-signal practice_flash_card_screen_requested
-signal practice_test_screen_requested
-signal practice_memory_screen_requested
+signal show_select_type_study_pop_up(selected_option, scroll_pos)
 
-onready var _change_deck = $MarginContainer/Layout/ChangeDeck
+onready var _change_deck = $MarginContainer/Layout/ChangeDeck as Control
 onready var _option_preview = $MarginContainer/Layout/OptionPreview as Control
+onready var _option_scroll = $MarginContainer/Layout/OptionScroll as ScrollContainer
 onready var _options_container = $MarginContainer/Layout/OptionScroll/Content as HBoxContainer
-
-var _option_values : Array = [
-	{
-		"title": "Flash Card",
-		"dir": "flash_card"
-	},
-	{
-		"title": "Test",
-		"dir": "test"
-	},
-	{
-		"title": "Memory",
-		"dir": "memory"
-	},
-]
 
 var _option_array : Array
 
 func _ready():
 	_change_deck.connect("normal_flip", self, "_on_change_deck_pressed")
+	_option_preview.connect("option_pressed", self, "_on_option_pressed")
 	
-	_option_preview.set_option_array(_option_values)
+	_option_preview.start()
 	_option_array = _load_data()
 	_insert_option_array()
 	
@@ -39,18 +23,19 @@ func _ready():
 
 func start() -> void:
 	_update_current_deck()
+	_error_suporter()
 
 func _load_data() -> Array:
 	var _result_array : Array
-	for _o in _option_values:
-		_result_array.append(_create_option_box(_o["title"], _o["dir"]))
+	for _o in PRACTICEOPTIONS.options_values:
+		_result_array.append(_create_option_box(_o["title"], _o))
 	return _result_array
 
-func _create_option_box(var _title: String, var _dir: String) -> Control:
+func _create_option_box(var _title: String, var _option: Dictionary) -> Control:
 	var _option_box : Control = OPTION_BOX.instance()
 	
 	_option_box.title = _title
-	_option_box.dir = _dir
+	_option_box.option = _option
 	
 # warning-ignore:return_value_discarded
 	_option_box.connect("back_flip", self, "_on_switch_box_to_front")
@@ -70,13 +55,14 @@ func _update_current_deck() -> void:
 func _on_change_deck_pressed(_button : Control) -> void:
 	emit_signal("change_deck_requested", _button)
 
-func _on_switch_box_to_front(_option: Control) -> void:
+func _on_switch_box_to_front(_option_box: Control) -> void:
 	for _o in _option_array:
-		if _o == _option:
+		if _o == _option_box:
 			pass
 		else:
 			if _o.side == "BACK":
 				_o.back_action()
 
-func _on_option_pressed(_dir: String) -> void:
-	emit_signal("practice_" + _dir + "_screen_requested")
+func _on_option_pressed(_option: Dictionary) -> void:
+	emit_signal("show_select_type_study_pop_up", _option, _option_scroll.scroll_horizontal)
+	_on_switch_box_to_front(null)

@@ -28,6 +28,7 @@ run/main_scene="res://ui/UICore.tscn"
 THEMES="*res://autoloads/Themes.gd"
 USERDATA="*res://autoloads/UserData.gd"
 CARDCULATIONS="*res://autoloads/CardCalculations.gd"
+PRACTICEOPTIONS="*res://autoloads/PracticeOptions.gd"
 
 [display]
 

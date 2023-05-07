@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/body_1.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/components/SelectTypeStudyPopUp/components/OptionShadowBox/OptionShadowBox.gd" type="Script" id=3]
+
+[node name="OptionShadowBox" type="Control"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -725.0
+margin_bottom = -516.0
+rect_min_size = Vector2( 180, 124 )
+script = ExtResource( 3 )
+
+[node name="Style" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BackgroundBox" parent="Style" instance=ExtResource( 1 )]
+background_color = "TRANSLUCENT"
+border_color = "PRIMARY"
+border_width = [ 3, 3, 3, 3 ]
+
+[node name="Title" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.811765, 0.921569, 0.807843, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "FLASHCARD"
+align = 1
+valign = 1

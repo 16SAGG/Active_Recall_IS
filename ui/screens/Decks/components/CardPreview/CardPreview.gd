@@ -39,6 +39,8 @@ func _load_data() -> Array:
 func _change_card() -> void:
 	if _card_array:
 		_card_button.set_values(_card_array[_current_card_in_preview]["question"], _card_array[_current_card_in_preview]["answer"], _current_card_in_preview, _card_array.size())
+	else:
+		_card_button.set_values(Dictionary(), Dictionary(), 0, 0)
 
 func _on_left_button_pressed() -> void:
 	if _current_card_in_preview <= 0:

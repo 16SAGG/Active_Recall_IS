@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/Button.tres" type="DynamicFont" id=1]
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/components/ButtonBase/ButtonBase.tscn" type="PackedScene" id=3]
+
+[node name="EnterButton" instance=ExtResource( 3 )]
+margin_right = -637.0
+margin_bottom = -578.0
+rect_min_size = Vector2( 268, 62 )
+has_back = false
+
+[node name="Pivot" parent="." index="0"]
+position = Vector2( 134, 31 )
+
+[node name="Front" parent="Pivot" index="0"]
+margin_left = -134.0
+margin_top = -31.0
+margin_right = 134.0
+margin_bottom = 31.0
+
+[node name="BackgroundBox" parent="Pivot/Front/Style" index="0" instance=ExtResource( 2 )]
+
+[node name="Label" type="Label" parent="Pivot/Front/MarginContainer" index="0"]
+margin_top = 20.0
+margin_right = 268.0
+margin_bottom = 41.0
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Comenzar"
+align = 1
+valign = 1
+
+[node name="FrontTrigger" parent="Pivot/Front" index="2"]
+margin_bottom = 0.0

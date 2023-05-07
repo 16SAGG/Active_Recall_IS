@@ -5,7 +5,7 @@ signal change_current_deck(id)
 
 const CHANGE_DECK_ELEMENT = preload("res://ui/components/ChangeDeckPopUp/components/ChangeDeckElement.tscn")
 
-export var showed : bool = false
+export var showed : bool = false setget _setget_showed
 
 onready var animation_player = $AnimationPlayer
 onready var _content_column = $Pivot/MarginContainer/Layout/ScrollContainer/Content
@@ -24,6 +24,11 @@ func start() -> void:
 	_insert_deck_array("")
 	if USERDATA.current_deck_data:
 		_search_line.text = USERDATA.current_deck_data["title"]
+
+func _setget_showed(var _showed : bool) -> void:
+	showed = _showed
+	if _mouse_detector:
+		_mouse_detector.active = _showed
 
 func _load_data() -> Array:
 	var _result_array : Array

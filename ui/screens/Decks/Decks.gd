@@ -1,12 +1,11 @@
-extends Control
+extends "res://ui/screens/ScreenBase.gd"
 
 const CARD = preload("res://ui/screens/Decks/components/Card/Card.tscn")
 
-signal go_to_new_card_screen_requested(card_id)
+signal go_to_new_card_screen_requested(card_data)
 signal go_to_practice_screen_requested
 signal go_to_statistics_screen_requested
 signal go_to_settings_screen_requested
-signal change_deck_requested
 
 onready var _change_deck = $MarginContainer/Layout/ChangeDeck as Control
 onready var _card_preview = $MarginContainer/Layout/ScrollContainer/Content/CardPreview as Control
@@ -32,9 +31,11 @@ func _ready() -> void:
 	start()
 
 func start() -> void:
+	_update_current_deck()
+	_error_suporter()
+	
 	_card_array = _load_data()
 	_card_preview.start()
-	_update_current_deck()
 	_remove_all_cards()
 	_insert_card_array("")
 
@@ -47,17 +48,17 @@ func _load_data() -> Array:
 	
 	if USERDATA.current_deck_data:
 		for _c in USERDATA.current_deck_data["cards"]:
-			_result_array.append(_create_card(_c["card_id"], _c["question"]["title"], _c["answer"]["title"], _c["answer"]["description"]))
+			_result_array.append(_create_card(_c["card_id"], _c["question"], _c["answer"]))
 	
 	return _result_array
 
-func _create_card(var _id : int, var _question : String, var _answer : String, var _answer_description : String) -> Control:
+func _create_card(var _id : int, var _question : Dictionary, var _answer : Dictionary) -> Control:
 	var _card : Control = CARD.instance()
 	
-	_card.id = _id
-	_card.question_title = _question
-	_card.answer_title = _answer
-	_card.answer_description = _answer_description
+	_card.data["id"] = _id
+	_card.data["deck_id"] = USERDATA.current_deck_data["deck_id"]
+	_card.data["question"] = _question
+	_card.data["answer"] = _answer
 	
 # warning-ignore:return_value_discarded
 	_card.connect("back_flip", self, "_on_switch_card_to_front")
@@ -68,7 +69,7 @@ func _create_card(var _id : int, var _question : String, var _answer : String, v
 
 func _insert_card_array(_search : String) -> void:
 	for _c in _card_array:
-		if _search.to_upper() in _c.question_title.to_upper() or _search.to_upper() in _c.answer_title.to_upper() or _search == "":
+		if _search.to_upper() in _c.data["question"]["title"].to_upper() or _search.to_upper() in _c.data["answer"]["title"].to_upper() or _search == "":
 			_card_column.add_child(_c)
 
 func _remove_all_cards() -> void:
@@ -91,10 +92,10 @@ func _on_switch_card_to_front(_card: Control) -> void:
 				_c.back_action()
 
 func _on_card_pressed(_button : Control) -> void:
-	emit_signal("go_to_new_card_screen_requested", _button)
+	emit_signal("go_to_new_card_screen_requested", _button.data)
 
 func _on_add_button_pressed(_button : Control) -> void:
-	emit_signal("go_to_new_card_screen_requested", null)
+	emit_signal("go_to_new_card_screen_requested", Dictionary())
 
 func _on_practice_button_pressed(_button : Control) -> void:
 	emit_signal("go_to_practice_screen_requested", null)

@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H8_headline.tres" type="DynamicFont" id=1]
+[ext_resource path="res://ui/screens/FlashCardPractice/components/Header/Header.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "CHANGE_TEXT"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0, 0.0, 1.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_set_text_with_new_text"
+} ]
+}
+
+[node name="Header" type="Label"]
+margin_right = 780.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 24 )
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 0.501961 )
+custom_fonts/font = ExtResource( 1 )
+text = "English words - 2 de 10"
+align = 2
+valign = 1
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/CHANGE_TEXT = SubResource( 1 )

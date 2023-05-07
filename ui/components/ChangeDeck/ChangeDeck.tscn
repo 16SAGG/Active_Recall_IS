@@ -29,7 +29,7 @@ margin_top = -31.0
 margin_right = 378.0
 margin_bottom = 31.0
 
-[node name="Rectangle" parent="Pivot/Front/Style" index="0" instance=ExtResource( 3 )]
+[node name="BackgroundBox" parent="Pivot/Front/Style" index="0" instance=ExtResource( 3 )]
 background_color = "TRANSLUCENT"
 border_color = "PRIMARY"
 corner_radius = [ 6, 6, 6, 6 ]

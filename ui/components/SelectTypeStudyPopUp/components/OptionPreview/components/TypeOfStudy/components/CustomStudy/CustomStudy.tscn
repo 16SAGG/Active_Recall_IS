@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://ui/components/SelectTypeStudyPopUp/components/OptionPreview/components/TypeOfStudy/components/CustomStudy/CustomStudy.gd" type="Script" id=1]
+[ext_resource path="res://ui/components/SelectTypeStudyPopUp/components/OptionPreview/components/EnterButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H6_headline.tres" type="DynamicFont" id=4]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H4_headline.tres" type="DynamicFont" id=5]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H2_headline.tres" type="DynamicFont" id=6]
+[ext_resource path="res://ui/components/SelectTypeStudyPopUp/components/OptionPreview/components/TypeOfStudy/components/CustomStudy/components/NumberControllersButton.tscn" type="PackedScene" id=7]
+
+[node name="CustomStudy" type="VBoxContainer"]
+margin_left = 24.0
+margin_top = 42.0
+margin_right = 476.0
+margin_bottom = 306.0
+custom_constants/separation = 24
+alignment = 1
+script = ExtResource( 1 )
+
+[node name="Title" type="Label" parent="."]
+margin_right = 452.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "Estudio personalizado"
+align = 1
+valign = 1
+
+[node name="CardNumer" type="VBoxContainer" parent="."]
+margin_top = 64.0
+margin_right = 452.0
+margin_bottom = 178.0
+rect_min_size = Vector2( 0, 114 )
+
+[node name="Title" type="Label" parent="CardNumer"]
+margin_right = 452.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Numero de fichas:"
+align = 1
+valign = 1
+
+[node name="NumberInput" type="HBoxContainer" parent="CardNumer"]
+margin_top = 29.0
+margin_right = 452.0
+margin_bottom = 105.0
+rect_min_size = Vector2( 0, 76 )
+custom_constants/separation = 12
+alignment = 1
+
+[node name="NumberContainer" type="Control" parent="CardNumer/NumberInput"]
+margin_left = 125.0
+margin_right = 220.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 95, 0 )
+
+[node name="Style" type="Control" parent="CardNumer/NumberInput/NumberContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BackgroundBox" parent="CardNumer/NumberInput/NumberContainer/Style" instance=ExtResource( 3 )]
+background_color = "SECONDARY"
+
+[node name="Number" type="Label" parent="CardNumer/NumberInput/NumberContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "20"
+align = 1
+valign = 1
+
+[node name="Buttons" type="VBoxContainer" parent="CardNumer/NumberInput"]
+margin_left = 232.0
+margin_right = 327.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 95, 0 )
+custom_constants/separation = 6
+
+[node name="Increment" parent="CardNumer/NumberInput/Buttons" instance=ExtResource( 7 )]
+margin_bottom = 35.0
+
+[node name="Decrement" parent="CardNumer/NumberInput/Buttons" instance=ExtResource( 7 )]
+margin_top = 41.0
+
+[node name="ButtonLayout" type="HBoxContainer" parent="."]
+margin_top = 202.0
+margin_right = 452.0
+margin_bottom = 264.0
+custom_constants/separation = 0
+
+[node name="Space" type="Control" parent="ButtonLayout"]
+margin_right = 92.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 92, 0 )
+
+[node name="EnterButton" parent="ButtonLayout" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 92.0
+margin_right = 360.0
+margin_bottom = 62.0

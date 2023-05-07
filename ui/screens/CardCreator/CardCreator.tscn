@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://ui/screens/ScreenBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/components/ChangeDeck/ChangeDeck.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/screens/CardCreator/CardCreator.gd" type="Script" id=3]
 [ext_resource path="res://ui/screens/CardCreator/components/AddImage.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/screens/CardCreator/components/Lines/BackLine/BackLine.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/screens/CardCreator/components/MorePopUp/MorePopUp.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ui/screens/CardCreator/components/AddCard.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ui/screens/CardCreator/components/More.tscn" type="PackedScene" id=9]
 [ext_resource path="res://ui/screens/CardCreator/components/Lines/FrontLine/FrontLine.tscn" type="PackedScene" id=11]
@@ -72,7 +73,7 @@ margin_right = 500.0
 margin_bottom = 56.0
 size_flags_horizontal = 3
 
-[node name="AddCard" parent="MarginContainer/Content/Footer/Content" index="1" instance=ExtResource( 8 )]
+[node name="Enter" parent="MarginContainer/Content/Footer/Content" index="1" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 512.0
@@ -85,3 +86,5 @@ anchor_bottom = 0.0
 margin_left = 704.0
 margin_right = 756.0
 margin_bottom = 56.0
+
+[node name="MorePopUp" parent="." index="1" instance=ExtResource( 6 )]

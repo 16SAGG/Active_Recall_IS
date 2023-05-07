@@ -16,8 +16,5 @@ func _set_values(_title : String) -> void:
 	_title_front.text = _title
 	_title_back.text = _title
 
-func back_action() -> void:
-	flip_timer_player.stop()
-	button_base_player.play("FLIP_TO_FRONT")
-	
+func _on_BackTrigger_pressed():
 	emit_signal("pressed", self)

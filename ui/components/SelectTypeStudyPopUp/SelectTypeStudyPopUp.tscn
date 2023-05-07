@@ -1,0 +1,190 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H5_headline.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/components/SelectTypeStudyPopUp/components/OptionPreview/OptionPreview.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/components/SelectTypeStudyPopUp/SelectTypeStudyPopUp.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "HIDE"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pivot:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:showed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "SHOW"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pivot:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:showed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="SelectTypeStudyPopUp" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -88.0
+rect_min_size = Vector2( 817, 640 )
+script = ExtResource( 4 )
+
+[node name="Pivot" type="Position2D" parent="."]
+position = Vector2( 496, 320 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Pivot"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -408.0
+margin_top = -320.0
+margin_right = -371.0
+margin_bottom = 320.0
+rect_min_size = Vector2( 817, 640 )
+custom_constants/margin_right = 37
+custom_constants/margin_top = 24
+custom_constants/margin_left = 24
+
+[node name="Layout" type="VBoxContainer" parent="Pivot/MarginContainer"]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 780.0
+margin_bottom = 640.0
+custom_constants/separation = 24
+
+[node name="ChangeDeckShadow" type="Control" parent="Pivot/MarginContainer/Layout"]
+margin_right = 756.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 0, 62 )
+
+[node name="Style" type="Control" parent="Pivot/MarginContainer/Layout/ChangeDeckShadow"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BackgroundBox" parent="Pivot/MarginContainer/Layout/ChangeDeckShadow/Style" instance=ExtResource( 1 )]
+background_color = "TRANSLUCENT"
+border_color = "PRIMARY"
+corner_radius = [ 6, 6, 6, 6 ]
+border_width = [ 3, 3, 3, 3 ]
+
+[node name="MarginContainer" type="MarginContainer" parent="Pivot/MarginContainer/Layout/ChangeDeckShadow"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 24
+custom_constants/margin_left = 24
+
+[node name="Title" type="Label" parent="Pivot/MarginContainer/Layout/ChangeDeckShadow/MarginContainer"]
+margin_left = 24.0
+margin_top = 16.0
+margin_right = 732.0
+margin_bottom = 46.0
+custom_colors/font_color = Color( 0.811765, 0.921569, 0.807843, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Nombre de la baraja"
+align = 1
+valign = 1
+
+[node name="OptionPreview" parent="Pivot/MarginContainer/Layout" instance=ExtResource( 3 )]
+margin_top = 86.0
+margin_right = 756.0
+margin_bottom = 428.0
+
+[node name="OptionScroll" type="ScrollContainer" parent="Pivot/MarginContainer/Layout"]
+margin_top = 452.0
+margin_right = 756.0
+margin_bottom = 616.0
+rect_min_size = Vector2( 0, 164 )
+
+[node name="Content" type="HBoxContainer" parent="Pivot/MarginContainer/Layout/OptionScroll"]
+custom_constants/separation = 12
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "HIDE"
+anims/HIDE = SubResource( 1 )
+anims/SHOW = SubResource( 3 )

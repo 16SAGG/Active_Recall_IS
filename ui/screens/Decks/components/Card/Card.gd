@@ -7,13 +7,10 @@ onready var _answer_label_back = $Pivot/Back/MarginContainer/Layout/Answer as La
 onready var _question_label_front = $Pivot/Front/MarginContainer/Layout/Question as Label
 onready var _answer_label_front = $Pivot/Front/MarginContainer/Layout/Answer as Label
 
-var id : int
-var question_title : String
-var answer_title : String
-var answer_description : String
+var data : Dictionary
 
 func _ready() -> void:
-	_set_values(question_title, answer_title)
+	_set_values(data["question"]["title"], data["answer"]["title"])
 
 func _set_values(var _question_title : String, var _answer_title : String) -> void:
 	_question_label_back.text = _question_title

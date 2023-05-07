@@ -5,6 +5,7 @@ signal back_flip (button)
 signal front_flip (button)
 
 export (bool) var has_back = false
+export (bool) var flip_timer_active = true
 export (String, "FRONT", "BACK") var side = "FRONT"
 
 onready var button_base_player = $ButtonBasePlayer as AnimationPlayer
@@ -18,11 +19,13 @@ func flip_action() -> void:
 	button_base_player.play("FLIP")
 
 func front_action() -> void:
-	flip_timer_player.play("FLIP_TIMER")
+	if flip_timer_active:
+		flip_timer_player.play("FLIP_TIMER")
 	button_base_player.play("FLIP_TO_BACK")
 
 func back_action() -> void:
-	flip_timer_player.stop()
+	if flip_timer_active:
+		flip_timer_player.stop()
 	button_base_player.play("FLIP_TO_FRONT") 
 
 func _on_FrontTrigger_pressed() -> void:

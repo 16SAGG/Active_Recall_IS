@@ -1,13 +1,16 @@
-extends Control
+extends "res://ui/screens/ScreenBase.gd"
 
-signal change_deck_requested
+signal go_to_deck_screen_requested(deck)
 signal new_card(question, answer, deck_id)
+signal edit_card(new_question, new_answer, card, card_properties, update_deck)
+signal delete_card(question, answer, card)
+
 
 onready var _change_deck = $MarginContainer/Content/ChangeDeck as Control
 onready var _add_image = $MarginContainer/Content/AddImage as Control
-onready var _add_card = $MarginContainer/Content/Footer/Content/AddCard as Control
-
-onready var _add_card_title = $MarginContainer/Content/Footer/Content/AddCard/Pivot/Front/MarginContainer/Title as Label
+onready var _enter_button = $MarginContainer/Content/Footer/Content/Enter as Control
+onready var _enter_button_title = $MarginContainer/Content/Footer/Content/Enter/Pivot/Front/MarginContainer/Title as Label
+onready var _more_button = $MarginContainer/Content/Footer/Content/More as Control
 
 onready var _front_line = $MarginContainer/Content/LineBoxes/Content/FrontLine
 onready var _front_line_edit = $MarginContainer/Content/LineBoxes/Content/FrontLine/MarginContainer/Content/FrontEdit
@@ -16,15 +19,20 @@ onready var _back_line = $MarginContainer/Content/LineBoxes/Content/BackLine
 onready var _back_line_edit = $MarginContainer/Content/LineBoxes/Content/BackLine/MarginContainer/Content/BackEdit
 onready var _back_line_desc = $MarginContainer/Content/LineBoxes/Content/BackLine/MarginContainer/Content/HBoxContainer/Description
 
+onready var _more_pop_up = $MorePopUp as Control
+
 var status : String = "CREATOR" #EDITOR
-var editable_card : Control
+var editable_card : Dictionary
 
 var _current_focus : String = "NONE"
 
 func _ready() -> void:
 	_change_deck.connect("normal_flip", self, "_on_change_deck_pressed")
 	_add_image.connect("normal_flip", self, "_on_add_image_pressed")
-	_add_card.connect("normal_flip", self, "_on_add_card_pressed")
+	_enter_button.connect("normal_flip", self, "_on_enter_button_pressed")
+	_more_button.connect("normal_flip", self, "_on_more_button_pressed")
+	_more_pop_up.connect("delete_card_requested", self, "_on_delete_card_requested")
+	_more_pop_up.connect("hide_more_pop_up_requested", self, "_on_hide_more_pop_up_requested")
 	
 	_front_line_edit.connect("focus_entered", self, "_on_FrontEdit_focus_entered")
 	_back_line_edit.connect("focus_entered", self, "_on_BackEdit_focus_entered")
@@ -34,6 +42,7 @@ func _ready() -> void:
 
 func start() -> void:
 	_update_current_deck()
+	_error_suporter()
 	
 	match status:
 		"CREATOR":
@@ -53,12 +62,12 @@ func _clean_lines() -> void:
 	_back_line_desc.text = ""
 
 func _set_lines_to_edit() -> void:
-	_front_line_edit.text = editable_card.question_title
-	_back_line_edit.text = editable_card.answer_title
-	_back_line_desc.text = editable_card.answer_description
+	_front_line_edit.text = editable_card["question"]["title"]
+	_back_line_edit.text = editable_card["answer"]["title"]
+	_back_line_desc.text = editable_card["answer"]["description"]
 
 func _set_button_title(var title : String) -> void:
-	_add_card_title.text = title
+	_enter_button_title.text = title
 
 func _on_change_deck_pressed(_button : Control) -> void:
 	emit_signal("change_deck_requested", _button)
@@ -70,7 +79,7 @@ func _on_add_image_pressed(_button : Control) -> void:
 		"BACK":
 			_back_line.show_image()
 
-func _on_add_card_pressed(_button : Control) -> void:
+func _on_enter_button_pressed(_button : Control) -> void:
 	var _valid_card : bool = true
 	
 	var question : Dictionary = {
@@ -89,12 +98,25 @@ func _on_add_card_pressed(_button : Control) -> void:
 			"CREATOR":
 				emit_signal("new_card", question, answer, USERDATA.current_deck_data["deck_id"])
 			"EDITOR":
-				pass
+				emit_signal("edit_card", question, answer, editable_card, false, true)
+				emit_signal("go_to_deck_screen_requested", null)
 	else:
 		print("FICHA INVALIDA")
 
-func _on_FrontEdit_focus_entered():
+func _on_more_button_pressed(var _button: Control) -> void:
+	if not _more_pop_up.showed:
+		_more_pop_up.animation_player.play("SHOW")
+
+func _on_delete_card_requested() -> void:
+	emit_signal("delete_card", editable_card)
+	emit_signal("go_to_deck_screen_requested", null)
+
+func _on_hide_more_pop_up_requested () -> void:
+	if _more_pop_up.showed:
+		_more_pop_up.animation_player.play("HIDE")
+
+func _on_FrontEdit_focus_entered() -> void:
 	_current_focus = "FRONT"
 
-func _on_BackEdit_focus_entered():
+func _on_BackEdit_focus_entered() -> void:
 	_current_focus = "BACK"

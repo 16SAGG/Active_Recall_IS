@@ -20,23 +20,22 @@ func _ready() -> void:
 	_database = SQLITE.new()
 	_database.path = _db_name
 	
+	turn_('ON')
 	set_basic_data()
 
 func set_basic_data() -> void: 
-	turn_('ON')
-	
 	_set_history_data()
 	_set_decks_data()
 	_set_img_data()
-	
-	turn_('OFF')
 
-func commit_data(table : String, data : Dictionary) -> void:
-	turn_('ON')
-	
-	_database.insert_row(table, data)
-	
-	turn_('OFF')
+func commit_data(_table : String, _data : Dictionary) -> void:
+	_database.insert_row(_table, _data)
+
+func update_data(_table : String, _condition : String, _data : Dictionary) -> void:
+	_database.update_rows(_table, _condition, _data)
+
+func delete_data(_table : String, _condition : String) -> void:
+	_database.delete_rows(_table, _condition)
 
 func _set_decks_data() -> void:
 	var _d_q : String = "SELECT Deck.deck_id, Deck.title, Deck.new_cards_per_day, Deck.state FROM Deck LEFT JOIN User ON Deck.user_id = User.user_id WHERE User.user_id = " + str(user_id)
@@ -49,7 +48,6 @@ func _set_decks_data() -> void:
 	decks_data = _data
 
 func set_current_deck_data(_deck_id : int) -> void:
-	turn_('ON')
 	
 	var _d_q : String = "SELECT Deck.deck_id, Deck.title, Deck.days_studied, Deck.days_on_streak, Deck.days_on_streak_record, Deck.new_cards_per_day, Deck.state FROM Deck LEFT JOIN User ON Deck.user_id = User.user_id WHERE User.user_id = " + str(user_id) + " AND Deck.deck_id = " + str(_deck_id)
 	var _data : Dictionary = get_by_query(_d_q)[0]
@@ -61,13 +59,11 @@ func set_current_deck_data(_deck_id : int) -> void:
 		var _answer_id = _data['cards'][_c]['answer_id']
 		var _question_id = _data['cards'][_c]['question_id']
 		
-		var _da_q : String = "SELECT Answer.title, Answer.image, Answer.description FROM Answer LEFT JOIN Card ON Answer.answer_id = Card.answer_id WHERE Answer.answer_id = " + str(_answer_id)
+		var _da_q : String = "SELECT Answer.answer_id, Answer.title, Answer.image, Answer.description FROM Answer LEFT JOIN Card ON Answer.answer_id = Card.answer_id WHERE Answer.answer_id = " + str(_answer_id)
 		_data['cards'][_c]['answer'] = get_by_query(_da_q)[0]
 		
-		var _dq_q : String = "SELECT Question.title, Question.image FROM Question LEFT JOIN Card ON Question.question_id = Card.question_id WHERE Question.question_id = " + str(_question_id)
+		var _dq_q : String = "SELECT Question.question_id, Question.title, Question.image FROM Question LEFT JOIN Card ON Question.question_id = Card.question_id WHERE Question.question_id = " + str(_question_id)
 		_data['cards'][_c]['question'] = get_by_query(_dq_q)[0]
-	
-	turn_('OFF')
 	
 	current_deck_data = _data
 	

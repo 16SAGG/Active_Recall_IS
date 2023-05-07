@@ -1,4 +1,4 @@
-extends Control
+extends "res://ui/screens/ScreenBase.gd"
 
 const DECK_BOX = preload("res://ui/components/DeckBox/DeckBox.tscn")
 const PENDING_DECK = preload("res://ui/screens/Home/components/GroupPendingDecks/components/PendingDeck/PendingDeck.tscn")
