@@ -47,6 +47,7 @@ custom_fonts/font = ExtResource( 3 )
 text = "QUESTION"
 align = 1
 valign = 1
+clip_text = true
 
 [node name="Divider" parent="Pivot/Front/MarginContainer/Layout" index="1" instance=ExtResource( 2 )]
 anchor_right = 0.0
@@ -66,6 +67,7 @@ custom_fonts/font = ExtResource( 3 )
 text = "ANSWER"
 align = 1
 valign = 1
+clip_text = true
 
 [node name="Back" parent="Pivot" index="1"]
 margin_left = -244.0
@@ -103,6 +105,7 @@ custom_fonts/font = ExtResource( 3 )
 text = "QUESTION"
 align = 1
 valign = 1
+clip_text = true
 
 [node name="Divider" parent="Pivot/Back/MarginContainer/Layout" index="1" instance=ExtResource( 2 )]
 anchor_right = 0.0
@@ -123,3 +126,4 @@ custom_fonts/font = ExtResource( 3 )
 text = "ANSWER"
 align = 1
 valign = 1
+clip_text = true

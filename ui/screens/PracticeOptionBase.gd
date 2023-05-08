@@ -19,8 +19,8 @@ func start_study_array(var _type : String, var _card_limit : int) -> void:
 		"DAILY":
 			_daily_study(_card_limit)
 	
-	start()
 	print("The array has " + str(_study_array.size()) + " Cards and the Card limit is " + str(_card_limit))
+	start()
 
 func _custom_study(var _card_limit : int) -> void:
 	pass

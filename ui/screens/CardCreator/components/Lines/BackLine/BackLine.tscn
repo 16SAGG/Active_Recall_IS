@@ -175,6 +175,7 @@ custom_fonts/font = ExtResource( 3 )
 custom_styles/read_only = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
+max_length = 50
 placeholder_text = "Escribe una respuesta..."
 placeholder_alpha = 0.5
 

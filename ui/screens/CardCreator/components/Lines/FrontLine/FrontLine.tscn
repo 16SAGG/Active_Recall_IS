@@ -193,8 +193,6 @@ margin_right = 378.0
 margin_bottom = 80.0
 
 [node name="FrontBox" parent="Style" instance=ExtResource( 4 )]
-margin_right = 756.0
-margin_bottom = 80.0
 background_color = "SECONDARY"
 border_color = "PRIMARY"
 border_width = [ 1, 1, 1, 1 ]
@@ -251,6 +249,7 @@ custom_fonts/font = ExtResource( 3 )
 custom_styles/read_only = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
+max_length = 50
 placeholder_text = "Escribe una pregunta..."
 placeholder_alpha = 0.5
 

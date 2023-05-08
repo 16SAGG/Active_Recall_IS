@@ -5,7 +5,7 @@ var options_values : Array = [
 	{
 		"title": "Flash Card",
 		"dir": "flash_card",
-		"min_cards": 1,
+		"min_cards": 2,
 		"max_cards": 99,
 	},
 	{

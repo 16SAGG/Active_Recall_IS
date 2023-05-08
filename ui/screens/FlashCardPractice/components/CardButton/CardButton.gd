@@ -1,5 +1,8 @@
 extends "res://ui/components/ButtonBase/ButtonBase.gd"
 
+const H2_HEADLINE = preload("res://miscellaneous/fonts/dynamic_fonts/H2_headline.tres")
+const H4_HEADLINE = preload("res://miscellaneous/fonts/dynamic_fonts/H4_headline.tres")
+
 signal first_flip
 
 onready var _front_control = $Pivot/Front as Control
@@ -53,6 +56,8 @@ func _set_values(var _front : Dictionary, var _back : Dictionary, var _cover : D
 			_front_title.text = _front["title"]
 		if _front["image"]:
 			_front_image.visible = true
+		
+		_text_supervisor(_front["title"], "FRONT")
 	
 	if _back:
 		if _back["title"]:
@@ -67,6 +72,8 @@ func _set_values(var _front : Dictionary, var _back : Dictionary, var _cover : D
 			_back_extra.visible = true
 			_back_image.visible = true
 			_cover_image.visible = true
+		
+		_text_supervisor(_back["title"], "BACK")
 	
 	if _cover:
 		if _cover["title"]:
@@ -74,6 +81,35 @@ func _set_values(var _front : Dictionary, var _back : Dictionary, var _cover : D
 			_cover_title.text = _cover["title"]
 		if _cover["image"]:
 			_cover_image.visible = true
+		
+		_text_supervisor(_cover["title"], "COVER")
+
+func _text_supervisor(var _text : String, var _side : String) -> void:
+	match _side:
+		"FRONT":
+			if _front_image.visible: 
+				_front_title.add_font_override("font", H4_HEADLINE)
+			else:
+				if _text.length() < 12:
+					_front_title.add_font_override("font", H2_HEADLINE)
+				else:
+					_front_title.add_font_override("font", H4_HEADLINE)
+		"COVER":
+			if _cover_image.visible: 
+				_cover_title.add_font_override("font", H4_HEADLINE)
+			else:
+				if _text.length() < 12:
+					_cover_title.add_font_override("font", H2_HEADLINE)
+				else:
+					_cover_title.add_font_override("font", H4_HEADLINE)
+		"BACK":
+			if _back_extra.visible:
+				_back_title.add_font_override("font", H4_HEADLINE)
+			else:
+				if _text.length() < 12:
+					_back_title.add_font_override("font", H2_HEADLINE)
+				else:
+					_back_title.add_font_override("font", H4_HEADLINE)
 
 func show_answer(var _answer: String) -> void:
 	match _answer:

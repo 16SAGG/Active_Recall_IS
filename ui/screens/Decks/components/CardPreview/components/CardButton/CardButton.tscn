@@ -72,7 +72,6 @@ visible = false
 margin_top = 75.0
 margin_right = 282.0
 margin_bottom = 229.0
-rect_min_size = Vector2( 0, 154 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 12
@@ -83,6 +82,9 @@ margin_right = 282.0
 margin_bottom = 154.0
 
 [node name="FlipButton" parent="Pivot/Front/MarginContainer/Content" index="3" instance=ExtResource( 6 )]
+
+[node name="FrontTrigger" parent="Pivot/Front" index="2"]
+visible = false
 
 [node name="Back" parent="Pivot" index="1"]
 margin_left = -157.0
@@ -139,7 +141,6 @@ autowrap = true
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
-rect_min_size = Vector2( 0, 154 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 12
@@ -148,7 +149,6 @@ custom_constants/separation = 12
 margin_top = 75.0
 margin_right = 282.0
 margin_bottom = 241.0
-rect_min_size = Vector2( 0, 154 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
@@ -165,3 +165,6 @@ wrap_enabled = true
 [node name="Image" parent="Pivot/Back/MarginContainer/Content/ExtraContent" index="1" instance=ExtResource( 7 )]
 
 [node name="FlipButton" parent="Pivot/Back/MarginContainer/Content" index="3" instance=ExtResource( 6 )]
+
+[node name="BackTrigger" parent="Pivot/Back" index="2"]
+visible = false

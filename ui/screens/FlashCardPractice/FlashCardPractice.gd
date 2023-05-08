@@ -85,6 +85,7 @@ func _side_button_behavior(var _side : String) -> void:
 				_header.change_text("Respuesta incorrecta")
 				_card_button.show_answer("WRONG")
 				_current_card = _submit_answer(_current_card, "WRONG")
+				print("HERE_1")
 				_study_array.append(_current_card)
 			_left_button.set_icon("LEFT")
 			_right_button.set_icon("RIGHT")
@@ -92,8 +93,10 @@ func _side_button_behavior(var _side : String) -> void:
 			
 			_base.set_values(_current_card["question"]["title"], _current_card["space_btwn_sessions"])
 		"CONTINUING":
+			print("HERE_2")
 			_header.change_text("Click para continuar")
 			_card_anim.play("MOVE_TO_" + _side)
+			print(_study_array)
 		"RESTARTING":
 			start()
 
