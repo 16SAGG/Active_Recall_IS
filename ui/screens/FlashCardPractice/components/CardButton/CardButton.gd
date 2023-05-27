@@ -54,8 +54,8 @@ func _set_values(var _front : Dictionary, var _back : Dictionary, var _cover : D
 		if _front["title"]:
 			_front_title.visible = true
 			_front_title.text = _front["title"]
-		if _front["image"]:
-			_front_image.visible = true
+		#if _front["image"]:
+		#	_front_image.visible = true
 		
 		_text_supervisor(_front["title"], "FRONT")
 	
@@ -68,10 +68,10 @@ func _set_values(var _front : Dictionary, var _back : Dictionary, var _cover : D
 			_back_extra.visible = true
 			_back_desc.visible = true
 			_back_desc.text = _back["description"]
-		if _back["image"]:
-			_back_extra.visible = true
-			_back_image.visible = true
-			_cover_image.visible = true
+		#if _back["image"]:
+		#	_back_extra.visible = true
+		#	_back_image.visible = true
+		#	_cover_image.visible = true
 		
 		_text_supervisor(_back["title"], "BACK")
 	
@@ -79,8 +79,8 @@ func _set_values(var _front : Dictionary, var _back : Dictionary, var _cover : D
 		if _cover["title"]:
 			_cover_title.visible = true
 			_cover_title.text = _cover["title"]
-		if _cover["image"]:
-			_cover_image.visible = true
+		#if _cover["image"]:
+		#	_cover_image.visible = true
 		
 		_text_supervisor(_cover["title"], "COVER")
 
@@ -112,6 +112,10 @@ func _text_supervisor(var _text : String, var _side : String) -> void:
 					_back_title.add_font_override("font", H4_HEADLINE)
 
 func show_answer(var _answer: String) -> void:
+	if side == "FRONT":
+		_back_control.visible = true
+		_front_control.visible = false
+		side = "BACK"
 	match _answer:
 		"CORRECT":
 			_show_answer_player.play("CORRECT_ANSWER")
@@ -126,3 +130,7 @@ func _on_front_flip_button_pressed() -> void:
 
 func _on_back_flip_button_pressed() -> void:
 	back_action()
+
+
+func _on_CardButton_resized():
+	self.rect_size = self.rect_min_size

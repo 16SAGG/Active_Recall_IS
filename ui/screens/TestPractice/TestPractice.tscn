@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://ui/screens/ScreenBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/screens/TestPractice/TestPractice.gd" type="Script" id=2]
+[ext_resource path="res://ui/components/HeaderPractice/Header.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/screens/TestPractice/components/AnswersController/AnswersController.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/screens/TestPractice/components/QuestionVisor/QuestionVisor.tscn" type="PackedScene" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[node name="TestPractice" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="MarginContainer" parent="." index="0"]
+custom_constants/margin_right = 37
+
+[node name="Layout" type="VBoxContainer" parent="MarginContainer" index="0"]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 780.0
+margin_bottom = 640.0
+custom_constants/separation = 24
+
+[node name="Header" parent="MarginContainer/Layout" index="0" instance=ExtResource( 3 )]
+margin_right = 756.0
+
+[node name="CardPreview" type="VBoxContainer" parent="MarginContainer/Layout" index="1"]
+margin_top = 48.0
+margin_right = 756.0
+margin_bottom = 560.0
+custom_constants/separation = 24
+
+[node name="QuestionVisor" parent="MarginContainer/Layout/CardPreview" index="0" instance=ExtResource( 5 )]
+
+[node name="Inputs" type="Control" parent="MarginContainer/Layout/CardPreview" index="1"]
+margin_top = 360.0
+margin_right = 756.0
+margin_bottom = 512.0
+rect_min_size = Vector2( 0, 152 )
+
+[node name="AnswersController" parent="MarginContainer/Layout/CardPreview/Inputs" index="0" instance=ExtResource( 4 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="Continue" type="Button" parent="MarginContainer" index="1"]
+visible = false
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 780.0
+margin_bottom = 640.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+flat = true
+
+[node name="ErrorMessage" parent="." index="1"]
+margin_right = 13.0
+margin_bottom = 86.0
+
+[node name="ChangeDeck" parent="ErrorMessage" index="0"]
+margin_right = 817.0
+margin_bottom = 726.0
+
+[node name="Message" parent="ErrorMessage" index="1"]
+margin_right = 817.0
+margin_bottom = 726.0
+
+[node name="CongratulationsMessage" parent="." index="2"]
+margin_right = 36765.0
+margin_bottom = 28800.0
+
+[connection signal="pressed" from="MarginContainer/Continue" to="." method="_on_Continue_pressed"]

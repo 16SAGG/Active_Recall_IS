@@ -35,3 +35,7 @@ scroll_vertical_enabled = false
 
 [node name="Content" type="HBoxContainer" parent="MarginContainer/Layout/OptionScroll" index="0"]
 custom_constants/separation = 12
+
+[node name="CongratulationsMessage" parent="." index="2"]
+margin_right = 729.0
+margin_bottom = 640.0

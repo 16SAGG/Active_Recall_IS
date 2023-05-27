@@ -9,7 +9,6 @@ onready var _right_button = $MarginContainer/Layout/CardPreview/RightButton as C
 onready var _card_button = $CardButton as Control
 onready var _card_anim = $CardAnim as AnimationPlayer
 
-var _hits : int = 0
 var _side_button_state : String = "ANSWERING"
 var _current_card : Dictionary
 var _cover_card : Dictionary
@@ -25,7 +24,7 @@ func start() -> void:
 		_study_lap()
 	else:
 		_hits = 0
-		print("THE END OF EVANGELION")
+		_congrats_suporter(true)
 
 func _study_lap() -> void:
 	_current_card = _study_array.pop_front()
@@ -61,6 +60,9 @@ func _generate_cover(var _card_array : Array) -> Dictionary:
 			while(_cover["card_id"] == _current_card["card_id"]):
 				_pot.shuffle()
 				_cover = _pot[0]
+			
+			if _cover["answer"]["title"] == _current_card["answer"]["title"]:
+				_cover["answer"]["title"] += " " + str(2) 
 	
 	return _cover
 
@@ -85,7 +87,6 @@ func _side_button_behavior(var _side : String) -> void:
 				_header.change_text("Respuesta incorrecta")
 				_card_button.show_answer("WRONG")
 				_current_card = _submit_answer(_current_card, "WRONG")
-				print("HERE_1")
 				_study_array.append(_current_card)
 			_left_button.set_icon("LEFT")
 			_right_button.set_icon("RIGHT")
@@ -93,10 +94,8 @@ func _side_button_behavior(var _side : String) -> void:
 			
 			_base.set_values(_current_card["question"]["title"], _current_card["space_btwn_sessions"])
 		"CONTINUING":
-			print("HERE_2")
 			_header.change_text("Click para continuar")
 			_card_anim.play("MOVE_TO_" + _side)
-			print(_study_array)
 		"RESTARTING":
 			start()
 

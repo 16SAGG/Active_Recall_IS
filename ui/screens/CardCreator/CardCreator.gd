@@ -3,6 +3,7 @@ extends "res://ui/screens/ScreenBase.gd"
 signal go_to_deck_screen_requested(deck)
 signal new_card(question, answer, deck_id)
 signal edit_card(new_question, new_answer, card, card_properties, update_deck)
+signal update_history(count)
 signal delete_card(question, answer, card)
 
 
@@ -79,26 +80,36 @@ func _on_add_image_pressed(_button : Control) -> void:
 		"BACK":
 			_back_line.show_image()
 
+func _remove_unnecessary_space(var _text : String) -> String:
+	_text = _text.dedent()
+	
+	if _text.length() - 1 >= 0:
+		while (_text[_text.length() - 1] == " "):
+			_text.erase(_text.find_last(" "), 1)
+	
+	return _text
+
 func _on_enter_button_pressed(_button : Control) -> void:
 	var _valid_card : bool = true
 	
-	var question : Dictionary = {
-		"title" : _front_line_edit.text,
+	var _question : Dictionary = {
+		"title" : _remove_unnecessary_space(_front_line_edit.text),
 	}
-	var answer : Dictionary = {
-		"title" : _back_line_edit.text,
-		"description" : _back_line_desc.text
+	var _answer : Dictionary = {
+		"title" : _remove_unnecessary_space(_back_line_edit.text),
+		"description" : _remove_unnecessary_space(_back_line_desc.text)
 	}
 	
-	if question["title"] == "" or answer["title"] == "" or !USERDATA.current_deck_data:
+	if _question["title"] == "" or _answer["title"] == "" or !USERDATA.current_deck_data:
 		_valid_card = false
 	
 	if _valid_card:
 		match status:
 			"CREATOR":
-				emit_signal("new_card", question, answer, USERDATA.current_deck_data["deck_id"])
+				emit_signal("update_history", "ADD")
+				emit_signal("new_card", _question, _answer, USERDATA.current_deck_data["deck_id"])
 			"EDITOR":
-				emit_signal("edit_card", question, answer, editable_card, false, true)
+				emit_signal("edit_card", _question, _answer, editable_card, false, true)
 				emit_signal("go_to_deck_screen_requested", null)
 	else:
 		print("FICHA INVALIDA")

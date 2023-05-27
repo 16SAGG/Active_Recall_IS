@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H5_headline.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ui/screens/ScreenBase.gd" type="Script" id=2]
 [ext_resource path="res://ui/components/ChangeDeck/ChangeDeck.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/components/CongratulationsMessage/CongratulationsMessage.tscn" type="PackedScene" id=4]
 
 [node name="ScreenBase" type="Control"]
 anchor_right = 1.0
@@ -47,3 +48,7 @@ custom_fonts/font = ExtResource( 1 )
 text = "Selecciona una carpeta de estudio"
 align = 1
 valign = 1
+
+[node name="CongratulationsMessage" parent="." instance=ExtResource( 4 )]
+margin_right = 4085.0
+margin_bottom = 3200.0

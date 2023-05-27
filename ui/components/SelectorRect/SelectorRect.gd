@@ -6,6 +6,7 @@ const DICT_POSITION = {
 	'DECK': Vector2(16,280),
 	'PRACTICE': Vector2(16,344),
 	'FLASH_CARD': Vector2(16,344),
+	'TEST': Vector2(16,344),
 	'STATS': Vector2(16,408),
 	'SETTINGS': Vector2(16,472),
 }

@@ -24,11 +24,9 @@ func _load_data() -> Array:
 			var _dict : Dictionary = {
 				"question": {
 					"title": _c["question"]["title"],
-					"image": _c["question"]["image"]
 				},
 				"answer": {
 					"title": _c["answer"]["title"],
-					"image": _c["answer"]["image"],
 					"description": _c["answer"]["description"]
 				}
 			}

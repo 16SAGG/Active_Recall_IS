@@ -88,3 +88,7 @@ margin_right = 756.0
 margin_bottom = 56.0
 
 [node name="MorePopUp" parent="." index="1" instance=ExtResource( 6 )]
+
+[node name="CongratulationsMessage" parent="." index="3"]
+margin_right = 6536.0
+margin_bottom = 5120.0

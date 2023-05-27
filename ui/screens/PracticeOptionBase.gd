@@ -1,7 +1,9 @@
 extends "res://ui/screens/ScreenBase.gd"
 
+signal update_history(count)
 signal edit_card(question, answer, card, card_properties, update_deck)
 
+var _hits : int = 0
 var _registered_array : Array
 var _study_array : Array
 
@@ -10,6 +12,7 @@ func start() -> void:
 
 func start_study_array(var _type : String, var _card_limit : int) -> void:
 	#print("We need to finish the start_study_array in PRACTICE OPTION BASE")
+	_congrats_suporter(false)
 	_study_array = []
 	_registered_array = []
 	
@@ -27,13 +30,20 @@ func _custom_study(var _card_limit : int) -> void:
 
 func _daily_study(var _card_limit : int) -> void:
 	print("We should test this with each practice option")
+	var _new_cards_studied_query : String = "SELECT new_cards_studied FROM Deck_History WHERE Deck_History.date = " + str(CARDCULATIONS.today_date) + " AND Deck_History.deck_id = " + str(USERDATA.current_deck_data["deck_id"])
+	var _new_cards_studied_result : int = 0
+	
+	if USERDATA.get_by_query(_new_cards_studied_query):
+		_new_cards_studied_result = USERDATA.get_by_query(_new_cards_studied_query)[0]["new_cards_studied"]
+	
+	#base#
 	var _cards : Array = USERDATA.current_deck_data["cards"]
 	
 	var _new_cards : Array
-	var _new_cards_limit : int = USERDATA.current_deck_data["new_cards_per_day"]
+	var _new_cards_limit : int = USERDATA.current_deck_data["settings"]["new_cards_per_day"] - _new_cards_studied_result
 	
 	var _review_cards : Array
-	var _today_date : int = OS.get_unix_time()
+	var _today_date : int = CARDCULATIONS.today_date
 	
 	var _else_cards : Array
 	
@@ -78,15 +88,31 @@ func _submit_answer(var _card : Dictionary, var _result : String) -> Dictionary:
 	var _updated_card : Dictionary
 	
 	if _card:
-		var _today_date : int = OS.get_unix_time()
-		_card["last_session"] = _today_date
+		var _today_date : int = CARDCULATIONS.today_date
+		
 		match _result:
 			"CORRECT":
-				_card["space_btwn_sessions"] = _card["space_btwn_sessions"] + 1
+				print("CORRECT")
+				var _card_status : String
+				if _card["last_session"]:
+					if _card["last_session"] != _today_date:
+						_card_status = "DUE"
+				else:
+					_card_status = "NEW"
+				if _card_status:
+					emit_signal("update_history", _card_status)
+				
+				if _today_date != _card["last_session"]:
+					_card["space_btwn_sessions"] = _card["space_btwn_sessions"] + 1
 				_card["hits"] = _card["hits"] + 1
+				
+				_card["last_session"] = _today_date
 			"WRONG":
-				_card["space_btwn_sessions"] = 0
+				print("WRONG")
+				if _today_date != _card["last_session"]:
+					_card["space_btwn_sessions"] = 0
 				_card["fails"] = _card["fails"] + 1
+		
 		_updated_card = _card
 	
 	var _commit_card : Dictionary = _updated_card.duplicate()

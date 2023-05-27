@@ -1,14 +1,14 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=1]
-[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/BaseSubtitle.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/screens/TestPractice/components/QuestionVisor/components/BasePreview.gd" type="Script" id=1]
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=2]
 [ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H2_headline.tres" type="DynamicFont" id=3]
-[ext_resource path="res://ui/screens/FlashCardPractice/components/CardPreviewBase/CardPreviewBase.gd" type="Script" id=4]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/BaseSubtitle.tres" type="DynamicFont" id=4]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=6]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Layout/Title:modulate")
+tracks/0/path = NodePath("Content/Layout/Title:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -20,7 +20,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Layout/NextDay:percent_visible")
+tracks/1/path = NodePath("Content/Layout/NextDay:percent_visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -32,11 +32,11 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=7]
 resource_name = "SHOW"
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("Layout/Title:modulate")
+tracks/0/path = NodePath("Content/Layout/Title:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -48,7 +48,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Layout/NextDay:percent_visible")
+tracks/1/path = NodePath("Content/Layout/NextDay:percent_visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -61,46 +61,46 @@ tracks/1/keys = {
 }
 
 [node name="Base" type="MarginContainer"]
-margin_left = 164.0
-margin_right = 616.0
-margin_bottom = 464.0
-size_flags_horizontal = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 76
 custom_constants/margin_top = 48
+custom_constants/margin_left = 89
 custom_constants/margin_bottom = 48
-script = ExtResource( 4 )
+script = ExtResource( 1 )
 
 [node name="Style" type="Control" parent="."]
+margin_left = 89.0
 margin_top = 48.0
-margin_right = 452.0
-margin_bottom = 416.0
+margin_right = 829.0
+margin_bottom = 592.0
 
-[node name="BackgroundBox" parent="Style" instance=ExtResource( 1 )]
+[node name="BackgroundBox" parent="Style" instance=ExtResource( 2 )]
 
-[node name="Shadow" parent="Style" instance=ExtResource( 1 )]
+[node name="Shadow" parent="Style" instance=ExtResource( 2 )]
 modulate = Color( 1, 1, 1, 0.498039 )
 background_color = "DARK"
 
-[node name="BaseContent" type="MarginContainer" parent="."]
+[node name="Content" type="MarginContainer" parent="."]
+margin_left = 89.0
 margin_top = 48.0
-margin_right = 452.0
-margin_bottom = 416.0
-size_flags_horizontal = 3
-custom_constants/margin_right = 32
-custom_constants/margin_top = 56
-custom_constants/margin_left = 32
-custom_constants/margin_bottom = 56
+margin_right = 829.0
+margin_bottom = 592.0
+custom_constants/margin_right = 56
+custom_constants/margin_top = 32
+custom_constants/margin_left = 56
+custom_constants/margin_bottom = 32
 
-[node name="Layout" type="VBoxContainer" parent="BaseContent"]
-margin_left = 32.0
-margin_top = 56.0
-margin_right = 420.0
-margin_bottom = 312.0
-custom_constants/separation = 0
+[node name="Layout" type="VBoxContainer" parent="Content"]
+margin_left = 56.0
+margin_top = 32.0
+margin_right = 684.0
+margin_bottom = 512.0
 
-[node name="Title" type="Label" parent="BaseContent/Layout"]
+[node name="Title" type="Label" parent="Content/Layout"]
 modulate = Color( 1, 1, 1, 0 )
-margin_right = 388.0
-margin_bottom = 174.0
+margin_right = 628.0
+margin_bottom = 431.0
 size_flags_vertical = 7
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 3 )
@@ -109,21 +109,20 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="NextDay" type="Label" parent="BaseContent/Layout"]
-margin_top = 174.0
-margin_right = 388.0
-margin_bottom = 256.0
-rect_min_size = Vector2( 0, 82 )
+[node name="NextDay" type="Label" parent="Content/Layout"]
+margin_top = 435.0
+margin_right = 628.0
+margin_bottom = 480.0
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
-custom_fonts/font = ExtResource( 2 )
-text = "+ 7 días"
+custom_fonts/font = ExtResource( 4 )
+text = "+7 dias"
 align = 1
 valign = 1
 percent_visible = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../BaseContent")
-anims/RESET = SubResource( 3 )
-anims/SHOW = SubResource( 1 )
+autoplay = "RESET"
+anims/RESET = SubResource( 6 )
+anims/SHOW = SubResource( 7 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

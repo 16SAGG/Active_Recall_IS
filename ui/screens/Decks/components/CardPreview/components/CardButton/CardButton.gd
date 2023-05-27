@@ -32,9 +32,9 @@ func set_values(var _front : Dictionary, var _back : Dictionary, var _current_ca
 		if _front["title"]:
 			_front_title.visible = true
 			_front_title.text = _front["title"]
-		if _front["image"]:
-			_front_extra.visible = true
-			_front_image.visible = true
+		#if _front["image"]:
+		#	_front_extra.visible = true
+		#	_front_image.visible = true
 	
 	_back_actual_card.text = str(_current_card_index + 1) + "/" + str(_card_count)
 	if _back:
@@ -45,9 +45,9 @@ func set_values(var _front : Dictionary, var _back : Dictionary, var _current_ca
 			_back_extra.visible = true
 			_back_desc.visible = true
 			_back_desc.text = _back["description"]
-		if _back["image"]:
-			_back_extra.visible = true
-			_back_image.visible = true
+		#if _back["image"]:
+		#	_back_extra.visible = true
+		#	_back_image.visible = true
 
 func _on_front_flip_button_pressed() -> void:
 	front_action()

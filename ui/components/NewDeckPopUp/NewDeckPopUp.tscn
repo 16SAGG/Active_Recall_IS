@@ -280,6 +280,7 @@ custom_styles/read_only = SubResource( 1 )
 custom_styles/focus = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
 align = 1
+max_length = 30
 
 [node name="OkButton" parent="Pivot/MarginContainer/Layout/Content" instance=ExtResource( 4 )]
 anchor_right = 0.0

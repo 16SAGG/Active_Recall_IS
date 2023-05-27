@@ -1,7 +1,10 @@
 extends Control
 
+# warning-ignore:unused_signal
 signal go_to_flash_card_practice_requested(type, card_count)
+# warning-ignore:unused_signal
 signal go_to_test_practice_requested(type, card_count)
+# warning-ignore:unused_signal
 signal go_to_memory_practice_requested(type, card_count)
 
 signal hide_select_type_study_pop_up_requested

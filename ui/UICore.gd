@@ -11,6 +11,7 @@ onready var _card_creator = $Layout/Screens/CardCreator as Control
 onready var _decks = $Layout/Screens/Decks as Control
 onready var _practice = $Layout/Screens/Practice as Control
 onready var _flash_card_practice = $Layout/Screens/FlashCardPractice as Control
+onready var _test_practice = $Layout/Screens/TestPractice as Control
 
 onready var _action_pop_up = $ActionPopUp as Control
 onready var _shadow = $Shadow as Control
@@ -56,6 +57,10 @@ func _ready() -> void:
 	_card_creator.connect("new_card", self, "_on_commit_new_card")
 	_card_creator.connect("edit_card", self, "_on_commit_edit_card")
 	_flash_card_practice.connect("edit_card", self, "_on_commit_edit_card")
+	_flash_card_practice.connect("update_history", self, "_on_commit_update_history")
+	_test_practice.connect("edit_card", self, "_on_commit_edit_card")
+	_test_practice.connect("update_history", self, "_on_commit_update_history")
+	_card_creator.connect("update_history", self, "_on_commit_update_history")
 	_card_creator.connect("delete_card", self, "_on_commit_delete_card")
 
 func _restart() -> void:
@@ -73,6 +78,7 @@ func _change_screen(var _screen : String) -> void:
 	
 	match _screen:
 		'HOME':
+			_home.start()
 			_home.visible = true #Probably temporally
 		'CARD':
 			_card_creator.start() #Only Card_creator do a start() here
@@ -83,6 +89,8 @@ func _change_screen(var _screen : String) -> void:
 			_practice.visible = true #Probably temporally
 		'FLASH_CARD':
 			_flash_card_practice.visible = true #Probably temporally
+		'TEST':
+			_test_practice.visible = true
 		'STATS':
 			print('ST')
 		'SETTINGS':
@@ -99,10 +107,18 @@ func _on_commit_new_deck(var _title : String) -> void:
 		_new_deck_pop_up.animation_player.play("HIDE")
 		_shadow.animation_player.play("HIDE")
 		var _deck_dict : Dictionary = {
-			"user_id" : 1,
+			"user_id" : USERDATA.current_user,
 			"title" : _title,
 		}
 		USERDATA.commit_data("Deck", _deck_dict)
+		
+		var _last_deck_query : String = "SELECT MAX(Deck.deck_id) FROM Deck"
+		var _last_deck_id : int = USERDATA.get_by_query(_last_deck_query)[0]["MAX(Deck.deck_id)"]
+		var _deck_set_dict : Dictionary = {
+			"deck_id": _last_deck_id
+		}
+		
+		USERDATA.commit_data("Deck_Settings", _deck_set_dict)
 		USERDATA.set_basic_data()
 		
 		_restart()
@@ -123,6 +139,7 @@ func _on_commit_new_card(var _question : Dictionary, var _answer : Dictionary, v
 		"answer_id": _answer_id,
 	}
 	USERDATA.commit_data("Card", _card_dict)
+	
 	USERDATA.set_basic_data()
 	
 	_update_current_deck(_deck_id)
@@ -137,6 +154,41 @@ func _on_commit_edit_card(var _question : Dictionary, var _answer : Dictionary, 
 	
 	if _update_deck:
 		_update_current_deck(_card["deck_id"])
+
+func _on_commit_update_history(var _count_to_update : String) -> void:
+	var _deck_id : int = USERDATA.current_deck_data["deck_id"]
+	var _search_today_history_query : String = "SELECT * FROM Deck_History WHERE Deck_History.date = " + str(CARDCULATIONS.today_date) + " AND Deck_History.deck_id = " + str(_deck_id)
+	var _search_today_history_result : Dictionary
+	
+	if USERDATA.get_by_query(_search_today_history_query):
+		_search_today_history_result = USERDATA.get_by_query(_search_today_history_query)[0]
+	
+	var _due_count : int = 0
+	var _new_count : int = 0
+	var _add_count : int = 0
+	
+	match _count_to_update:
+		"DUE":
+			_due_count = 1
+		"NEW":
+			_new_count = 1
+		"ADD":
+			_add_count = 1
+	
+	if _search_today_history_result: 
+		_search_today_history_result["new_cards_studied"] += _new_count
+		_search_today_history_result["due_cards_studied"] += _due_count
+		_search_today_history_result["new_cards_added"] += _add_count
+		USERDATA.update_data("Deck_History", "deck_id = " + str(_deck_id) + " AND date = " + str(CARDCULATIONS.today_date), _search_today_history_result)
+	else:
+		var _deck_history_dict : Dictionary = {
+			"deck_id": _deck_id,
+			"date" : CARDCULATIONS.today_date,
+			"new_cards_studied" : _new_count,
+			"due_cards_studied" : _due_count,
+			"new_cards_added" : _add_count
+		}
+		USERDATA.commit_data("Deck_History", _deck_history_dict)
 
 func _on_commit_delete_card(var _card : Dictionary) -> void:
 	USERDATA.delete_data("Answer", "answer_id = " + str(_card["answer"]["answer_id"]))
@@ -182,6 +234,8 @@ func _on_test_practice_requested(var _type : String, var _card_count : int ) -> 
 	if _select_type_study_pop_up.showed:
 		_select_type_study_pop_up.animation_player.play("HIDE")
 		_shadow.animation_player.play("HIDE")
+	_change_screen("TEST")
+	_test_practice.start_study_array(_type, _card_count)
 
 func _on_memory_practice_requested(var _type : String, var _card_count : int ) -> void:
 	if _select_type_study_pop_up.showed:

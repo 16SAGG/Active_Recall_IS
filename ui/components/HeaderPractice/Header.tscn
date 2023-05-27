@@ -1,7 +1,21 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H8_headline.tres" type="DynamicFont" id=1]
-[ext_resource path="res://ui/screens/FlashCardPractice/components/Header/Header.gd" type="Script" id=2]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Label
+
+onready var _animation_player = $AnimationPlayer as AnimationPlayer
+
+var _new_text : String
+
+func change_text (var text : String) -> void:
+	_new_text = text
+	_animation_player.play(\"CHANGE_TEXT\")
+
+func _set_text_with_new_text() -> void: #This method start using the AnimationPlayer
+	self.text = _new_text 
+"
 
 [sub_resource type="Animation" id=1]
 resource_name = "CHANGE_TEXT"
@@ -42,7 +56,7 @@ custom_fonts/font = ExtResource( 1 )
 text = "English words - 2 de 10"
 align = 2
 valign = 1
-script = ExtResource( 2 )
+script = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/CHANGE_TEXT = SubResource( 1 )

@@ -9,11 +9,18 @@ export (bool) var flip_timer_active = true
 export (String, "FRONT", "BACK") var side = "FRONT"
 
 onready var button_base_player = $ButtonBasePlayer as AnimationPlayer
-onready var _button_recharge = $ButtonRecharge as Timer
 onready var flip_timer_player = $FlipTimerPlayer as AnimationPlayer
+
+onready var _front_trigger = $Pivot/Front/FrontTrigger as Button
+onready var _back_trigger = $Pivot/Back/BackTrigger as Button
+onready var _button_recharge = $ButtonRecharge as Timer
 
 func _start() -> void:
 	button_base_player.play("RESET")
+
+func disabled(var _value : bool) -> void:
+	_front_trigger.disabled = _value
+	_back_trigger.disabled = _value
 
 func flip_action() -> void:
 	button_base_player.play("FLIP")

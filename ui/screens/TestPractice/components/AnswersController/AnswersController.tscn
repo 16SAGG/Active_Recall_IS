@@ -1,0 +1,172 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/screens/TestPractice/components/AnswersController/AnswersController.gd" type="Script" id=1]
+[ext_resource path="res://ui/screens/TestPractice/components/AnswerButton/AnswerButton.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "IN"
+length = 0.4
+tracks/0/type = "method"
+tracks/0/path = NodePath("FirstAnswerRow/FirstAnswer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "RIGHT_IN" ],
+"method": "play_move_to"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("FirstAnswerRow/SecondAnswer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "LEFT_IN" ],
+"method": "play_move_to"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("SecondAnswerRow/ThirdAnswer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "RIGHT_IN" ],
+"method": "play_move_to"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("SecondAnswerRow/FourthAnswer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "LEFT_IN" ],
+"method": "play_move_to"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "OUT"
+length = 0.4
+tracks/0/type = "method"
+tracks/0/path = NodePath("FirstAnswerRow/FirstAnswer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "LEFT_OUT" ],
+"method": "play_move_to"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("FirstAnswerRow/SecondAnswer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "RIGHT_OUT" ],
+"method": "play_move_to"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("SecondAnswerRow/ThirdAnswer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "LEFT_OUT" ],
+"method": "play_move_to"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("SecondAnswerRow/FourthAnswer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "RIGHT_OUT" ],
+"method": "play_move_to"
+} ]
+}
+
+[node name="Answers" type="VBoxContainer"]
+margin_top = 360.0
+margin_right = 780.0
+margin_bottom = 512.0
+custom_constants/separation = 24
+script = ExtResource( 1 )
+
+[node name="FirstAnswerRow" type="HBoxContainer" parent="."]
+margin_right = 780.0
+margin_bottom = 64.0
+custom_constants/separation = 12
+
+[node name="FirstAnswer" parent="FirstAnswerRow" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 372.0
+margin_bottom = 64.0
+
+[node name="SecondAnswer" parent="FirstAnswerRow" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 384.0
+margin_right = 756.0
+margin_bottom = 64.0
+
+[node name="SecondAnswerRow" type="HBoxContainer" parent="."]
+margin_top = 88.0
+margin_right = 780.0
+margin_bottom = 152.0
+custom_constants/separation = 12
+
+[node name="ThirdAnswer" parent="SecondAnswerRow" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 372.0
+margin_bottom = 64.0
+
+[node name="FourthAnswer" parent="SecondAnswerRow" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 384.0
+margin_right = 756.0
+margin_bottom = 64.0
+
+[node name="MovePlayer" type="AnimationPlayer" parent="."]
+anims/IN = SubResource( 1 )
+anims/OUT = SubResource( 2 )

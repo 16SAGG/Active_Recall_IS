@@ -1,0 +1,177 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H4_headline.tres" type="DynamicFont" id=1]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H1_headline.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/components/CongratulationsMessage/CongratulationsMessage.gd" type="Script" id=3]
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer/Layout/Congrats:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarginContainer/Layout/Message:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "SHOW"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer/Layout/Congrats:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarginContainer/Layout/Message:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1.1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 0.5 ),
+"update": 0,
+"values": [ Vector2( 0, -640 ), Vector2( 0, 0 ) ]
+}
+
+[node name="CongratulationsMessage" type="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 2627.0
+margin_bottom = 1920.0
+rect_min_size = Vector2( 817, 640 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource( 3 )
+
+[node name="Style" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BackgroundBox" parent="Style" instance=ExtResource( 4 )]
+background_color = "SECONDARY"
+border_color = "PRIMARY"
+border_width = [ 5, 5, 5, 5 ]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 13
+custom_constants/margin_top = 24
+custom_constants/margin_left = 24
+
+[node name="Layout" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 3519.0
+margin_bottom = 2560.0
+custom_constants/separation = 24
+alignment = 1
+
+[node name="Congrats" type="Label" parent="MarginContainer/Layout"]
+margin_top = 216.0
+margin_right = 780.0
+margin_bottom = 336.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Felicidades!"
+align = 1
+valign = 1
+
+[node name="Message" type="Label" parent="MarginContainer/Layout"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 360.0
+margin_right = 780.0
+margin_bottom = 400.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Has completado una sesión de estudio"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+anims/RESET = SubResource( 6 )
+anims/SHOW = SubResource( 5 )
+
+[connection signal="resized" from="." to="." method="_on_CongratulationsMessage_resized"]

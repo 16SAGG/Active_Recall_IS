@@ -65,6 +65,7 @@ custom_fonts/font = ExtResource( 1 )
 text = "Matematicas"
 align = 1
 valign = 1
+clip_text = true
 
 [node name="Cards" type="HBoxContainer" parent="Pivot/Front/MarginContainer/Layout" index="1"]
 margin_top = 60.0
@@ -131,6 +132,7 @@ custom_fonts/font = ExtResource( 1 )
 text = "Matematicas"
 align = 1
 valign = 1
+clip_text = true
 
 [node name="Cards" type="HBoxContainer" parent="Pivot/Back/MarginContainer/Layout" index="1"]
 margin_top = 60.0

@@ -402,3 +402,5 @@ autoplay = "RESET"
 anims/CORRECT_ANSWER = SubResource( 9 )
 anims/RESET = SubResource( 10 )
 anims/WRONG_ANSWER = SubResource( 11 )
+
+[connection signal="resized" from="." to="." method="_on_CardButton_resized"]

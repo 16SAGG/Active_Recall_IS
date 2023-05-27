@@ -1,0 +1,237 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H4_headline.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/screens/TestPractice/components/QuestionVisor/QuestionVisor.gd" type="Script" id=3]
+[ext_resource path="res://ui/components/HeaderPractice/Header.tscn" type="PackedScene" id=4]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/Button.tres" type="DynamicFont" id=5]
+[ext_resource path="res://ui/screens/TestPractice/components/QuestionVisor/components/BasePreview.tscn" type="PackedScene" id=6]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/body_1.tres" type="DynamicFont" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Style/BackgroundBox:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.811765, 0.921569, 0.807843, 1 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "WRONG_ANSWER"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Style/BackgroundBox:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.811765, 0.921569, 0.807843, 1 ), Color( 0.921569, 0.815686, 0.807843, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "GO_DOWN"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 2 ),
+"update": 0,
+"values": [ Vector2( 378, -252 ), Vector2( 378, 168 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "GO_UP"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 2 ),
+"update": 0,
+"values": [ Vector2( 378, 168 ), Vector2( 378, -252 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 390, 168 ) ]
+}
+
+[node name="QuestionVisor" type="Control"]
+margin_right = 756.0
+margin_bottom = 336.0
+rect_min_size = Vector2( 0, 336 )
+script = ExtResource( 3 )
+
+[node name="Base" parent="." instance=ExtResource( 6 )]
+
+[node name="Pivot" type="Position2D" parent="."]
+position = Vector2( 390, 168 )
+
+[node name="Style" type="Control" parent="Pivot"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -378.0
+margin_top = -168.0
+margin_right = 378.0
+margin_bottom = 168.0
+rect_min_size = Vector2( 756, 336 )
+
+[node name="BackgroundBox" parent="Pivot/Style" instance=ExtResource( 1 )]
+modulate = Color( 0.811765, 0.921569, 0.807843, 1 )
+background_color = "SECONDARY"
+
+[node name="MarginContainer" type="MarginContainer" parent="Pivot"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -378.0
+margin_top = -168.0
+margin_right = 378.0
+margin_bottom = 168.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 32
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 32
+
+[node name="Layout" type="VBoxContainer" parent="Pivot/MarginContainer"]
+margin_left = 16.0
+margin_top = 32.0
+margin_right = 740.0
+margin_bottom = 304.0
+custom_constants/separation = 32
+
+[node name="QuestionLayout" type="HBoxContainer" parent="Pivot/MarginContainer/Layout"]
+margin_right = 724.0
+margin_bottom = 208.0
+rect_min_size = Vector2( 0, 208 )
+size_flags_vertical = 3
+custom_constants/separation = 32
+
+[node name="Question" parent="Pivot/MarginContainer/Layout/QuestionLayout" instance=ExtResource( 4 )]
+margin_right = 256.0
+margin_bottom = 208.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Bird"
+align = 1
+autowrap = true
+
+[node name="Description" type="TextEdit" parent="Pivot/MarginContainer/Layout/QuestionLayout"]
+margin_left = 288.0
+margin_right = 724.0
+margin_bottom = 208.0
+rect_min_size = Vector2( 436, 0 )
+custom_colors/member_variable_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/code_folding_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/function_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/safe_line_number_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/symbol_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/caret_background_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/bookmark_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/selection_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/caret_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/breakpoint_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/font_color_selected = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/line_number_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/completion_font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/completion_scroll_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/background_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/number_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/completion_background_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/brace_mismatch_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/current_line_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/completion_selected_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/executing_line_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/mark_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/word_highlighted_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/font_color_readonly = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/completion_existing_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 7 )
+custom_styles/read_only = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_styles/completion = SubResource( 9 )
+text = "Bird\" se traduce al español como \"ave\" o \"pájaro\". Se utiliza para referirse a cualquier tipo de animal volador de la clase Aves, caracterizado por tener plumas, alas y un pico."
+readonly = true
+selecting_enabled = false
+wrap_enabled = true
+
+[node name="Continue" type="Button" parent="Pivot/MarginContainer/Layout"]
+margin_top = 240.0
+margin_right = 724.0
+margin_bottom = 272.0
+size_flags_vertical = 3
+custom_colors/font_color_disabled = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/font_color_focus = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/font_color_hover = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/font_color_pressed = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 5 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/focus = SubResource( 12 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 14 )
+text = "Clic para continuar"
+
+[node name="ShowAnswerPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/WRONG_ANSWER = SubResource( 1 )
+
+[node name="MovePlayer" type="AnimationPlayer" parent="."]
+anims/GO_DOWN = SubResource( 5 )
+anims/GO_UP = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+
+[connection signal="button_up" from="Pivot/MarginContainer/Layout/Continue" to="." method="_on_Continue_button_up"]
+[connection signal="animation_finished" from="MovePlayer" to="." method="_on_MovePlayer_animation_finished"]

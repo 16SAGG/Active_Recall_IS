@@ -22,6 +22,7 @@ func _ready() -> void:
 	start()
 
 func start() -> void:
+	USERDATA.set_basic_data()
 	_group_PD.start()
 	_deck_array = _load_data()
 	_remove_all_decks()
