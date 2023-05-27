@@ -16,6 +16,8 @@ func set_values(var _title : String, var _next_day : int) -> void:
 	_title_label.text = _title
 	_text_supervisor(_title)
 	match _next_day:
+		-1:
+			_next_day_label.text = "Bien hecho"
 		0:
 			_next_day_label.text = "Volverá en un instante"
 		1:

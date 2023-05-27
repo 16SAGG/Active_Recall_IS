@@ -110,6 +110,7 @@ custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 3 )
 text = "Matematicas"
 valign = 1
+clip_text = true
 
 [node name="PendingCards" type="Label" parent="Pivot/Front/MarginContainer/Layout" index="1"]
 margin_left = 135.0
@@ -159,6 +160,7 @@ custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 3 )
 text = "Matematicas"
 valign = 1
+clip_text = true
 
 [node name="PendingCards" type="Label" parent="Pivot/Back/MarginContainer/Layout" index="1"]
 margin_left = 135.0

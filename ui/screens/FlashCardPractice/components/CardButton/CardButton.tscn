@@ -232,7 +232,7 @@ custom_styles/pressed = SubResource( 1 )
 custom_styles/focus = SubResource( 2 )
 custom_styles/disabled = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
-text = "<<>>"
+text = "<<Pregunta>>"
 
 [node name="FrontTrigger" parent="Pivot/Front" index="2"]
 visible = false
@@ -327,7 +327,7 @@ custom_styles/pressed = SubResource( 1 )
 custom_styles/focus = SubResource( 2 )
 custom_styles/disabled = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
-text = "<<>>"
+text = "<<Respuesta>>"
 
 [node name="BackTrigger" parent="Pivot/Back" index="2"]
 visible = false
@@ -395,7 +395,7 @@ custom_styles/pressed = SubResource( 1 )
 custom_styles/focus = SubResource( 2 )
 custom_styles/disabled = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
-text = "<<>>"
+text = "<<Respuesta>>"
 
 [node name="ShowAnswerPlayer" type="AnimationPlayer" parent="." index="4"]
 autoplay = "RESET"

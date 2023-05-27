@@ -33,7 +33,7 @@ func _set_values(_title : String, _new_cards_count : int, _due_cards_count : int
 	_back_due_cards.text = "DUE: " + str(_due_cards_count)
 
 func _text_supervisor(var _text : String) -> String:
-	var _text_limit : int = 18
+	var _text_limit : int = 12
 	var _new_text : String = ""
 	if _text.length() > _text_limit:
 		for _t in _text:
@@ -44,6 +44,7 @@ func _text_supervisor(var _text : String) -> String:
 				break
 	else:
 		_new_text = _text
+	
 	return _new_text
 
 func _on_BackTrigger_pressed():

@@ -28,21 +28,21 @@ func _study_lap() -> void:
 	_question_visor.start(_current_card["question"], _current_card["answer"])
 	
 	var _wrong_answers : Array
+	var _pot : Array = _registered_array.duplicate()
 	for _a in range(0,3):
-		_wrong_answers.append(_generate_fake_answer(_registered_array))
+		_wrong_answers.append(_generate_fake_answer(_pot))
 	_answers_controller.start(_current_card["answer"]["title"], _wrong_answers)
 	
 	_question_visor.move_player.play("GO_DOWN")
 	_answers_controller.move_player.play("IN")
 
-func _generate_fake_answer(var _card_array : Array) -> String:
+func _generate_fake_answer(var _pot : Array) -> String:
 	var _fake_answer : Dictionary
 	
 	_fake_answer = _current_card
-	var _pot : Array = _card_array.duplicate()
 	while(_fake_answer["card_id"] == _current_card["card_id"]):
 		_pot.shuffle()
-		_fake_answer = _pot[0]
+		_fake_answer = _pot.pop_front()
 	
 	var _fake_answer_str = _fake_answer["answer"]["title"]
 	
@@ -68,7 +68,15 @@ func _on_wrong_answer() -> void:
 
 func _on_ready_for_base() -> void:
 	_header.change_text("Clic para continuar")
-	_question_visor.show_base(_current_card["question"]["title"], _current_card["space_btwn_sessions"])
+	match _type_study:
+		"CUSTOM":
+			match _current_card["result"]:
+				"CORRECT":
+					_question_visor.show_base(_current_card["question"]["title"], -1)
+				"WRONG":
+					_question_visor.show_base(_current_card["question"]["title"], 0)
+		"DAILY":
+			_question_visor.show_base(_current_card["question"]["title"], _current_card["space_btwn_sessions"])
 	_continue_button.visible = true
 	_answers_controller.move_player.play("OUT")
 

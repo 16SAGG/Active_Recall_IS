@@ -79,7 +79,7 @@ margin_right = 817.0
 margin_bottom = 726.0
 
 [node name="CongratulationsMessage" parent="." index="2"]
-margin_right = 36765.0
-margin_bottom = 28800.0
+margin_right = 40850.0
+margin_bottom = 32000.0
 
 [connection signal="pressed" from="MarginContainer/Continue" to="." method="_on_Continue_pressed"]

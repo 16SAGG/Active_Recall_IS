@@ -63,6 +63,7 @@ func _generate_cover(var _card_array : Array) -> Dictionary:
 			
 			if _cover["answer"]["title"] == _current_card["answer"]["title"]:
 				_cover["answer"]["title"] += " " + str(2) 
+				print("ESTE")
 	
 	return _cover
 
@@ -92,7 +93,15 @@ func _side_button_behavior(var _side : String) -> void:
 			_right_button.set_icon("RIGHT")
 			_side_button_state = "CONTINUING"
 			
-			_base.set_values(_current_card["question"]["title"], _current_card["space_btwn_sessions"])
+			match _type_study:
+				"CUSTOM":
+					match _current_card["result"]:
+						"CORRECT":
+							_base.set_values(_current_card["question"]["title"], -1)
+						"WRONG":
+							_base.set_values(_current_card["question"]["title"], 0)
+				"DAILY":
+					_base.set_values(_current_card["question"]["title"], _current_card["space_btwn_sessions"])
 		"CONTINUING":
 			_header.change_text("Click para continuar")
 			_card_anim.play("MOVE_TO_" + _side)
