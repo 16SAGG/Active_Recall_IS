@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/components/ButtonBase/ButtonBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://miscellaneous/image/icons/DELETE.png" type="Texture" id=3]
+
+[node name="More" instance=ExtResource( 1 )]
+margin_right = -853.0
+margin_bottom = -584.0
+rect_min_size = Vector2( 52, 56 )
+has_back = false
+
+[node name="Pivot" parent="." index="0"]
+position = Vector2( 26, 28 )
+
+[node name="Front" parent="Pivot" index="0"]
+margin_left = -26.0
+margin_top = -28.0
+margin_right = 26.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 52, 56 )
+
+[node name="BackgroundBox" parent="Pivot/Front/Style" index="0" instance=ExtResource( 2 )]
+background_color = "TRANSLUCENT"
+border_color = "DANGER"
+border_width = [ 2, 2, 2, 2 ]
+
+[node name="Icon" type="TextureRect" parent="Pivot/Front/Style" index="1"]
+modulate = Color( 0.921569, 0.815686, 0.807843, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+stretch_mode = 4
+
+[node name="MarginContainer" parent="Pivot/Front" index="1"]
+custom_constants/margin_right = 24
+custom_constants/margin_top = 16
+custom_constants/margin_left = 24
+custom_constants/margin_bottom = 16

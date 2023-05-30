@@ -31,6 +31,8 @@ func _ready() -> void:
 	_option_array = _load_data()
 	_insert_option_array()
 	_update_current_deck()
+	
+	
 
 
 func start(var _s_option : Dictionary, var _scroll_pos : int) -> void:

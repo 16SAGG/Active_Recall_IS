@@ -22,8 +22,8 @@ func start(var _correct_answer : String, _wrong_answers : Array) -> void:
 
 func _answer_default(var _answer : Control) -> void:
 	_answer.disabled(false)
-	_answer.front.visible = true
-	_answer.back.visible = false
+	_answer._front.visible = true
+	_answer._back.visible = false
 	_answer.side = "FRONT"
 
 func _set_values(var _correct_answer : String, _wrong_answers : Array) -> void:

@@ -63,7 +63,6 @@ func _generate_cover(var _card_array : Array) -> Dictionary:
 			
 			if _cover["answer"]["title"] == _current_card["answer"]["title"]:
 				_cover["answer"]["title"] += " " + str(2) 
-				print("ESTE")
 	
 	return _cover
 

@@ -248,13 +248,32 @@ margin_right = 472.0
 margin_bottom = 108.0
 custom_constants/separation = 0
 
-[node name="Title" type="Label" parent="Pivot/MarginContainer/Layout"]
+[node name="Header" type="HBoxContainer" parent="Pivot/MarginContainer/Layout"]
+margin_right = 448.0
+margin_bottom = 32.0
+custom_constants/separation = 0
+
+[node name="Title" type="Label" parent="Pivot/MarginContainer/Layout/Header"]
 margin_right = 448.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 3
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "Nueva unidad:"
+valign = 1
+
+[node name="Error" type="Label" parent="Pivot/MarginContainer/Layout/Header"]
+visible = false
+margin_left = 224.0
+margin_right = 448.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Duplicado"
+align = 2
 valign = 1
 
 [node name="Content" type="HBoxContainer" parent="Pivot/MarginContainer/Layout"]
@@ -294,3 +313,5 @@ autoplay = "HIDE"
 anims/HIDE = SubResource( 4 )
 anims/RESET = SubResource( 5 )
 anims/SHOW = SubResource( 6 )
+
+[connection signal="text_changed" from="Pivot/MarginContainer/Layout/Content/NewTitle" to="." method="_on_NewTitle_text_changed"]

@@ -5,10 +5,6 @@ const BODY_2 = preload("res://miscellaneous/fonts/dynamic_fonts/body_2.tres")
 
 signal answer_selected(answer)
 
-onready var front = $Pivot/Front as Control
-onready var back = $Pivot/Back as Control
-
-onready var _pivot = $Pivot as Position2D
 onready var _front_title = $Pivot/Front/MarginContainer/Title as Label
 onready var _back_title = $Pivot/Back/MarginContainer/Title as Label
 onready var _back_box = $Pivot/Back/Style/BackgroundBox as Control

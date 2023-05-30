@@ -29,9 +29,9 @@ custom_constants/margin_bottom = 12
 
 [node name="Title" type="Label" parent="Pivot/Front/MarginContainer" index="0"]
 margin_left = 24.0
-margin_top = 20.0
+margin_top = 19.0
 margin_right = 424.0
-margin_bottom = 41.0
+margin_bottom = 42.0
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "DECK"
@@ -45,17 +45,11 @@ margin_bottom = 31.0
 rect_min_size = Vector2( 448, 62 )
 
 [node name="Style" parent="Pivot/Back" index="0"]
-margin_right = 448.0
-margin_bottom = 62.0
 rect_min_size = Vector2( 448, 62 )
 
 [node name="BackgroundContainer" parent="Pivot/Back/Style" index="0" instance=ExtResource( 3 )]
 
 [node name="MarginContainer" parent="Pivot/Back" index="1"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 0.0
-margin_bottom = 0.0
 custom_constants/margin_right = 24
 custom_constants/margin_top = 12
 custom_constants/margin_left = 24
@@ -63,9 +57,9 @@ custom_constants/margin_bottom = 12
 
 [node name="Title" type="Label" parent="Pivot/Back/MarginContainer" index="0"]
 margin_left = 24.0
-margin_top = 20.0
+margin_top = 19.0
 margin_right = 424.0
-margin_bottom = 41.0
+margin_bottom = 42.0
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "DECK"

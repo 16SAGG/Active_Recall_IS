@@ -122,5 +122,5 @@ has_back = false
 title = "Opciones"
 
 [node name="CongratulationsMessage" parent="." index="3"]
-margin_right = 2451.0
-margin_bottom = 1920.0
+margin_right = 4902.0
+margin_bottom = 3840.0

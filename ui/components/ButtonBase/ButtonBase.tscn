@@ -198,18 +198,17 @@ has_back = true
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="Style" type="Control" parent="Pivot/Front"]
+[node name="Style" type="Control" parent="Pivot/Front" groups=["STYLE"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="MarginContainer" type="MarginContainer" parent="Pivot/Front"]
+[node name="MarginContainer" type="MarginContainer" parent="Pivot/Front" groups=["CONTAINER"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="FrontTrigger" type="Button" parent="Pivot/Front"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = 14.0
 mouse_filter = 1
 custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 4 )
@@ -223,18 +222,17 @@ visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="Style" type="Control" parent="Pivot/Back"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="Style" type="Control" parent="Pivot/Back" groups=["STYLE"]]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
-[node name="MarginContainer" type="MarginContainer" parent="Pivot/Back"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="MarginContainer" type="MarginContainer" parent="Pivot/Back" groups=["CONTAINER"]]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="BackTrigger" type="Button" parent="Pivot/Back"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = 14.0
 mouse_filter = 1
 custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 4 )

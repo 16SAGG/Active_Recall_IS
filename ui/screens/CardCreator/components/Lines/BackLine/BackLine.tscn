@@ -155,14 +155,34 @@ margin_right = 740.0
 margin_bottom = 186.0
 custom_constants/separation = 8
 
-[node name="Head" type="Label" parent="MarginContainer/Content"]
+[node name="Head" type="HBoxContainer" parent="MarginContainer/Content"]
+margin_right = 724.0
+margin_bottom = 30.0
+custom_constants/separation = 0
+
+[node name="Title" type="Label" parent="MarginContainer/Content/Head"]
 margin_right = 724.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 0, 30 )
+size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "BACK"
 valign = 1
+
+[node name="Error" type="Label" parent="MarginContainer/Content/Head"]
+visible = false
+margin_left = 362.0
+margin_right = 724.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "ERROR"
+align = 2
+valign = 1
+clip_text = true
 
 [node name="BackEdit" type="LineEdit" parent="MarginContainer/Content"]
 margin_top = 38.0
@@ -208,3 +228,5 @@ autoplay = "HIDE_IMAGE"
 anims/HIDE_IMAGE = SubResource( 11 )
 anims/RESET = SubResource( 9 )
 anims/SHOW_IMAGE = SubResource( 10 )
+
+[connection signal="text_changed" from="MarginContainer/Content/BackEdit" to="." method="_on_BackEdit_text_changed"]

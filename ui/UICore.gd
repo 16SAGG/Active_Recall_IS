@@ -12,6 +12,7 @@ onready var _decks = $Layout/Screens/Decks as Control
 onready var _practice = $Layout/Screens/Practice as Control
 onready var _flash_card_practice = $Layout/Screens/FlashCardPractice as Control
 onready var _test_practice = $Layout/Screens/TestPractice as Control
+onready var _deck_settings = $Layout/Screens/DeckSettings as Control
 
 onready var _action_pop_up = $ActionPopUp as Control
 onready var _shadow = $Shadow as Control
@@ -93,8 +94,8 @@ func _change_screen(var _screen : String) -> void:
 			_test_practice.visible = true
 		'STATS':
 			print('ST')
-		'SETTINGS':
-			print('SE')
+		'DECK_SETTINGS':
+			_deck_settings.visible = true
 
 #DATABASE CALLS AND COMMITS
 func _update_current_deck(var _deck_id : int) -> void:
@@ -242,11 +243,11 @@ func _on_memory_practice_requested(var _type : String, var _card_count : int ) -
 		_select_type_study_pop_up.animation_player.play("HIDE")
 		_shadow.animation_player.play("HIDE")
 
-func _on_statistics_requested() -> void:
+func _on_statistics_requested( var _deck : Control) -> void:
 	_change_screen("STATS")
 
-func _on_settings_requested() -> void:
-	_change_screen("SETTINGS")
+func _on_settings_requested( var _deck : Control) -> void:
+	_change_screen("DECK_SETTINGS")
 
 #SHOW AND HIDE POP UPS
 func _on_show_new_deck_pop_up_requested()-> void:

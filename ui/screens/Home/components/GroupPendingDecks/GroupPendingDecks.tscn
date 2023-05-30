@@ -1,13 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://ui/screens/Home/components/GroupPendingDecks/GroupPendingDecks.gd" type="Script" id=1]
 [ext_resource path="res://ui/screens/Home/components/GroupPendingDecks/components/PendingDeck/PendingDeck.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H5_headline.tres" type="DynamicFont" id=4]
-[ext_resource path="res://ui/screens/Home/components/GroupPendingDecks/components/PendingDeck/PendingDeck.gd" type="Script" id=5]
-[ext_resource path="res://ui/stylized_shape/Rectangle.gd" type="Script" id=6]
 [ext_resource path="res://ui/screens/Home/components/GroupPendingDecks/components/PendingDeckScroller/PendingDeckScroller.tscn" type="PackedScene" id=7]
-[ext_resource path="res://ui/screens/Home/components/GroupPendingDecks/components/PendingDeckScroller/PendingDeckScroller.gd" type="Script" id=8]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -43,10 +40,7 @@ script = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Rectangle" type="Control" parent="Style" instance=ExtResource( 3 )]
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 6 )
+[node name="Rectangle" parent="Style" instance=ExtResource( 3 )]
 background_color = "TRANSLUCENT"
 border_color = "PRIMARY"
 border_width = [ 1, 1, 1, 1 ]
@@ -65,10 +59,7 @@ rect_min_size = Vector2( 0, 62 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Rectangle" type="Control" parent="Layout/Header/Style" instance=ExtResource( 3 )]
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 6 )
+[node name="Rectangle" parent="Layout/Header/Style" instance=ExtResource( 3 )]
 background_color = "TRANSLUCENT"
 border_color = "PRIMARY"
 corner_radius = [ 0, 0, 0, 0 ]
@@ -109,48 +100,43 @@ margin_right = 212.0
 margin_bottom = 8.0
 rect_min_size = Vector2( 0, 8 )
 
-[node name="DeckBox" type="Control" parent="Layout/MarginContainer/ScrollContainer/Content" groups=["DECK", "PENDING"] instance=ExtResource( 2 )]
+[node name="DeckBox" parent="Layout/MarginContainer/ScrollContainer/Content" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 24.0
 margin_right = 212.0
 margin_bottom = 98.0
-rect_min_size = Vector2( 0, 74 )
-script = ExtResource( 5 )
-has_back = true
 
-[node name="DeckBox2" type="Control" parent="Layout/MarginContainer/ScrollContainer/Content" groups=["DECK", "PENDING"] instance=ExtResource( 2 )]
+[node name="DeckBox2" parent="Layout/MarginContainer/ScrollContainer/Content" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 114.0
 margin_right = 212.0
 margin_bottom = 188.0
-rect_min_size = Vector2( 0, 74 )
-script = ExtResource( 5 )
-has_back = true
 
-[node name="DeckBox3" type="Control" parent="Layout/MarginContainer/ScrollContainer/Content" groups=["DECK", "PENDING"] instance=ExtResource( 2 )]
+[node name="DeckBox3" parent="Layout/MarginContainer/ScrollContainer/Content" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 204.0
 margin_right = 212.0
 margin_bottom = 278.0
-rect_min_size = Vector2( 0, 74 )
-script = ExtResource( 5 )
-has_back = true
 
-[node name="DeckBox4" type="Control" parent="Layout/MarginContainer/ScrollContainer/Content" groups=["DECK", "PENDING"] instance=ExtResource( 2 )]
+[node name="DeckBox4" parent="Layout/MarginContainer/ScrollContainer/Content" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 294.0
 margin_right = 212.0
 margin_bottom = 368.0
-rect_min_size = Vector2( 0, 74 )
-script = ExtResource( 5 )
-has_back = true
 
-[node name="PDScrollerUp" type="Control" parent="." instance=ExtResource( 7 )]
+[node name="PDScrollerUp" parent="." instance=ExtResource( 7 )]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -32.0
 margin_top = 32.0
 margin_right = 32.0
 margin_bottom = 96.0
-script = ExtResource( 8 )
 
-[node name="PDScrollerDown" type="Control" parent="." instance=ExtResource( 7 )]
+[node name="PDScrollerDown" parent="." instance=ExtResource( 7 )]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -159,4 +145,3 @@ margin_left = -32.0
 margin_top = -40.0
 margin_right = 32.0
 margin_bottom = 24.0
-script = ExtResource( 8 )

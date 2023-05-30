@@ -37,5 +37,5 @@ scroll_vertical_enabled = false
 custom_constants/separation = 12
 
 [node name="CongratulationsMessage" parent="." index="2"]
-margin_right = 729.0
-margin_bottom = 640.0
+margin_right = 3180.0
+margin_bottom = 2560.0

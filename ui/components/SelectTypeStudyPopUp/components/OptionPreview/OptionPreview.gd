@@ -22,6 +22,9 @@ func _ready() -> void:
 	
 	_type_of_study.connect("daily_study_requested", self, "_on_daily_study_requested")
 	_type_of_study.connect("custom_study_requested", self, "_on_custom_study_requested")
+	
+	_right_button.set_icon("RIGHT")
+	_left_button.set_icon("LEFT")
 
 func start(var _s_option : Dictionary) -> void:
 	_current_type = 0

@@ -98,17 +98,9 @@ margin_top = -62.0
 margin_right = 118.0
 margin_bottom = 62.0
 
-[node name="Style" parent="Pivot/Back" index="0"]
-margin_right = 236.0
-margin_bottom = 124.0
-
 [node name="BackgroundContainer" parent="Pivot/Back/Style" index="0" instance=ExtResource( 3 )]
 
 [node name="MarginContainer" parent="Pivot/Back" index="1"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 0.0
-margin_bottom = 0.0
 custom_constants/margin_right = 16
 custom_constants/margin_top = 16
 custom_constants/margin_left = 16
@@ -117,13 +109,13 @@ custom_constants/margin_bottom = 16
 [node name="Layout" type="VBoxContainer" parent="Pivot/Back/MarginContainer" index="0"]
 margin_left = 16.0
 margin_top = 16.0
-margin_right = 224.0
+margin_right = 220.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 0, 60 )
 custom_constants/separation = 0
 
 [node name="Title" type="Label" parent="Pivot/Back/MarginContainer/Layout" index="0"]
-margin_right = 236.0
+margin_right = 204.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 60 )
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
@@ -134,9 +126,10 @@ valign = 1
 
 [node name="Cards" type="HBoxContainer" parent="Pivot/Back/MarginContainer/Layout" index="1"]
 margin_top = 60.0
-margin_right = 236.0
+margin_right = 204.0
 margin_bottom = 92.0
 rect_min_size = Vector2( 0, 32 )
+custom_constants/separation = 0
 
 [node name="New" type="Label" parent="Pivot/Back/MarginContainer/Layout/Cards" index="0"]
 margin_right = 102.0
@@ -148,8 +141,8 @@ text = "New: 1000"
 valign = 1
 
 [node name="Due" type="Label" parent="Pivot/Back/MarginContainer/Layout/Cards" index="1"]
-margin_left = 106.0
-margin_right = 208.0
+margin_left = 102.0
+margin_right = 204.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 102, 32 )
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 0.498039 )

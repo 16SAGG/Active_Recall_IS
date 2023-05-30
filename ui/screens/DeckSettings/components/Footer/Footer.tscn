@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/components/TextButton/TextButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=2]
+
+[node name="Footer" type="Control"]
+margin_right = 817.0
+margin_bottom = 120.0
+size_flags_vertical = 3
+
+[node name="Style" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BackgroundBox" parent="Style" instance=ExtResource( 2 )]
+background_color = "TRANSLUCENT"
+border_color = "PRIMARY"
+corner_radius = [ 0, 0, 0, 0 ]
+border_width = [ 0, 0, 1, 0 ]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -60.0
+margin_right = 817.0
+margin_bottom = 60.0
+custom_constants/margin_right = 64
+custom_constants/margin_top = 32
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 32
+
+[node name="Layout" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 753.0
+margin_bottom = 88.0
+custom_constants/separation = 16
+
+[node name="Button" type="Button" parent="MarginContainer/Layout"]
+margin_right = 48.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 48, 0 )
+
+[node name="Button2" type="Button" parent="MarginContainer/Layout"]
+margin_left = 64.0
+margin_right = 112.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 48, 0 )
+
+[node name="Space" type="Control" parent="MarginContainer/Layout"]
+margin_left = 128.0
+margin_right = 527.0
+margin_bottom = 56.0
+size_flags_horizontal = 3
+
+[node name="TextButton" parent="MarginContainer/Layout" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 543.0
+margin_right = 721.0
+margin_bottom = 56.0

@@ -1,0 +1,119 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/FormContent.tres" type="DynamicFont" id=2]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/body_1.tres" type="DynamicFont" id=3]
+[ext_resource path="res://ui/components/Forms/FormSelect/FormSelect.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[node name="FormSelect" type="MarginContainer"]
+margin_right = 754.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 756, 64 )
+custom_constants/margin_right = 96
+custom_constants/margin_left = 96
+script = ExtResource( 4 )
+
+[node name="Layout" type="HBoxContainer" parent="."]
+margin_left = 96.0
+margin_right = 660.0
+margin_bottom = 64.0
+custom_constants/separation = 16
+
+[node name="Title" type="Label" parent="Layout"]
+margin_top = 20.0
+margin_right = 408.0
+margin_bottom = 43.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Nuevos conceptos por día"
+valign = 1
+
+[node name="Layout" type="HBoxContainer" parent="Layout"]
+margin_left = 424.0
+margin_right = 564.0
+margin_bottom = 64.0
+custom_constants/separation = 8
+
+[node name="Left" type="Control" parent="Layout/Layout"]
+margin_right = 32.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 32, 0 )
+
+[node name="Style" type="Control" parent="Layout/Layout/Left"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BackgroundBox" parent="Layout/Layout/Left/Style" instance=ExtResource( 1 )]
+corner_radius = [ 2, 1, 2, 1 ]
+
+[node name="LeftButton" type="Button" parent="Layout/Layout/Left"]
+margin_right = 32.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 32, 0 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="Content" type="Control" parent="Layout/Layout"]
+margin_left = 40.0
+margin_right = 100.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 60, 0 )
+
+[node name="Style" type="Control" parent="Layout/Layout/Content"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BackgroundBox" parent="Layout/Layout/Content/Style" instance=ExtResource( 1 )]
+background_color = "SECONDARY"
+border_color = "PRIMARY"
+border_width = [ 2, 2, 2, 2 ]
+
+[node name="Number" type="Label" parent="Layout/Layout/Content"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "10"
+align = 1
+valign = 1
+
+[node name="Right" type="Control" parent="Layout/Layout"]
+margin_left = 108.0
+margin_right = 140.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 32, 0 )
+
+[node name="Style" type="Control" parent="Layout/Layout/Right"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BackgroundBox" parent="Layout/Layout/Right/Style" instance=ExtResource( 1 )]
+corner_radius = [ 1, 2, 1, 2 ]
+
+[node name="RightButton" type="Button" parent="Layout/Layout/Right"]
+margin_right = 32.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 32, 0 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+
+[connection signal="button_down" from="Layout/Layout/Left/LeftButton" to="." method="_on_LeftButton_button_down"]
+[connection signal="button_down" from="Layout/Layout/Right/RightButton" to="." method="_on_RightButton_button_down"]

@@ -4,7 +4,7 @@
 [ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H7_headline.tres" type="DynamicFont" id=2]
 [ext_resource path="res://miscellaneous/fonts/dynamic_fonts/body_1.tres" type="DynamicFont" id=3]
 [ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=4]
-[ext_resource path="res://ui/screens/CardCreator/components/Lines/Line.gd" type="Script" id=5]
+[ext_resource path="res://ui/screens/CardCreator/components/Lines/FrontLine/FrontLine.gd" type="Script" id=5]
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
@@ -193,6 +193,8 @@ margin_right = 378.0
 margin_bottom = 80.0
 
 [node name="FrontBox" parent="Style" instance=ExtResource( 4 )]
+margin_right = 756.0
+margin_bottom = 80.0
 background_color = "SECONDARY"
 border_color = "PRIMARY"
 border_width = [ 1, 1, 1, 1 ]
@@ -229,14 +231,34 @@ margin_right = 740.0
 margin_bottom = 80.0
 custom_constants/separation = 8
 
-[node name="Head" type="Label" parent="MarginContainer/Content"]
+[node name="Head" type="HBoxContainer" parent="MarginContainer/Content"]
+margin_right = 724.0
+margin_bottom = 30.0
+custom_constants/separation = 0
+
+[node name="Title" type="Label" parent="MarginContainer/Content/Head"]
 margin_right = 724.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 0, 30 )
+size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "FRONT"
 valign = 1
+
+[node name="Error" type="Label" parent="MarginContainer/Content/Head"]
+visible = false
+margin_left = 362.0
+margin_right = 724.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "ERROR"
+align = 2
+valign = 1
+clip_text = true
 
 [node name="FrontEdit" type="LineEdit" parent="MarginContainer/Content"]
 margin_top = 38.0
@@ -263,3 +285,5 @@ autoplay = "HIDE_IMAGE"
 anims/HIDE_IMAGE = SubResource( 8 )
 anims/RESET = SubResource( 7 )
 anims/SHOW_IMAGE = SubResource( 5 )
+
+[connection signal="text_changed" from="MarginContainer/Content/FrontEdit" to="." method="_on_FrontEdit_text_changed"]

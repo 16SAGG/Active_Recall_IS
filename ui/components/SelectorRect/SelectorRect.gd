@@ -8,7 +8,9 @@ const DICT_POSITION = {
 	'FLASH_CARD': Vector2(16,344),
 	'TEST': Vector2(16,344),
 	'STATS': Vector2(16,408),
-	'SETTINGS': Vector2(16,472),
+	'DECK_SETTINGS': Vector2(16,472),
+	'USER_SETTINGS': Vector2(16,472),
+	
 }
 
 const TRANSITION_DURATION : float = 0.4

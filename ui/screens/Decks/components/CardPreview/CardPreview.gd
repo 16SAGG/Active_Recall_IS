@@ -10,6 +10,9 @@ var _current_card_in_preview : int = 0
 func _ready() -> void:
 	_left_button.connect("clicked", self, "_on_left_button_pressed")
 	_right_button.connect("clicked", self, "_on_right_button_pressed")
+	
+	_right_button.set_icon("RIGHT")
+	_left_button.set_icon("LEFT")
 
 func start() -> void:
 	_card_array = _load_data()

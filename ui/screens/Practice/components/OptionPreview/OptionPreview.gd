@@ -13,6 +13,9 @@ func _ready() -> void:
 	_left_button.connect("clicked", self, "_on_left_button_pressed")
 	_right_button.connect("clicked", self, "_on_right_button_pressed")
 	_option_button.connect("option_pressed", self, "_on_option_button_pressed")
+	
+	_right_button.set_icon("RIGHT")
+	_left_button.set_icon("LEFT")
 
 func start() -> void:
 	_option_array = PRACTICEOPTIONS.options_values

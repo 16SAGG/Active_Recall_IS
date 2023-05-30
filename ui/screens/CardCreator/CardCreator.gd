@@ -8,10 +8,9 @@ signal delete_card(question, answer, card)
 
 
 onready var _change_deck = $MarginContainer/Content/ChangeDeck as Control
-onready var _add_image = $MarginContainer/Content/AddImage as Control
 onready var _enter_button = $MarginContainer/Content/Footer/Content/Enter as Control
 onready var _enter_button_title = $MarginContainer/Content/Footer/Content/Enter/Pivot/Front/MarginContainer/Title as Label
-onready var _more_button = $MarginContainer/Content/Footer/Content/More as Control
+onready var _delete_button = $MarginContainer/Content/Footer/Content/Delete as Control
 
 onready var _front_line = $MarginContainer/Content/LineBoxes/Content/FrontLine
 onready var _front_line_edit = $MarginContainer/Content/LineBoxes/Content/FrontLine/MarginContainer/Content/FrontEdit
@@ -20,36 +19,43 @@ onready var _back_line = $MarginContainer/Content/LineBoxes/Content/BackLine
 onready var _back_line_edit = $MarginContainer/Content/LineBoxes/Content/BackLine/MarginContainer/Content/BackEdit
 onready var _back_line_desc = $MarginContainer/Content/LineBoxes/Content/BackLine/MarginContainer/Content/HBoxContainer/Description
 
-onready var _more_pop_up = $MorePopUp as Control
-
 var status : String = "CREATOR" #EDITOR
 var editable_card : Dictionary
 
 var _current_focus : String = "NONE"
+var _front_line_permission : bool = false
+var _back_line_permission : bool = false
 
 func _ready() -> void:
 	_change_deck.connect("normal_flip", self, "_on_change_deck_pressed")
-	_add_image.connect("normal_flip", self, "_on_add_image_pressed")
 	_enter_button.connect("normal_flip", self, "_on_enter_button_pressed")
-	_more_button.connect("normal_flip", self, "_on_more_button_pressed")
-	_more_pop_up.connect("delete_card_requested", self, "_on_delete_card_requested")
-	_more_pop_up.connect("hide_more_pop_up_requested", self, "_on_hide_more_pop_up_requested")
+	_delete_button.connect("normal_flip", self, "_on_delete_button_pressed")
 	
+	_front_line.connect("permission_to_enter", self, "_on_permission_to_enter")
 	_front_line_edit.connect("focus_entered", self, "_on_FrontEdit_focus_entered")
+	
+	_back_line.connect("permission_to_enter", self, "_on_permission_to_enter")
 	_back_line_edit.connect("focus_entered", self, "_on_BackEdit_focus_entered")
 	_back_line_desc.connect("focus_entered", self, "_on_BackEdit_focus_entered")
 	
 	start()
 
 func start() -> void:
+	_front_line.start(status)
+	_back_line.start(status)
+
 	_update_current_deck()
 	_error_suporter()
 	
 	match status:
 		"CREATOR":
+			_delete_button.visible = false
+			_enter_button._disable_button(true)
 			_clean_lines()
 			_set_button_title("Añadir")
 		"EDITOR":
+			_delete_button.visible = true
+			_enter_button._disable_button(false)
 			_set_lines_to_edit()
 			_set_button_title("Editar")
 
@@ -80,24 +86,15 @@ func _on_add_image_pressed(_button : Control) -> void:
 		"BACK":
 			_back_line.show_image()
 
-func _remove_unnecessary_space(var _text : String) -> String:
-	_text = _text.dedent()
-	
-	if _text.length() - 1 >= 0:
-		while (_text[_text.length() - 1] == " "):
-			_text.erase(_text.find_last(" "), 1)
-	
-	return _text
-
 func _on_enter_button_pressed(_button : Control) -> void:
 	var _valid_card : bool = true
 	
 	var _question : Dictionary = {
-		"title" : _remove_unnecessary_space(_front_line_edit.text),
+		"title" : TEXTFORMAT.remove_unnecessary_space(_front_line_edit.text),
 	}
 	var _answer : Dictionary = {
-		"title" : _remove_unnecessary_space(_back_line_edit.text),
-		"description" : _remove_unnecessary_space(_back_line_desc.text)
+		"title" : TEXTFORMAT.remove_unnecessary_space(_back_line_edit.text),
+		"description" : TEXTFORMAT.remove_unnecessary_space(_back_line_desc.text)
 	}
 	
 	if _question["title"] == "" or _answer["title"] == "" or !USERDATA.current_deck_data:
@@ -114,17 +111,20 @@ func _on_enter_button_pressed(_button : Control) -> void:
 	else:
 		print("FICHA INVALIDA")
 
-func _on_more_button_pressed(var _button: Control) -> void:
-	if not _more_pop_up.showed:
-		_more_pop_up.animation_player.play("SHOW")
-
-func _on_delete_card_requested() -> void:
+func _on_delete_button_pressed(var _button: Control) -> void:
 	emit_signal("delete_card", editable_card)
 	emit_signal("go_to_deck_screen_requested", null)
 
-func _on_hide_more_pop_up_requested () -> void:
-	if _more_pop_up.showed:
-		_more_pop_up.animation_player.play("HIDE")
+func _on_permission_to_enter(var _permission : bool, var _origin : Control) -> void:
+	match _origin.name.to_upper():
+		"FRONTLINE":
+			_front_line_permission = _permission
+		"BACKLINE":
+			_back_line_permission = _permission
+	
+	_enter_button._disable_button(false)
+	if !_front_line_permission or !_back_line_permission:
+		_enter_button._disable_button(true)
 
 func _on_FrontEdit_focus_entered() -> void:
 	_current_focus = "FRONT"
