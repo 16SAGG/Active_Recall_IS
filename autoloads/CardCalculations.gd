@@ -4,6 +4,10 @@ const UNIX_DAY = 86400
 
 onready var today_date = OS.get_unix_time() - OS.get_unix_time() % UNIX_DAY
 
+
+func _ready() -> void:
+	print(OS.get_datetime_from_unix_time(today_date))
+
 func calculated_all_cards_count(_deck : Dictionary) -> int:
 	var _cards : Array = _deck["cards"]
 	var _cards_count : int = _cards.size()

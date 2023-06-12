@@ -1,0 +1,110 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://ui/screens/ScreenBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/components/ChangeDeck/ChangeDeck.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/screens/CardStats/components/Graph/Graph.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/components/StatBox/StatBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/components/IconButton/IconButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/screens/CardStats/CardStats.gd" type="Script" id=7]
+
+[node name="CardStats" instance=ExtResource( 1 )]
+script = ExtResource( 7 )
+
+[node name="MarginContainer" parent="." index="0"]
+custom_constants/margin_right = 37
+
+[node name="Layout" type="VBoxContainer" parent="MarginContainer" index="0"]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 780.0
+margin_bottom = 640.0
+custom_constants/separation = 28
+
+[node name="ChangeDeck" parent="MarginContainer/Layout" index="0" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 756.0
+margin_bottom = 62.0
+
+[node name="FirstRowStats" type="HBoxContainer" parent="MarginContainer/Layout" index="1"]
+margin_top = 90.0
+margin_right = 756.0
+margin_bottom = 214.0
+rect_min_size = Vector2( 0, 124 )
+custom_constants/separation = 12
+
+[node name="TotalCards" parent="MarginContainer/Layout/FirstRowStats" index="0" instance=ExtResource( 5 )]
+new_title = "Total de conceptos"
+
+[node name="CompletedCards" parent="MarginContainer/Layout/FirstRowStats" index="1" instance=ExtResource( 5 )]
+margin_left = 192.0
+margin_right = 372.0
+new_title = "Conceptos completados"
+
+[node name="InProccessCards" parent="MarginContainer/Layout/FirstRowStats" index="2" instance=ExtResource( 5 )]
+margin_left = 384.0
+margin_right = 564.0
+new_title = "Conceptos en proceso"
+
+[node name="NewCards" parent="MarginContainer/Layout/FirstRowStats" index="3" instance=ExtResource( 5 )]
+margin_left = 576.0
+margin_right = 756.0
+new_title = "Nuevos conceptos"
+
+[node name="Graph" parent="MarginContainer/Layout" index="2" instance=ExtResource( 4 )]
+margin_top = 242.0
+margin_bottom = 512.0
+
+[node name="Footer" type="Control" parent="MarginContainer/Layout" index="3"]
+margin_top = 540.0
+margin_right = 756.0
+margin_bottom = 616.0
+size_flags_vertical = 3
+
+[node name="Style" type="Control" parent="MarginContainer/Layout/Footer" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BackgroundBox" parent="MarginContainer/Layout/Footer/Style" index="0" instance=ExtResource( 3 )]
+background_color = "TRANSLUCENT"
+border_color = "PRIMARY"
+corner_radius = [ 0, 0, 0, 0 ]
+border_width = [ 0, 0, 1, 0 ]
+
+[node name="Content" type="MarginContainer" parent="MarginContainer/Layout/Footer" index="1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 12
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 12
+
+[node name="Layout" type="HBoxContainer" parent="MarginContainer/Layout/Footer/Content" index="0"]
+margin_left = 16.0
+margin_top = 12.0
+margin_right = 740.0
+margin_bottom = 68.0
+alignment = 2
+
+[node name="LeftButton" parent="MarginContainer/Layout/Footer/Content/Layout" index="0" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 616.0
+margin_right = 668.0
+margin_bottom = 56.0
+_new_symbol = "<"
+
+[node name="RightButton" parent="MarginContainer/Layout/Footer/Content/Layout" index="1" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 672.0
+margin_right = 724.0
+margin_bottom = 56.0
+
+[node name="CongratulationsMessage" parent="." index="2"]
+margin_right = 37582.0
+margin_bottom = 29440.0
+
+[connection signal="button_down" from="MarginContainer/Layout/Footer/Content/Layout/LeftButton" to="." method="_on_LeftButton_button_down"]
+[connection signal="button_down" from="MarginContainer/Layout/Footer/Content/Layout/RightButton" to="." method="_on_RightButton_button_down"]

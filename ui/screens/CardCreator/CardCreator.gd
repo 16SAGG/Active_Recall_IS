@@ -6,7 +6,6 @@ signal edit_card(new_question, new_answer, card, card_properties, update_deck)
 signal update_history(count)
 signal delete_card(question, answer, card)
 
-
 onready var _change_deck = $MarginContainer/Content/ChangeDeck as Control
 onready var _enter_button = $MarginContainer/Content/Footer/Content/Enter as Control
 onready var _enter_button_title = $MarginContainer/Content/Footer/Content/Enter/Pivot/Front/MarginContainer/Title as Label

@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H1_headline.tres" type="DynamicFont" id=2]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/body_0.tres" type="DynamicFont" id=3]
+[ext_resource path="res://ui/components/StatBox/StatBox.gd" type="Script" id=4]
+
+[node name="StatBox" type="Control"]
+margin_right = 180.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 180, 124 )
+script = ExtResource( 4 )
+
+[node name="Style" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BackgroundBox" parent="Style" instance=ExtResource( 1 )]
+background_color = "TRANSLUCENT"
+border_color = "PRIMARY"
+border_width = [ 1, 1, 1, 1 ]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -20.0
+margin_bottom = -5.0
+custom_constants/margin_right = 24
+custom_constants/margin_top = 28
+custom_constants/margin_left = 24
+custom_constants/margin_bottom = 28
+
+[node name="Layout" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 24.0
+margin_top = 28.0
+margin_right = 156.0
+margin_bottom = 190.0
+custom_constants/separation = 0
+
+[node name="Count" type="Label" parent="MarginContainer/Layout"]
+margin_right = 132.0
+margin_bottom = 103.0
+size_flags_vertical = 7
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "200"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="Title" type="Label" parent="MarginContainer/Layout"]
+margin_top = 103.0
+margin_right = 132.0
+margin_bottom = 162.0
+size_flags_vertical = 7
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Total de conceptos"
+align = 1
+valign = 1
+autowrap = true

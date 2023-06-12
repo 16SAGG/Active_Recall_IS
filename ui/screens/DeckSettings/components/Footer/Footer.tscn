@@ -1,61 +1,74 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://ui/components/TextButton/TextButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/components/IconButton/IconButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/screens/DeckSettings/components/Footer/Footer.gd" type="Script" id=4]
 
 [node name="Footer" type="Control"]
 margin_right = 817.0
 margin_bottom = 120.0
 size_flags_vertical = 3
+script = ExtResource( 4 )
 
-[node name="Style" type="Control" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_constants/margin_right = 62
+custom_constants/margin_left = 38
 
-[node name="BackgroundBox" parent="Style" instance=ExtResource( 2 )]
+[node name="Style" type="Control" parent="MarginContainer"]
+margin_left = 38.0
+margin_right = 755.0
+margin_bottom = 120.0
+
+[node name="BackgroundBox" parent="MarginContainer/Style" instance=ExtResource( 2 )]
 background_color = "TRANSLUCENT"
 border_color = "PRIMARY"
 corner_radius = [ 0, 0, 0, 0 ]
 border_width = [ 0, 0, 1, 0 ]
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_top = -60.0
-margin_right = 817.0
-margin_bottom = 60.0
-custom_constants/margin_right = 64
+[node name="Content" type="MarginContainer" parent="MarginContainer"]
+margin_left = 38.0
+margin_right = 755.0
+margin_bottom = 120.0
 custom_constants/margin_top = 32
-custom_constants/margin_left = 32
 custom_constants/margin_bottom = 32
 
-[node name="Layout" type="HBoxContainer" parent="MarginContainer"]
-margin_left = 32.0
+[node name="Layout" type="HBoxContainer" parent="MarginContainer/Content"]
 margin_top = 32.0
-margin_right = 753.0
+margin_right = 717.0
 margin_bottom = 88.0
 custom_constants/separation = 16
 
-[node name="Button" type="Button" parent="MarginContainer/Layout"]
-margin_right = 48.0
+[node name="LeftButton" parent="MarginContainer/Content/Layout" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 52.0
 margin_bottom = 56.0
-rect_min_size = Vector2( 48, 0 )
+_new_symbol = "<"
 
-[node name="Button2" type="Button" parent="MarginContainer/Layout"]
-margin_left = 64.0
-margin_right = 112.0
+[node name="RightButton" parent="MarginContainer/Content/Layout" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 68.0
+margin_right = 120.0
 margin_bottom = 56.0
-rect_min_size = Vector2( 48, 0 )
 
-[node name="Space" type="Control" parent="MarginContainer/Layout"]
-margin_left = 128.0
-margin_right = 527.0
+[node name="Space" type="Control" parent="MarginContainer/Content/Layout"]
+margin_left = 136.0
+margin_right = 523.0
 margin_bottom = 56.0
 size_flags_horizontal = 3
 
-[node name="TextButton" parent="MarginContainer/Layout" instance=ExtResource( 1 )]
+[node name="SaveButton" parent="MarginContainer/Content/Layout" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 543.0
-margin_right = 721.0
+margin_left = 539.0
+margin_right = 717.0
 margin_bottom = 56.0
+_new_title = "Guardar"
+
+[connection signal="button_down" from="MarginContainer/Content/Layout/LeftButton" to="." method="_on_LeftButton_button_down"]
+[connection signal="button_down" from="MarginContainer/Content/Layout/RightButton" to="." method="_on_RightButton_button_down"]
+[connection signal="normal_flip" from="MarginContainer/Content/Layout/SaveButton" to="." method="_on_SaveButton_normal_flip"]

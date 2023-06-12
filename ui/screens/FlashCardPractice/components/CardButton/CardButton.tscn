@@ -194,13 +194,13 @@ custom_constants/separation = 0
 
 [node name="Content" type="HBoxContainer" parent="Pivot/Front/MarginContainer/Layout" index="0"]
 margin_right = 460.0
-margin_bottom = 352.0
+margin_bottom = 348.0
 size_flags_vertical = 3
 custom_constants/separation = 12
 
 [node name="Title" type="Label" parent="Pivot/Front/MarginContainer/Layout/Content" index="0"]
 margin_right = 460.0
-margin_bottom = 352.0
+margin_bottom = 348.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
@@ -217,7 +217,7 @@ margin_right = 460.0
 margin_bottom = 408.0
 
 [node name="FlipButton" type="Button" parent="Pivot/Front/MarginContainer/Layout" index="1"]
-margin_top = 352.0
+margin_top = 348.0
 margin_right = 460.0
 margin_bottom = 408.0
 rect_min_size = Vector2( 0, 56 )
@@ -236,7 +236,6 @@ text = "<<Pregunta>>"
 
 [node name="FrontTrigger" parent="Pivot/Front" index="2"]
 visible = false
-margin_bottom = 0.0
 
 [node name="Back" parent="Pivot" index="1"]
 margin_left = -262.0
@@ -244,21 +243,11 @@ margin_top = -232.0
 margin_right = 262.0
 margin_bottom = 232.0
 
-[node name="Style" parent="Pivot/Back" index="0"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 0.0
-margin_bottom = 0.0
-
 [node name="BackgroundBox" parent="Pivot/Back/Style" index="0" instance=ExtResource( 2 )]
 modulate = Color( 0.811765, 0.921569, 0.807843, 1 )
 background_color = "SECONDARY"
 
 [node name="MarginContainer" parent="Pivot/Back" index="1"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 0.0
-margin_bottom = 0.0
 custom_constants/margin_right = 32
 custom_constants/margin_top = 56
 custom_constants/margin_left = 32
@@ -331,7 +320,6 @@ text = "<<Respuesta>>"
 
 [node name="BackTrigger" parent="Pivot/Back" index="2"]
 visible = false
-margin_bottom = 0.0
 
 [node name="Cover" type="MarginContainer" parent="Pivot/Back" index="3"]
 anchor_right = 1.0

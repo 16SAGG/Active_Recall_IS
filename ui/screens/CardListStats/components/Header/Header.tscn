@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/screens/CardListStats/components/Header/components/Indexer/Indexer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/screens/CardListStats/components/Header/Header.gd" type="Script" id=3]
+
+[node name="Header" type="Control"]
+margin_right = 692.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 0, 62 )
+size_flags_horizontal = 3
+script = ExtResource( 3 )
+
+[node name="Style" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Rectangle" parent="Style" instance=ExtResource( 1 )]
+background_color = "TRANSLUCENT"
+border_color = "PRIMARY"
+corner_radius = [ 4, 4, 2, 2 ]
+border_width = [ 3, 3, 3, 3 ]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
+
+[node name="Content" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 676.0
+margin_bottom = 48.0
+custom_constants/separation = 16
+
+[node name="Concept" parent="MarginContainer/Content" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 104.0
+margin_bottom = 32.0
+order_by = "CONCEPT"
+
+[node name="Control" type="Control" parent="MarginContainer/Content"]
+margin_left = 120.0
+margin_right = 300.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+
+[node name="Reviews" parent="MarginContainer/Content" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 316.0
+margin_right = 420.0
+margin_bottom = 32.0
+new_title = "Repasos"
+order_by = "REVIEW"
+
+[node name="Hits" parent="MarginContainer/Content" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 436.0
+margin_right = 540.0
+margin_bottom = 32.0
+new_title = "Aciertos"
+order_by = "HIT"
+
+[node name="Effectivity" parent="MarginContainer/Content" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 556.0
+margin_right = 660.0
+margin_bottom = 32.0
+new_title = "Efectividad"
+order_by = "EFFECTIVITY"

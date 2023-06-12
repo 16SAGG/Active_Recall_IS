@@ -87,5 +87,5 @@ margin_bottom = 56.0
 rect_min_size = Vector2( 0, 0 )
 
 [node name="CongratulationsMessage" parent="." index="2"]
-margin_right = 22059.0
-margin_bottom = 17280.0
+margin_right = 26144.0
+margin_bottom = 20480.0

@@ -25,7 +25,7 @@ margin_bottom = 64.0
 
 [node name="BackgroundBox" parent="Style" instance=ExtResource( 2 )]
 background_color = "TRANSLUCENT"
-border_color = "PRIMARY"
+border_color = "SECONDARY"
 border_width = [ 2, 2, 2, 2 ]
 
 [node name="Content" type="MarginContainer" parent="."]
@@ -50,5 +50,9 @@ custom_fonts/font = ExtResource( 1 )
 custom_styles/read_only = SubResource( 1 )
 custom_styles/focus = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
+max_length = 30
+secret_character = "#"
 placeholder_text = "Cambiar nombre"
 placeholder_alpha = 0.5
+
+[connection signal="text_changed" from="Content/Content" to="." method="_on_Content_text_changed"]

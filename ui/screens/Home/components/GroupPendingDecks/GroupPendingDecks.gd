@@ -14,6 +14,7 @@ func _ready() -> void:
 func start() -> void:
 	if content.rect_size.y >= MIN_CLIP_SIZE:
 		_PD_scroller_down.anim_player.play("SHOW")
+	_scroll.scroll_vertical = 0
 
 # warning-ignore:unused_argument
 func _process(delta) -> void:

@@ -18,6 +18,9 @@ func _ready() -> void:
 	_back_flip_button.connect("pressed", self, "_on_back_flip_button_pressed")
 
 func set_values(var _front : Dictionary, var _back : Dictionary, var _current_card_index : int, var _card_count : int) -> void:
+	_front_actual_card.visible = false
+	_front_flip_button.get_parent().visible = false
+	
 	_front_title.visible = false
 	_front_extra.visible = false
 	_front_image.visible = false
@@ -29,6 +32,8 @@ func set_values(var _front : Dictionary, var _back : Dictionary, var _current_ca
 	
 	_front_actual_card.text = str(_current_card_index + 1) + "/" + str(_card_count)
 	if _front:
+		_front_actual_card.visible = true
+		_front_flip_button.get_parent().visible = true
 		if _front["title"]:
 			_front_title.visible = true
 			_front_title.text = _front["title"]

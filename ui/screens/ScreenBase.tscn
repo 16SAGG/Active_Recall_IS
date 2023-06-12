@@ -50,5 +50,5 @@ align = 1
 valign = 1
 
 [node name="CongratulationsMessage" parent="." instance=ExtResource( 4 )]
-margin_right = 4085.0
-margin_bottom = 3200.0
+margin_right = 5719.0
+margin_bottom = 4480.0

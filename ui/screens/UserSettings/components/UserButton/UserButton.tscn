@@ -1,0 +1,161 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ui/components/ButtonBase/ButtonBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/stylized_shape/Triangle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H5_headline.tres" type="DynamicFont" id=4]
+[ext_resource path="res://ui/screens/UserSettings/components/UserButton/UserButton.gd" type="Script" id=5]
+
+[node name="UserButton" instance=ExtResource( 1 )]
+margin_right = -125.0
+margin_bottom = -578.0
+rect_min_size = Vector2( 756, 62 )
+script = ExtResource( 5 )
+flip_timer_active = false
+
+[node name="Pivot" parent="." index="0"]
+position = Vector2( 390, 31 )
+
+[node name="Front" parent="Pivot" index="0"]
+margin_left = -390.0
+margin_top = -31.0
+margin_right = 390.0
+margin_bottom = 31.0
+
+[node name="BackgroundBox" parent="Pivot/Front/Style" index="0" instance=ExtResource( 2 )]
+size_flags_horizontal = 3
+background_color = "TRANSLUCENT"
+border_color = "PRIMARY"
+corner_radius = [ 6, 6, 6, 6 ]
+border_width = [ 1, 1, 1, 1 ]
+
+[node name="Layout" type="HBoxContainer" parent="Pivot/Front/Style" index="1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 0
+
+[node name="TriangleContainer" type="Control" parent="Pivot/Front/Style/Layout" index="0"]
+margin_right = 84.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 84, 0 )
+
+[node name="Triangle" parent="Pivot/Front/Style/Layout/TriangleContainer" index="0" instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -13.0
+margin_top = -13.0
+margin_right = 13.0
+margin_bottom = 13.0
+points_multiplier = [ Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 0.5, 1 ) ]
+
+[node name="Space" type="Control" parent="Pivot/Front/Style/Layout" index="1"]
+margin_left = 84.0
+margin_right = 696.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+
+[node name="TriangleContainer2" type="Control" parent="Pivot/Front/Style/Layout" index="2"]
+margin_left = 696.0
+margin_right = 780.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 84, 0 )
+
+[node name="Triangle" parent="Pivot/Front/Style/Layout/TriangleContainer2" index="0" instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -13.0
+margin_top = -13.0
+margin_right = 13.0
+margin_bottom = 13.0
+points_multiplier = [ Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 0.5, 1 ) ]
+
+[node name="MarginContainer" parent="Pivot/Front" index="1"]
+custom_constants/margin_right = 84
+custom_constants/margin_left = 84
+
+[node name="Title" type="Label" parent="Pivot/Front/MarginContainer" index="0"]
+margin_left = 84.0
+margin_top = 16.0
+margin_right = 696.0
+margin_bottom = 46.0
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Usuario"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="Back" parent="Pivot" index="1"]
+margin_left = -390.0
+margin_top = -31.0
+margin_right = 390.0
+margin_bottom = 31.0
+
+[node name="BackgroundBox" parent="Pivot/Back/Style" index="0" instance=ExtResource( 2 )]
+size_flags_horizontal = 3
+corner_radius = [ 6, 6, 6, 6 ]
+
+[node name="Layout" type="HBoxContainer" parent="Pivot/Back/Style" index="1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 0
+
+[node name="TriangleContainer" type="Control" parent="Pivot/Back/Style/Layout" index="0"]
+margin_right = 84.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 84, 0 )
+
+[node name="Triangle" parent="Pivot/Back/Style/Layout/TriangleContainer" index="0" instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -13.0
+margin_top = -13.0
+margin_right = 13.0
+margin_bottom = 13.0
+background_color = "DARK"
+points_multiplier = [ Vector2( 0, 1 ), Vector2( 1, 1 ), Vector2( 0.5, 0 ) ]
+
+[node name="Space" type="Control" parent="Pivot/Back/Style/Layout" index="1"]
+margin_left = 84.0
+margin_right = 696.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+
+[node name="TriangleContainer2" type="Control" parent="Pivot/Back/Style/Layout" index="2"]
+margin_left = 696.0
+margin_right = 780.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 84, 0 )
+
+[node name="Triangle" parent="Pivot/Back/Style/Layout/TriangleContainer2" index="0" instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -13.0
+margin_top = -13.0
+margin_right = 13.0
+margin_bottom = 13.0
+background_color = "DARK"
+points_multiplier = [ Vector2( 0, 1 ), Vector2( 1, 1 ), Vector2( 0.5, 0 ) ]
+
+[node name="MarginContainer" parent="Pivot/Back" index="1"]
+custom_constants/margin_right = 84
+custom_constants/margin_left = 84
+
+[node name="Title" type="Label" parent="Pivot/Back/MarginContainer" index="0"]
+margin_left = 84.0
+margin_top = 16.0
+margin_right = 696.0
+margin_bottom = 46.0
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Cerrar sesión"
+align = 1
+valign = 1

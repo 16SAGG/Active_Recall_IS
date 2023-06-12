@@ -41,13 +41,13 @@ custom_constants/separation = 0
 
 [node name="DaysStreak" type="HBoxContainer" parent="Pivot/Front/MarginContainer/Content" index="0"]
 margin_right = 440.0
-margin_bottom = 54.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 0, 54 )
 custom_constants/separation = 0
 
 [node name="DaysCount" type="Label" parent="Pivot/Front/MarginContainer/Content/DaysStreak" index="0"]
-margin_right = 61.0
-margin_bottom = 54.0
+margin_right = 90.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 28, 54 )
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 1 )
@@ -55,19 +55,19 @@ text = "100 "
 valign = 1
 
 [node name="Title" type="Label" parent="Pivot/Front/MarginContainer/Content/DaysStreak" index="1"]
-margin_left = 61.0
-margin_right = 361.0
-margin_bottom = 54.0
+margin_left = 90.0
+margin_right = 405.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 300, 54 )
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 1 )
-text = "Dias en racha"
+text = "Días en racha"
 valign = 1
 
 [node name="Message" type="Label" parent="Pivot/Front/MarginContainer/Content" index="1"]
-margin_top = 54.0
+margin_top = 60.0
 margin_right = 440.0
-margin_bottom = 79.0
+margin_bottom = 85.0
 rect_min_size = Vector2( 0, 25 )
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 2 )
@@ -75,54 +75,49 @@ text = " Buen trabajo!"
 valign = 1
 
 [node name="Space" type="Control" parent="Pivot/Front/MarginContainer/Content" index="2"]
-margin_top = 79.0
+margin_top = 85.0
 margin_right = 440.0
-margin_bottom = 156.0
+margin_bottom = 162.0
 rect_min_size = Vector2( 0, 77 )
 
 [node name="Weekdays" type="HBoxContainer" parent="Pivot/Front/MarginContainer/Content" index="3"]
-margin_top = 156.0
+margin_top = 162.0
 margin_right = 440.0
-margin_bottom = 224.0
+margin_bottom = 230.0
 rect_min_size = Vector2( 0, 68 )
 custom_constants/separation = 20
 alignment = 1
 
-[node name="Monday" parent="Pivot/Front/MarginContainer/Content/Weekdays" index="0" instance=ExtResource( 3 )]
+[node name="Sunday" parent="Pivot/Front/MarginContainer/Content/Weekdays" index="0" instance=ExtResource( 3 )]
 margin_left = 20.0
 margin_right = 60.0
-status = "UNCOMPLETE"
+char_day = "D"
 
-[node name="Tuesday" parent="Pivot/Front/MarginContainer/Content/Weekdays" index="1" instance=ExtResource( 3 )]
+[node name="Monday" parent="Pivot/Front/MarginContainer/Content/Weekdays" index="1" instance=ExtResource( 3 )]
 margin_left = 80.0
 margin_right = 120.0
-status = "COMPLETED"
-char_day = "M"
 
-[node name="Wednesday" parent="Pivot/Front/MarginContainer/Content/Weekdays" index="2" instance=ExtResource( 3 )]
+[node name="Tuesday" parent="Pivot/Front/MarginContainer/Content/Weekdays" index="2" instance=ExtResource( 3 )]
 margin_left = 140.0
 margin_right = 180.0
-status = "COMPLETED"
 char_day = "M"
 
-[node name="Thursday" parent="Pivot/Front/MarginContainer/Content/Weekdays" index="3" instance=ExtResource( 3 )]
+[node name="Wednesday" parent="Pivot/Front/MarginContainer/Content/Weekdays" index="3" instance=ExtResource( 3 )]
 margin_left = 200.0
 margin_right = 240.0
-status = "COMPLETED"
-char_day = "J"
+char_day = "M"
 
-[node name="Friday" parent="Pivot/Front/MarginContainer/Content/Weekdays" index="4" instance=ExtResource( 3 )]
+[node name="Thursday" parent="Pivot/Front/MarginContainer/Content/Weekdays" index="4" instance=ExtResource( 3 )]
 margin_left = 260.0
 margin_right = 300.0
-status = "UNCOMPLETE"
-char_day = "V"
+char_day = "J"
 
-[node name="Saturday" parent="Pivot/Front/MarginContainer/Content/Weekdays" index="5" instance=ExtResource( 3 )]
+[node name="Friday" parent="Pivot/Front/MarginContainer/Content/Weekdays" index="5" instance=ExtResource( 3 )]
 margin_left = 320.0
 margin_right = 360.0
-char_day = "S"
+char_day = "V"
 
-[node name="Sunday" parent="Pivot/Front/MarginContainer/Content/Weekdays" index="6" instance=ExtResource( 3 )]
+[node name="Saturday" parent="Pivot/Front/MarginContainer/Content/Weekdays" index="6" instance=ExtResource( 3 )]
 margin_left = 380.0
 margin_right = 420.0
-char_day = "D"
+char_day = "S"

@@ -20,6 +20,9 @@ func _ready() -> void:
 	_error_label.text = "Vacío"
 	_ok_button._disable_button(true)
 
+func start() -> void:
+	_new_title.text = ""
+
 func _setget_showed(var _showed : bool) -> void:
 	showed = _showed
 	if _mouse_detector:

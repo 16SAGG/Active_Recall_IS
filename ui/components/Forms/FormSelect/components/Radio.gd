@@ -1,10 +1,9 @@
 extends "res://ui/components/ButtonBase/ButtonBase.gd"
 
-
-export var _new_value : bool = true
+export var new_status : bool = true setget _setget_new_status
 
 func _ready():
-	if _new_value:
+	if new_status:
 		_front.visible = true
 		_back.visible = false
 	else:
@@ -12,3 +11,15 @@ func _ready():
 		_back.visible = true
 	
 	fit_size(Vector2(144, 64))
+
+func _setget_new_status(var _new_status : bool) -> void:
+	if _new_status:
+		if _front:
+			_front.visible = true
+		if _back:
+			_back.visible = false
+	else:
+		if _front:
+			_front.visible = false
+		if _back:
+			_back.visible = true

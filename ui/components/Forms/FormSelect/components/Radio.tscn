@@ -10,7 +10,8 @@ margin_right = -761.0
 margin_bottom = -576.0
 rect_min_size = Vector2( 144, 64 )
 script = ExtResource( 4 )
-_new_value = true
+flip_timer_active = false
+new_status = true
 
 [node name="BackgroundBox" parent="Pivot/Front/Style" index="0" instance=ExtResource( 2 )]
 

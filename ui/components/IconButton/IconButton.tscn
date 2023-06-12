@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/BaseSubtitle.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/components/IconButton/IconButton.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[node name="IconButton" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -853.0
+margin_bottom = -584.0
+rect_min_size = Vector2( 52, 56 )
+script = ExtResource( 3 )
+
+[node name="Style" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BackgroundBox" parent="Style" instance=ExtResource( 1 )]
+modulate = Color( 0.811765, 0.921569, 0.807843, 1 )
+background_color = "TRANSLUCENT"
+border_color = "SECONDARY"
+border_width = [ 2, 2, 2, 2 ]
+
+[node name="Symbol" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = ">"
+align = 1
+valign = 1
+
+[node name="Trigger" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+
+[connection signal="button_down" from="Trigger" to="." method="_on_Trigger_button_down"]

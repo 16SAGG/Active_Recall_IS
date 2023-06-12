@@ -7,8 +7,8 @@ const TEST_COLOR = {
 	'GRAY': "D9D9D9",
 }
 
-export (String, 'PRIMARY', 'SECONDARY', 'TERTIARY', 'DARK', 'DANGER', 'TRANSLUCENT', 'SHADOW') var background_color = 'PRIMARY'
-export (String, 'PRIMARY', 'SECONDARY', 'TERTIARY', 'DARK', 'DANGER', 'TRANSLUCENT', 'SHADOW') var border_color = 'TRANSLUCENT'
+export (String, 'PRIMARY', 'SECONDARY', 'TERTIARY', 'DARK', 'DANGER', 'TRANSLUCENT', 'SHADOW', 'GRAPH_ITEM_1', 'GRAPH_ITEM_2', 'GRAPH_ITEM_3') var background_color = 'PRIMARY'
+export (String, 'PRIMARY', 'SECONDARY', 'TERTIARY', 'DARK', 'DANGER', 'TRANSLUCENT', 'SHADOW', 'GRAPH_ITEM_1', 'GRAPH_ITEM_2', 'GRAPH_ITEM_3') var border_color = 'TRANSLUCENT'
 export (int, 40, 400, 40) var corner_radius = 120
 export (int, 0, 48, 1) var corner_detail = 12
 export (bool) var anti_aliasing = true

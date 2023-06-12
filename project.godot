@@ -45,6 +45,7 @@ window/stretch/aspect="keep_height"
 input=false
 touch=false
 "v sync"=false
+vsinc=false
 
 [gui]
 

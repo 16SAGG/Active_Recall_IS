@@ -13,6 +13,7 @@ script = ExtResource( 3 )
 has_back = false
 _new_title = "Title"
 _new_size = Vector2( 178, 56 )
+activate_basic_border = false
 
 [node name="BackgroundBox" parent="Pivot/Front/Style" index="0" instance=ExtResource( 2 )]
 

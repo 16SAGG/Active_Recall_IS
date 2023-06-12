@@ -38,7 +38,7 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="Circle" parent="Content/Style/Completed" instance=ExtResource( 3 )]
-background_color = "TERTIARY"
+background_color = "GRAPH_ITEM_2"
 corner_radius = 40
 corner_detail = 6
 
@@ -77,7 +77,7 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="Circle" parent="Content/Style/Uncomplete" instance=ExtResource( 3 )]
-background_color = "DANGER"
+background_color = "GRAPH_ITEM_3"
 corner_radius = 40
 corner_detail = 6
 

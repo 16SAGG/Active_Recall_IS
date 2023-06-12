@@ -8,6 +8,7 @@ signal go_to_deck_screen_requested(deck)
 # warning-ignore:unused_signal
 signal go_to_practice_screen_requested(deck)
 
+onready var _calendary = $MarginContainer/ScrollContainer/Content/Calendary as Control
 onready var _deck_columns = $MarginContainer/ScrollContainer/Content/Columns as HBoxContainer
 onready var _search_bar = $FloatingColumn/SearchBar as Control
 onready var _group_PD = $FloatingColumn/GroupPendingDecks as Control
@@ -18,11 +19,10 @@ var _next_column_id : int = 0
 
 func _ready() -> void:
 	_search_bar.connect("search", self, "_on_search")
-	
-	start()
 
 func start() -> void:
 	USERDATA.set_basic_data()
+	_calendary.start()
 	_group_PD.start()
 	_deck_array = _load_data()
 	_remove_all_decks()

@@ -1,0 +1,144 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/screens/CardStats/components/Graph/components/PieChart/PieChart.tscn" type="PackedScene" id=2]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/body_1.tres" type="DynamicFont" id=3]
+[ext_resource path="res://ui/screens/CardStats/components/Graph/Graph.gd" type="Script" id=4]
+
+[node name="Graph" type="MarginContainer"]
+margin_top = 298.0
+margin_right = 756.0
+margin_bottom = 568.0
+rect_min_size = Vector2( 0, 270 )
+custom_constants/margin_right = 90
+custom_constants/margin_left = 90
+script = ExtResource( 4 )
+
+[node name="Style" type="Control" parent="."]
+margin_left = 90.0
+margin_right = 666.0
+margin_bottom = 270.0
+
+[node name="BackgroundBox" parent="Style" instance=ExtResource( 1 )]
+background_color = "TRANSLUCENT"
+border_color = "PRIMARY"
+border_width = [ 1, 1, 1, 1 ]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 90.0
+margin_right = 666.0
+margin_bottom = 270.0
+custom_constants/margin_right = 24
+custom_constants/margin_top = 24
+custom_constants/margin_left = 24
+custom_constants/margin_bottom = 24
+
+[node name="Layout" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 552.0
+margin_bottom = 246.0
+custom_constants/separation = 24
+
+[node name="PieChart" parent="MarginContainer/Layout" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 222.0
+margin_bottom = 222.0
+rect_min_size = Vector2( 222, 0 )
+
+[node name="ItemIndex" type="MarginContainer" parent="MarginContainer/Layout"]
+margin_left = 246.0
+margin_right = 528.0
+margin_bottom = 222.0
+size_flags_horizontal = 3
+custom_constants/margin_top = 26
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 26
+
+[node name="Layout" type="VBoxContainer" parent="MarginContainer/Layout/ItemIndex"]
+margin_left = 16.0
+margin_top = 26.0
+margin_right = 282.0
+margin_bottom = 196.0
+custom_constants/separation = 24
+
+[node name="CompletedCards" type="HBoxContainer" parent="MarginContainer/Layout/ItemIndex/Layout"]
+margin_right = 266.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+custom_constants/separation = 16
+
+[node name="Rectangle" parent="MarginContainer/Layout/ItemIndex/Layout/CompletedCards" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 0 )
+background_color = "GRAPH_ITEM_1"
+
+[node name="Label" type="Label" parent="MarginContainer/Layout/ItemIndex/Layout/CompletedCards"]
+margin_left = 56.0
+margin_top = 8.0
+margin_right = 266.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Conceptos completados"
+valign = 1
+clip_text = true
+
+[node name="InProccessCards" type="HBoxContainer" parent="MarginContainer/Layout/ItemIndex/Layout"]
+margin_top = 64.0
+margin_right = 266.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 0, 40 )
+custom_constants/separation = 16
+
+[node name="Rectangle" parent="MarginContainer/Layout/ItemIndex/Layout/InProccessCards" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 0 )
+background_color = "GRAPH_ITEM_2"
+
+[node name="Label" type="Label" parent="MarginContainer/Layout/ItemIndex/Layout/InProccessCards"]
+margin_left = 56.0
+margin_top = 8.0
+margin_right = 266.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Conceptos en proceso"
+valign = 1
+clip_text = true
+
+[node name="NewCards" type="HBoxContainer" parent="MarginContainer/Layout/ItemIndex/Layout"]
+margin_top = 128.0
+margin_right = 266.0
+margin_bottom = 168.0
+rect_min_size = Vector2( 0, 40 )
+custom_constants/separation = 16
+
+[node name="Rectangle" parent="MarginContainer/Layout/ItemIndex/Layout/NewCards" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 0 )
+background_color = "GRAPH_ITEM_3"
+
+[node name="Label" type="Label" parent="MarginContainer/Layout/ItemIndex/Layout/NewCards"]
+margin_left = 56.0
+margin_top = 8.0
+margin_right = 266.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Nuevos Conceptos"
+valign = 1
+clip_text = true

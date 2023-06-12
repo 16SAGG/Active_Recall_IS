@@ -51,7 +51,6 @@ margin_bottom = 17.0
 rect_min_size = Vector2( 0, 12 )
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "3/3"
 
 [node name="Title" type="Label" parent="Pivot/Front/MarginContainer/Content" index="1"]
 margin_top = 29.0
@@ -92,19 +91,9 @@ margin_top = -152.0
 margin_right = 157.0
 margin_bottom = 153.0
 
-[node name="Style" parent="Pivot/Back" index="0"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 0.0
-margin_bottom = 0.0
-
 [node name="BackgroundBox" parent="Pivot/Back/Style" index="0" instance=ExtResource( 3 )]
 
 [node name="MarginContainer" parent="Pivot/Back" index="1"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 0.0
-margin_bottom = 0.0
 custom_constants/margin_right = 16
 custom_constants/margin_top = 32
 custom_constants/margin_left = 16

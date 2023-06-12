@@ -8,6 +8,8 @@ const DICT_POSITION = {
 	'FLASH_CARD': Vector2(16,344),
 	'TEST': Vector2(16,344),
 	'STATS': Vector2(16,408),
+	'DECK_STATS' : Vector2(16,408),
+	'CARD_LIST_STATS' : Vector2(16,408),
 	'DECK_SETTINGS': Vector2(16,472),
 	'USER_SETTINGS': Vector2(16,472),
 	

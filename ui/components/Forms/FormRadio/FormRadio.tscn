@@ -34,3 +34,6 @@ anchor_bottom = 0.0
 margin_left = 420.0
 margin_right = 564.0
 margin_bottom = 64.0
+
+[connection signal="back_flip" from="Layout/Radio" to="." method="_on_Radio_back_flip"]
+[connection signal="front_flip" from="Layout/Radio" to="." method="_on_Radio_front_flip"]

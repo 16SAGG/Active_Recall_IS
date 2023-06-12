@@ -1,0 +1,148 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/screens/ScreenBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H4_headline.tres" type="DynamicFont" id=3]
+[ext_resource path="res://ui/components/Forms/FormTextInput/FormTextInput.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/components/Forms/FormHeader/FormHeader.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/screens/LogIn/LogIn.gd" type="Script" id=6]
+[ext_resource path="res://ui/components/TextButton/TextButton.tscn" type="PackedScene" id=7]
+
+[node name="LogIn" instance=ExtResource( 2 )]
+margin_right = 0.0
+margin_bottom = 0.0
+script = ExtResource( 6 )
+
+[node name="Style" type="Control" parent="." index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BackgroundBox" parent="Style" index="0" instance=ExtResource( 1 )]
+corner_radius = [ 0, 0, 0, 0 ]
+
+[node name="MarginContainer" parent="." index="1"]
+custom_constants/margin_right = 37
+custom_constants/margin_top = 37
+custom_constants/margin_left = 112
+
+[node name="Style" type="Control" parent="MarginContainer" index="0"]
+margin_left = 112.0
+margin_top = 37.0
+margin_right = 868.0
+margin_bottom = 640.0
+
+[node name="BackgroundBox" parent="MarginContainer/Style" index="0" instance=ExtResource( 1 )]
+background_color = "SECONDARY"
+corner_radius = [ 2, 2, 0, 0 ]
+
+[node name="Content" type="MarginContainer" parent="MarginContainer" index="1"]
+margin_left = 112.0
+margin_top = 37.0
+margin_right = 868.0
+margin_bottom = 640.0
+custom_constants/margin_right = 52
+custom_constants/margin_top = 32
+custom_constants/margin_left = 52
+
+[node name="Layout" type="VBoxContainer" parent="MarginContainer/Content" index="0"]
+margin_left = 52.0
+margin_top = 32.0
+margin_right = 704.0
+margin_bottom = 603.0
+custom_constants/separation = 16
+
+[node name="Title" type="Label" parent="MarginContainer/Content/Layout" index="0"]
+margin_right = 652.0
+margin_bottom = 40.0
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Iniciar Sesión"
+align = 1
+valign = 1
+
+[node name="Space" type="Control" parent="MarginContainer/Content/Layout" index="1"]
+margin_top = 56.0
+margin_right = 652.0
+margin_bottom = 56.0
+
+[node name="EmailInput" parent="MarginContainer/Content/Layout" index="2" instance=ExtResource( 4 )]
+margin_top = 72.0
+margin_right = 652.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 652, 64 )
+custom_constants/margin_top = 0
+custom_constants/margin_bottom = 0
+new_placeholder = "Correo"
+
+[node name="PasswordInput" parent="MarginContainer/Content/Layout" index="3" instance=ExtResource( 4 )]
+margin_top = 152.0
+margin_right = 652.0
+margin_bottom = 216.0
+rect_min_size = Vector2( 652, 64 )
+custom_constants/margin_top = 0
+custom_constants/margin_bottom = 0
+new_placeholder = "Contraseña"
+password_mode = true
+
+[node name="FormHeader" parent="MarginContainer/Content/Layout" index="4" instance=ExtResource( 5 )]
+margin_top = 232.0
+margin_right = 652.0
+margin_bottom = 296.0
+rect_min_size = Vector2( 652, 64 )
+custom_constants/margin_right = 116
+custom_constants/margin_left = 96
+new_title = ""
+
+[node name="CreateUserButton" type="MarginContainer" parent="MarginContainer/Content/Layout" index="5"]
+margin_top = 312.0
+margin_right = 652.0
+margin_bottom = 368.0
+custom_constants/margin_right = 96
+custom_constants/margin_left = 96
+
+[node name="CreateUserButton" parent="MarginContainer/Content/Layout/CreateUserButton" index="0" instance=ExtResource( 7 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 96.0
+margin_right = 556.0
+margin_bottom = 56.0
+size_flags_horizontal = 3
+_new_title = "+ Crear usuario"
+_new_size = Vector2( 460, 56 )
+activate_basic_border = true
+
+[node name="Space2" type="Control" parent="MarginContainer/Content/Layout" index="6"]
+margin_top = 384.0
+margin_right = 652.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 0, 16 )
+
+[node name="EnterButton" type="MarginContainer" parent="MarginContainer/Content/Layout" index="7"]
+margin_top = 416.0
+margin_right = 652.0
+margin_bottom = 472.0
+custom_constants/margin_right = 96
+custom_constants/margin_left = 96
+
+[node name="EnterButton" parent="MarginContainer/Content/Layout/EnterButton" index="0" instance=ExtResource( 7 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 96.0
+margin_right = 556.0
+margin_bottom = 56.0
+size_flags_horizontal = 3
+_new_title = "Entrar"
+_new_size = Vector2( 460, 56 )
+
+[node name="ChangeDeck" parent="ErrorMessage" index="0"]
+margin_right = 892.0
+
+[node name="Message" parent="ErrorMessage" index="1"]
+margin_right = 892.0
+
+[node name="CongratulationsMessage" parent="." index="3"]
+margin_right = 15674.0
+margin_bottom = 11520.0
+
+[connection signal="normal_flip" from="MarginContainer/Content/Layout/CreateUserButton/CreateUserButton" to="." method="_on_CreateUserButton_normal_flip"]
+[connection signal="normal_flip" from="MarginContainer/Content/Layout/EnterButton/EnterButton" to="." method="_on_EnterButton_normal_flip"]

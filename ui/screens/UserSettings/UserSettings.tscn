@@ -1,0 +1,118 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://ui/screens/ScreenBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/screens/UserSettings/components/UserButton/UserButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/components/Forms/FormTextInput/FormTextInput.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/screens/DeckSettings/components/Footer/Footer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/components/Forms/DangerousButton/DangerousButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/components/Forms/FormHeader/FormHeader.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/screens/UserSettings/UserSettings.gd" type="Script" id=7]
+
+[node name="UserSettings" instance=ExtResource( 1 )]
+script = ExtResource( 7 )
+
+[node name="Layout" type="VBoxContainer" parent="MarginContainer" index="0"]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 804.0
+margin_bottom = 640.0
+custom_constants/separation = 0
+
+[node name="UserButton" parent="MarginContainer/Layout" index="0" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 780.0
+margin_bottom = 62.0
+
+[node name="Space" type="Control" parent="MarginContainer/Layout" index="1"]
+margin_top = 62.0
+margin_right = 780.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Layout" index="2"]
+margin_top = 86.0
+margin_right = 780.0
+margin_bottom = 496.0
+rect_min_size = Vector2( 0, 410 )
+
+[node name="Content" type="VBoxContainer" parent="MarginContainer/Layout/ScrollContainer" index="0"]
+margin_right = 756.0
+margin_bottom = 584.0
+custom_constants/separation = 16
+
+[node name="GeneralHeader" parent="MarginContainer/Layout/ScrollContainer/Content" index="0" instance=ExtResource( 6 )]
+margin_right = 756.0
+margin_bottom = 64.0
+new_title = "General"
+
+[node name="NewNameInput" parent="MarginContainer/Layout/ScrollContainer/Content" index="1" instance=ExtResource( 3 )]
+margin_top = 80.0
+margin_right = 756.0
+margin_bottom = 144.0
+new_placeholder = "Cambiar nombre"
+
+[node name="NewLastNameInput" parent="MarginContainer/Layout/ScrollContainer/Content" index="2" instance=ExtResource( 3 )]
+margin_top = 160.0
+margin_right = 756.0
+margin_bottom = 224.0
+new_placeholder = "Cambiar apellido"
+
+[node name="NewEmail" parent="MarginContainer/Layout/ScrollContainer/Content" index="3" instance=ExtResource( 3 )]
+margin_top = 240.0
+margin_right = 756.0
+margin_bottom = 304.0
+new_placeholder = "Cambiar correo electrónico"
+
+[node name="NewPassword" parent="MarginContainer/Layout/ScrollContainer/Content" index="4" instance=ExtResource( 3 )]
+margin_top = 320.0
+margin_right = 756.0
+margin_bottom = 384.0
+new_placeholder = "Nueva contraseña (8 a 12 caract. Letras, números y símbolos)"
+password_mode = true
+
+[node name="LineHeader" parent="MarginContainer/Layout/ScrollContainer/Content" index="5" instance=ExtResource( 6 )]
+margin_top = 400.0
+margin_right = 756.0
+margin_bottom = 464.0
+new_title = ""
+
+[node name="DeleteButton" type="MarginContainer" parent="MarginContainer/Layout/ScrollContainer/Content" index="6"]
+margin_top = 480.0
+margin_right = 756.0
+margin_bottom = 544.0
+custom_constants/margin_right = 96
+custom_constants/margin_left = 96
+
+[node name="DeleteButton" parent="MarginContainer/Layout/ScrollContainer/Content/DeleteButton" index="0" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 96.0
+margin_right = 660.0
+margin_bottom = 64.0
+has_back = true
+flip_timer_active = false
+_new_front_title = "Eliminar usuario"
+_new_back_title = "¿Estás seguro que deseas eliminar este usuario?"
+
+[node name="Space" type="Control" parent="MarginContainer/Layout/ScrollContainer/Content" index="7"]
+margin_top = 560.0
+margin_right = 756.0
+margin_bottom = 584.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="Footer" parent="MarginContainer/Layout" index="3" instance=ExtResource( 4 )]
+margin_top = 496.0
+margin_right = 780.0
+margin_bottom = 616.0
+_left_direction = "deck_settings"
+_right_direction = "deck_settings"
+
+[node name="CongratulationsMessage" parent="." index="2"]
+margin_right = 32680.0
+margin_bottom = 25600.0
+
+[connection signal="front_flip" from="MarginContainer/Layout/UserButton" to="." method="_on_UserButton_front_flip"]
+[connection signal="front_flip" from="MarginContainer/Layout/ScrollContainer/Content/DeleteButton/DeleteButton" to="." method="_on_DeleteButton_front_flip"]
+[connection signal="edit_deck" from="MarginContainer/Layout/Footer" to="." method="_on_Footer_edit_deck"]
+[connection signal="go_to_deck_settings" from="MarginContainer/Layout/Footer" to="." method="_on_Footer_go_to_deck_settings"]

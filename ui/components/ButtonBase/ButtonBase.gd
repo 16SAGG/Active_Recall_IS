@@ -33,7 +33,6 @@ func fit_size(var _new_size : Vector2) -> void:
 	
 	_back.rect_position = self.rect_size/-2
 	_back.rect_size = self.rect_size
-	print(rect_size)
 
 func disabled(var _value : bool) -> void:
 	_front_trigger.disabled = _value

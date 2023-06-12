@@ -67,5 +67,5 @@ margin_bottom = 62.0
 [node name="GroupPendingDecks" parent="FloatingColumn" index="1" instance=ExtResource( 3 )]
 
 [node name="CongratulationsMessage" parent="." index="3"]
-margin_right = 13889.0
-margin_bottom = 10880.0
+margin_right = 28595.0
+margin_bottom = 22400.0
