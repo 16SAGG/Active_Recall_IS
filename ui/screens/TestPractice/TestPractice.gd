@@ -44,7 +44,7 @@ func _generate_fake_answer(var _pot : Array) -> String:
 		_pot.shuffle()
 		_fake_answer = _pot.pop_front()
 	
-	var _fake_answer_str = _fake_answer["answer"]["title"]
+	var _fake_answer_str : String = _fake_answer["answer"]["title"]
 	
 	return _fake_answer_str
 

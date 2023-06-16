@@ -28,10 +28,12 @@ func _update_values() -> void:
 	var _DIR_record_amount : float = 0.0
 	
 	if USERDATA.current_deck_data:
+		var _deck_id : String = str(USERDATA.current_deck_data["deck_id"])
+		
 		for _c in USERDATA.current_deck_data["cards"]:
 			_total_reviews_count += _c["hits"] + _c["fails"]
 		
-		var _dh_q : String = "SELECT date FROM Deck_History WHERE deck_id = " + str(USERDATA.current_deck_data["deck_id"])
+		var _dh_q : String = "SELECT date FROM Deck_History WHERE deck_id = " + _deck_id
 		_total_days_count = USERDATA.get_by_query(_dh_q).size()
 		
 		if _total_days_count > 0:

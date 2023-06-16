@@ -105,13 +105,11 @@ func _submit_answer(var _card : Dictionary, var _result : String) -> Dictionary:
 				_updated_card = _daily_answer(_card, _result)
 	
 	var _commit_card : Dictionary = _updated_card.duplicate()
-# warning-ignore:return_value_discarded
+	
 	if _commit_card.has("result"):
 		_commit_card.erase("result")
-# warning-ignore:return_value_discarded
 	if _commit_card.has("answer"):
 		_commit_card.erase("answer")
-# warning-ignore:return_value_discarded
 	if _commit_card.has("question"):
 		_commit_card.erase("question")
 	emit_signal("edit_card", Dictionary(), Dictionary(), _commit_card, true, false)

@@ -23,7 +23,7 @@ func _restart() -> void:
 		_w.set_day_status('NEXT')
 
 func _set_days_in_row() -> void:
-	var _current_row : int = 0
+	var _current_row : int = 0 
 	var _last_history : int = CARDCULATIONS.today_date
 	
 	for _h in _user_history:
