@@ -2,6 +2,7 @@ extends "res://ui/components/ButtonBase/ButtonBase.gd"
 
 const H2_HEADLINE = preload("res://miscellaneous/fonts/dynamic_fonts/H2_headline.tres")
 const H4_HEADLINE = preload("res://miscellaneous/fonts/dynamic_fonts/H4_headline.tres")
+const H5_HEADLINE = preload("res://miscellaneous/fonts/dynamic_fonts/H5_headline.tres")
 
 signal first_flip
 
@@ -54,8 +55,9 @@ func _set_values(var _front : Dictionary, var _back : Dictionary, var _cover : D
 		if _front["title"]:
 			_front_title.visible = true
 			_front_title.text = _front["title"]
-		#if _front["image"]:
-		#	_front_image.visible = true
+		if _front["img_dir"]:
+			_front_image.visible = true
+			_front_image.change_image(_front["img_dir"])
 		
 		_text_supervisor(_front["title"], "FRONT")
 	
@@ -68,10 +70,10 @@ func _set_values(var _front : Dictionary, var _back : Dictionary, var _cover : D
 			_back_extra.visible = true
 			_back_desc.visible = true
 			_back_desc.text = _back["description"]
-		#if _back["image"]:
-		#	_back_extra.visible = true
-		#	_back_image.visible = true
-		#	_cover_image.visible = true
+		if _back["img_dir"]:
+			_back_extra.visible = true
+			_back_image.visible = true
+			_back_image.change_image(_back["img_dir"])
 		
 		_text_supervisor(_back["title"], "BACK")
 	
@@ -79,8 +81,9 @@ func _set_values(var _front : Dictionary, var _back : Dictionary, var _cover : D
 		if _cover["title"]:
 			_cover_title.visible = true
 			_cover_title.text = _cover["title"]
-		#if _cover["image"]:
-		#	_cover_image.visible = true
+		if _cover["img_dir"]:
+			_cover_image.visible = true
+			_cover_image.change_image(_cover["img_dir"])
 		
 		_text_supervisor(_cover["title"], "COVER")
 
@@ -88,7 +91,10 @@ func _text_supervisor(var _text : String, var _side : String) -> void:
 	match _side:
 		"FRONT":
 			if _front_image.visible: 
-				_front_title.add_font_override("font", H4_HEADLINE)
+				if _text.length() < 12:
+					_front_title.add_font_override("font", H4_HEADLINE)
+				else:
+					_front_title.add_font_override("font", H5_HEADLINE)
 			else:
 				if _text.length() < 12:
 					_front_title.add_font_override("font", H2_HEADLINE)
@@ -96,7 +102,10 @@ func _text_supervisor(var _text : String, var _side : String) -> void:
 					_front_title.add_font_override("font", H4_HEADLINE)
 		"COVER":
 			if _cover_image.visible: 
-				_cover_title.add_font_override("font", H4_HEADLINE)
+				if _text.length() < 12:
+					_cover_title.add_font_override("font", H4_HEADLINE)
+				else:
+					_cover_title.add_font_override("font", H5_HEADLINE)
 			else:
 				if _text.length() < 12:
 					_cover_title.add_font_override("font", H2_HEADLINE)
@@ -104,7 +113,10 @@ func _text_supervisor(var _text : String, var _side : String) -> void:
 					_cover_title.add_font_override("font", H4_HEADLINE)
 		"BACK":
 			if _back_extra.visible:
-				_back_title.add_font_override("font", H4_HEADLINE)
+				if _text.length() < 12:
+					_back_title.add_font_override("font", H4_HEADLINE)
+				else:
+					_back_title.add_font_override("font", H5_HEADLINE)
 			else:
 				if _text.length() < 12:
 					_back_title.add_font_override("font", H2_HEADLINE)

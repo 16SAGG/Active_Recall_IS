@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H4_headline.tres" type="DynamicFont" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://miscellaneous/fonts/dynamic_fonts/Button.tres" type="DynamicFont" id=5]
 [ext_resource path="res://ui/screens/TestPractice/components/QuestionVisor/components/BasePreview.tscn" type="PackedScene" id=6]
 [ext_resource path="res://miscellaneous/fonts/dynamic_fonts/body_1.tres" type="DynamicFont" id=7]
+[ext_resource path="res://ui/components/Image/Image.tscn" type="PackedScene" id=8]
 
 [sub_resource type="StyleBoxEmpty" id=6]
 
@@ -165,11 +166,25 @@ text = "Bird"
 align = 1
 autowrap = true
 
-[node name="Description" type="TextEdit" parent="Pivot/MarginContainer/Layout/QuestionLayout"]
+[node name="ExtraContent" type="VBoxContainer" parent="Pivot/MarginContainer/Layout/QuestionLayout"]
 margin_left = 288.0
 margin_right = 724.0
 margin_bottom = 208.0
+size_flags_horizontal = 3
+custom_constants/separation = 16
+
+[node name="Image" parent="Pivot/MarginContainer/Layout/QuestionLayout/ExtraContent" instance=ExtResource( 8 )]
+margin_left = 0.0
+margin_right = 436.0
+margin_bottom = 96.0
+size_flags_horizontal = 1
+
+[node name="Description" type="TextEdit" parent="Pivot/MarginContainer/Layout/QuestionLayout/ExtraContent"]
+margin_top = 112.0
+margin_right = 436.0
+margin_bottom = 208.0
 rect_min_size = Vector2( 436, 0 )
+size_flags_vertical = 3
 custom_colors/member_variable_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_colors/code_folding_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_colors/function_color = Color( 0.172549, 0.172549, 0.172549, 1 )

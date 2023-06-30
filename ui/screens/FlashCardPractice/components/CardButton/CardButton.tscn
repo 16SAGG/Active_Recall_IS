@@ -214,9 +214,9 @@ autowrap = true
 
 [node name="Image" parent="Pivot/Front/MarginContainer/Layout/Content" index="1" instance=ExtResource( 3 )]
 visible = false
-margin_left = 234.0
+margin_left = 236.0
 margin_right = 460.0
-margin_bottom = 408.0
+margin_bottom = 348.0
 
 [node name="FlipButton" type="Button" parent="Pivot/Front/MarginContainer/Layout" index="1"]
 modulate = Color( 0.172549, 0.172549, 0.172549, 0.498039 )

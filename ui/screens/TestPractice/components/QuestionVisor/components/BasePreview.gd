@@ -1,7 +1,7 @@
 extends MarginContainer
 
 const H2_HEADLINE = preload("res://miscellaneous/fonts/dynamic_fonts/H2_headline.tres")
-const H4_HEADLINE = preload("res://miscellaneous/fonts/dynamic_fonts/H4_headline.tres")
+const H5_HEADLINE = preload("res://miscellaneous/fonts/dynamic_fonts/H5_headline.tres")
 
 signal show_finished
 
@@ -29,7 +29,7 @@ func _text_supervisor(var _text : String) -> void:
 	if _text.length() < 12:
 		_title_label.add_font_override("font", H2_HEADLINE)
 	else:
-		_title_label.add_font_override("font", H4_HEADLINE)
+		_title_label.add_font_override("font", H5_HEADLINE)
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

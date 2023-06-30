@@ -23,6 +23,7 @@ margin_bottom = 650.0
 window_title = "Open a File"
 mode = 0
 access = 2
+filters = PoolStringArray( "*.png ; PNG Images", "*.jpg ; JPG Images" )
 
 [node name="Content" type="VBoxContainer" parent="MarginContainer" index="1"]
 margin_left = 24.0
@@ -104,8 +105,8 @@ margin_bottom = 56.0
 rect_min_size = Vector2( 0, 0 )
 
 [node name="CongratulationsMessage" parent="." index="2"]
-margin_right = 33497.0
-margin_bottom = 26240.0
+margin_right = 35131.0
+margin_bottom = 27520.0
 
 [connection signal="file_selected" from="MarginContainer/ImageDialog" to="." method="_on_ImageDialog_file_selected"]
 [connection signal="normal_flip" from="MarginContainer/Content/AddImage" to="." method="_on_AddImage_normal_flip"]

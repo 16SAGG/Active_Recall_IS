@@ -27,10 +27,12 @@ func _load_data() -> Array:
 			var _dict : Dictionary = {
 				"question": {
 					"title": _c["question"]["title"],
+					"img_dir": _c["question"]["img_dir"],
 				},
 				"answer": {
 					"title": _c["answer"]["title"],
-					"description": _c["answer"]["description"]
+					"description": _c["answer"]["description"],
+					"img_dir": _c["answer"]["img_dir"],
 				}
 			}
 			_result_array.append(_dict)

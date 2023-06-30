@@ -9,11 +9,14 @@ onready var _show_answer_player = $ShowAnswerPlayer as AnimationPlayer
 onready var move_player = $MovePlayer as AnimationPlayer
 
 onready var _question_header = $Pivot/MarginContainer/Layout/QuestionLayout/Question as Label
-onready var _description = $Pivot/MarginContainer/Layout/QuestionLayout/Description as TextEdit
+onready var _extra_content = $Pivot/MarginContainer/Layout/QuestionLayout/ExtraContent as VBoxContainer
+onready var _image = $Pivot/MarginContainer/Layout/QuestionLayout/ExtraContent/Image as Control
+onready var _description = $Pivot/MarginContainer/Layout/QuestionLayout/ExtraContent/Description as TextEdit
 onready var _continue = $Pivot/MarginContainer/Layout/Continue as Button
 onready var _base = $Base as MarginContainer
 
-var _has_description : bool = false
+var _answer_description : String = ""
+var _answer_img : String = ""
 
 func _ready():
 	pass
@@ -25,19 +28,40 @@ func start(var _question : Dictionary, _answer : Dictionary) -> void:
 func _set_values(var _question : Dictionary, _answer : Dictionary)  -> void:
 	_text_supervisor(_question["title"])
 	_continue.visible = false
+	_extra_content.visible = false
+	_image.visible = false
 	_description.visible = false
-	_has_description = false
+	_answer_description = ""
+	_answer_img = ""
 	
 	_show_answer_player.play("RESET")
 	_question_header.change_text(_question["title"])
+	
+	if _question["img_dir"]:
+		_image.visible = true
+		_image.change_image(_question["img_dir"])
+		_extra_content.visible = true
 	if _answer["description"]:
-		_description.text = _answer["description"]
-		_has_description = true
+		_answer_description = _answer["description"]
+	if _answer["img_dir"]:
+		_answer_img = _answer["img_dir"]
 
 func show_answer(var _result : String) -> void:
 	_continue.visible = true
-	if _has_description:
-		_description.visible = true
+	if _answer_description or _answer_img:
+		_extra_content.visible = true
+		if _answer_description != "":
+			_description.visible = true
+			_description.text = _answer_description
+		
+		if _answer_img != "":
+			_image.visible = true
+			_image.change_image(_answer_img)
+		else:
+			_image.visible = false
+	else:
+		_extra_content.visible = false
+	
 	if _result == "WRONG":
 		_show_answer_player.play("WRONG_ANSWER")
 

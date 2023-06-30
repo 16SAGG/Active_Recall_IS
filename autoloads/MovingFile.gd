@@ -2,10 +2,10 @@ extends Node
 
 const IMAGE_PATH : String = "res://media/image/"
 
-onready var _system_user : String = OS.get_environment("USERNAME")
+onready var system_user : String = OS.get_environment("USERNAME")
 
 func _ready() -> void:
-	print(_system_user)
+	pass
 
 func move_directory(var _original_path : String):
 	var _dir : Directory = Directory.new()
@@ -25,6 +25,11 @@ func move_directory(var _original_path : String):
 	_dir.copy(_original_path, _file_dir)
 	
 	return _file_dir
+
+func delete_file(var _path : String) -> void:
+	var _dir : Directory = Directory.new()
+	
+	_dir.remove(_path)
 
 func change_file_name(var _old_name : String, var _new_name) -> void:
 	var _dir : Directory = Directory.new()

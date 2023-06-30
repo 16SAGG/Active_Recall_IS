@@ -31,8 +31,8 @@ func show_image () -> void :
 		_image_showed = true
 		_animation_player.play("SHOW_IMAGE")
 
-func change_image (var _img_dir : String) -> void:
-	_image.image_dir = _img_dir
+func change_image (var _img_dir : String) -> String:
+	return _image.change_image(_img_dir)
 
 func hide_image () -> void :
 	emit_signal("back_line_hide")

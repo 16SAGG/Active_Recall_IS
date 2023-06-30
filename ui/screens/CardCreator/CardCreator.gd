@@ -6,6 +6,7 @@ signal edit_card(new_question, new_answer, card, card_properties, update_deck)
 signal update_history(count)
 signal delete_card(question, answer, card)
 
+onready var _image_dialog = $MarginContainer/ImageDialog as FileDialog
 onready var _change_deck = $MarginContainer/Content/ChangeDeck as Control
 onready var _enter_button = $MarginContainer/Content/Footer/Content/Enter as Control
 onready var _enter_button_title = $MarginContainer/Content/Footer/Content/Enter/Pivot/Front/MarginContainer/Title as Label
@@ -46,6 +47,8 @@ func start() -> void:
 	_update_current_deck()
 	_error_suporter()
 	
+	_image_dialog.current_dir = "C:/Users/" + MOVINGFILE.system_user
+	
 	_front_line.hide_image()
 	
 	_back_line.hide_image()
@@ -59,13 +62,17 @@ func start() -> void:
 			_set_button_title("Añadir")
 		"EDITOR":
 			if editable_card["answer"]["img_dir"] != "":
-				_back_img = editable_card["answer"]["img_dir"]
-				_back_line.show_image()
-				_back_line.change_image(editable_card["answer"]["img_dir"])
+				if _back_line.change_image(editable_card["answer"]["img_dir"]) == "ERROR":
+					_back_img = ""
+				else:
+					_back_img = editable_card["answer"]["img_dir"]
+					_back_line.show_image()
 			if editable_card["question"]["img_dir"] != "":
-				_front_img = editable_card["question"]["img_dir"]
-				_front_line.show_image()
-				_front_line.change_image(editable_card["question"]["img_dir"])
+				if _front_line.change_image(editable_card["question"]["img_dir"]) == "ERROR":
+					_front_img = ""
+				else:
+					_front_img = editable_card["question"]["img_dir"]
+					_front_line.show_image()
 			
 			_delete_button.visible = true
 			_enter_button._disable_button(false)
@@ -95,13 +102,17 @@ func _set_button_title(var title : String) -> void:
 func _show_img(var _img : String) -> void:
 	match _current_focus:
 		"BACK":
-			_back_img = _img
-			_back_line.show_image()
-			_back_line.change_image(_img)
+			if _back_line.change_image(_img) == "ERROR":
+				_back_img = ""
+			else:
+				_back_img = _img
+				_back_line.show_image()
 		_:
-			_front_img = _img
-			_front_line.show_image()
-			_front_line.change_image(_img)
+			if _front_line.change_image(_img) == "ERROR":
+				_front_img = ""
+			else:
+				_front_img = _img
+				_front_line.show_image()
 
 func _on_change_deck_pressed(_button : Control) -> void:
 	emit_signal("change_deck_requested", _button)
@@ -158,7 +169,10 @@ func _on_BackEdit_focus_entered() -> void:
 	_current_focus = "BACK"
 
 func _on_ImageDialog_file_selected(path):
-	_show_img(path)
+	if ".png" in path or ".jpg" in path:
+		_show_img(path)
+	else:
+		pass
 
 func _on_FrontLine_front_line_hide():
 	_front_img = ""
