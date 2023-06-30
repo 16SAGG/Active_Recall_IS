@@ -25,7 +25,7 @@ func front_action() -> void:
 	if flip_timer_active:
 		flip_timer_player.play("FLIP_TIMER")
 	button_base_player.play("FLIP_TO_BACK")
-	_active = true
+	_active = false
 
 func _on_BackTrigger_pressed() -> void:
 	match _active:

@@ -151,8 +151,8 @@ margin_right = 724.0
 margin_bottom = 56.0
 
 [node name="CongratulationsMessage" parent="." index="2"]
-margin_right = 15523.0
-margin_bottom = 12160.0
+margin_right = 17157.0
+margin_bottom = 13440.0
 
 [connection signal="concept_order" from="MarginContainer/Layout/CardList/Content/Header" to="." method="_on_Header_concept_order"]
 [connection signal="effectivity_order" from="MarginContainer/Layout/CardList/Content/Header" to="." method="_on_Header_effectivity_order"]

@@ -11,7 +11,8 @@ onready var _change_deck = $MarginContainer/Layout/ChangeDeck as Control
 onready var _scroll_container = $MarginContainer/Layout/ScrollContainer as ScrollContainer
 onready var _card_preview = $MarginContainer/Layout/ScrollContainer/Content/CardPreview as Control
 onready var _card_column = $MarginContainer/Layout/ScrollContainer/Content/CardColumn as VBoxContainer
-onready var _search_bar = $FloatingColumn/SearchBar
+onready var _empty_message = $MarginContainer/Layout/ScrollContainer/Content/EmptyMessage as MarginContainer
+onready var _search_bar = $FloatingColumn/SearchBar as Control
 
 onready var _add_buttons_bar = $FloatingColumn/ButtonsBar/MarginContainer/Layout/Add as Control
 onready var _practice_buttons_bar = $FloatingColumn/ButtonsBar/MarginContainer/Layout/Practice as Control
@@ -39,6 +40,13 @@ func start() -> void:
 	_card_preview.start()
 	_remove_all_cards()
 	_insert_card_array("")
+	
+	if _card_array.size() > 0:
+		_card_column.visible = true
+		_empty_message.visible = false
+	else:
+		_card_column.visible = false
+		_empty_message.visible = true
 	
 	_scroll_container.scroll_vertical = 0
 
@@ -104,7 +112,7 @@ func _on_practice_button_pressed(_button : Control) -> void:
 	emit_signal("go_to_practice_screen_requested", null)
 
 func _on_stats_button_pressed(_button : Control) -> void:
-	emit_signal("go_to_statistics_screen_requested")
+	emit_signal("go_to_statistics_screen_requested", null)
 
 func _on_settings_button_pressed(_button : Control) -> void:
 	emit_signal("go_to_settings_screen_requested", null)

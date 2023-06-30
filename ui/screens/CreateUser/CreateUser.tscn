@@ -71,9 +71,9 @@ rect_min_size = Vector2( 116, 0 )
 
 [node name="Title" type="Label" parent="MarginContainer/Content/Layout/Header/Layout" index="1"]
 margin_left = 146.0
-margin_top = 22.0
+margin_top = 12.0
 margin_right = 628.0
-margin_bottom = 62.0
+margin_bottom = 72.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 3 )
@@ -177,8 +177,8 @@ margin_right = 892.0
 margin_right = 892.0
 
 [node name="CongratulationsMessage" parent="." index="3"]
-margin_right = 13864.0
-margin_bottom = 10240.0
+margin_right = 14769.0
+margin_bottom = 10880.0
 
 [connection signal="button_down" from="MarginContainer/Content/Layout/Footer/Layout/BackButton" to="." method="_on_BackButton_button_down"]
 [connection signal="normal_flip" from="MarginContainer/Content/Layout/Footer/Layout/CreateButton" to="." method="_on_CreateButton_normal_flip"]

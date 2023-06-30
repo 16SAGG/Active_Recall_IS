@@ -109,8 +109,8 @@ _left_direction = "deck_settings"
 _right_direction = "deck_settings"
 
 [node name="CongratulationsMessage" parent="." index="2"]
-margin_right = 32680.0
-margin_bottom = 25600.0
+margin_right = 33497.0
+margin_bottom = 26240.0
 
 [connection signal="front_flip" from="MarginContainer/Layout/UserButton" to="." method="_on_UserButton_front_flip"]
 [connection signal="front_flip" from="MarginContainer/Layout/ScrollContainer/Content/DeleteButton/DeleteButton" to="." method="_on_DeleteButton_front_flip"]

@@ -59,7 +59,9 @@ func _ready() -> void:
 	_select_type_study_pop_up.connect("go_to_test_practice_requested", self, "_on_test_practice_requested")
 	_select_type_study_pop_up.connect("go_to_memory_practice_requested", self, "_on_memory_practice_requested")
 	_ui_side_bar.connect("go_to_statistics_screen_requested", self, "_on_statistics_requested")
-	_ui_side_bar.connect("go_to_settings_screen_requested", self, "_on_user_settings_requested")
+	_decks.connect("go_to_statistics_screen_requested", self, "_on_statistics_requested")
+	_ui_side_bar.connect("go_to_user_settings_screen_requested", self, "_on_user_settings_requested")
+	_ui_side_bar.connect("go_to_deck_settings_screen_requested", self, "_on_deck_settings_requested")
 	
 	#CONNECT SIGNALS: SHOW AND HIDE POP UPS 
 	_action_pop_up.connect("go_to_new_deck_pop_up_requested", self, "_on_show_new_deck_pop_up_requested")
@@ -169,6 +171,8 @@ func _on_commit_new_user(var _new_user : Dictionary) -> void:
 
 func _on_commit_edit_user(var _user_changes : Dictionary) -> void:
 	USERDATA.update_data("User", "user_id = " + str(_user_changes["user_id"]), _user_changes)
+	USERDATA.set_users_data()
+	USERDATA.set_current_user_data()
 	
 	_restart()
 
@@ -182,9 +186,9 @@ func _on_commit_delete_user() -> void:
 
 func _delete_all_decks() -> void:
 	var _d_q : String = "SELECT Deck.deck_id, Deck.user_id, Deck.title, Deck.days_on_streak_record FROM Deck LEFT JOIN User ON Deck.user_id = User.user_id WHERE User.user_id = " + str(USERDATA.current_user)
-	var _decks : Array = USERDATA.get_by_query(_d_q)
+	var _d_decks : Array = USERDATA.get_by_query(_d_q)
 	
-	for _d in _decks:
+	for _d in _d_decks:
 		_update_current_deck(_d["deck_id"])
 		
 		_on_commit_delete_deck(true)
@@ -251,14 +255,24 @@ func _delete_deck_setting() -> void:
 	USERDATA.delete_data("Deck_Settings", "deck_id = " + str(USERDATA.current_deck_data["deck_id"]))
 
 func _on_commit_new_card(var _question : Dictionary, var _answer : Dictionary, var _deck_id : int) -> void:
+	if _question.has("img_dir"):
+		if _question["img_dir"] != "":
+			_question["img_dir"] = MOVINGFILE.move_directory(_question["img_dir"])
+	
+	if _answer.has("img_dir"):
+		if _answer["img_dir"] != "":
+			_answer["img_dir"] = MOVINGFILE.move_directory(_answer["img_dir"])
+	
 	USERDATA.commit_data("Question", _question)
 	USERDATA.commit_data("Answer", _answer)
-	
+
+	var _question_id : int = 0
 	var _q_q : String = "SELECT Question.question_id FROM Question"
-	var _question_id : int = USERDATA.get_by_query(_q_q).pop_back()["question_id"]
+	_question_id = USERDATA.get_by_query(_q_q).pop_back()["question_id"]
 	
+	var _answer_id : int = 0
 	var _a_q : String = "SELECT Answer.answer_id FROM Answer"
-	var _answer_id : int = USERDATA.get_by_query(_a_q).pop_back()["answer_id"]
+	_answer_id = USERDATA.get_by_query(_a_q).pop_back()["answer_id"]
 	
 	var _card_dict : Dictionary = {
 		"deck_id": _deck_id,
@@ -272,8 +286,16 @@ func _on_commit_new_card(var _question : Dictionary, var _answer : Dictionary, v
 
 func _on_commit_edit_card(var _question : Dictionary, var _answer : Dictionary, var _card : Dictionary, var _card_properties : bool, var _update_deck : bool) -> void:
 	if _answer:
+		if _answer.has("img_dir"):
+			if _answer["img_dir"] != "":
+				_answer["img_dir"] = MOVINGFILE.move_directory(_answer["img_dir"])
+		
 		USERDATA.update_data("Answer", "answer_id = " + str(_card["answer"]["answer_id"]), _answer)
 	if _question:
+		if _question.has("img_dir"):
+			if _question["img_dir"] != "":
+				_question["img_dir"] = MOVINGFILE.move_directory(_question["img_dir"])
+		
 		USERDATA.update_data("Question", "question_id = " + str(_card["question"]["question_id"]), _question)
 	if _card_properties:
 		USERDATA.update_data("Card", "card_id = " + str(_card["card_id"]), _card)
@@ -408,6 +430,7 @@ func _on_hide_new_deck_pop_up_requested() -> void:
 func _on_show_change_deck_pop_up_requested(_button : Control) -> void:
 	if not _change_deck_pop_up.showed:
 		_change_deck_pop_up.animation_player.play("SHOW")
+		_change_deck_pop_up.start()
 		_shadow.animation_player.play("SHOW")
 
 func _on_hide_change_deck_pop_up_requested() -> void:

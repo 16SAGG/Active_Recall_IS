@@ -154,6 +154,7 @@ wrap_enabled = true
 [node name="Image" parent="Pivot/Back/MarginContainer/Content/ExtraContent" index="1" instance=ExtResource( 7 )]
 
 [node name="FlipButton" parent="Pivot/Back/MarginContainer/Content" index="3" instance=ExtResource( 6 )]
+_flip_icon = true
 
 [node name="BackTrigger" parent="Pivot/Back" index="2"]
 visible = false

@@ -23,6 +23,7 @@ anchor_bottom = 1.0
 [node name="Rectangle" parent="Style" instance=ExtResource( 3 )]
 background_color = "SECONDARY"
 border_color = "PRIMARY"
+corner_radius = [ 0, 0, 0, 0 ]
 border_width = [ 0, 1, 0, 0 ]
 
 [node name="MarginController" type="MarginContainer" parent="."]

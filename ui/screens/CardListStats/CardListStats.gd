@@ -8,7 +8,7 @@ const CARD_INFO = preload("res://ui/screens/CardListStats/components/CardInfo/Ca
 onready var _scroll_container = $MarginContainer/Layout/CardList/Content/ScrollContainer as ScrollContainer
 onready var _change_deck = $MarginContainer/Layout/ChangeDeck as Control
 onready var _cards = $MarginContainer/Layout/CardList/Content/ScrollContainer/Cards as VBoxContainer
-
+onready var _header = $MarginContainer/Layout/CardList/Content/Header as Control
 
 var _card_array : Array = []
 
@@ -22,7 +22,8 @@ func start() -> void:
 	if USERDATA.current_deck_data:
 		_card_array = _load_data()
 		_remove_all_cards()
-		_insert_card_array("CONCEPT", "ascending")
+		for i in range(0, 2):
+			_header.concept_button.front_action()
 	
 	_scroll_container.scroll_vertical = 0
 

@@ -28,6 +28,7 @@ anchor_bottom = 0.0
 margin_left = 87.0
 margin_right = 401.0
 margin_bottom = 305.0
+flip_timer_active = false
 
 [node name="RightButton" parent="Layout" instance=ExtResource( 2 )]
 anchor_right = 0.0

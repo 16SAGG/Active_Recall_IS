@@ -13,6 +13,7 @@ onready var _deck_columns = $MarginContainer/ScrollContainer/Content/Columns as 
 onready var _search_bar = $FloatingColumn/SearchBar as Control
 onready var _group_PD = $FloatingColumn/GroupPendingDecks as Control
 onready var _pending_column = _group_PD.content as VBoxContainer
+onready var _empty_message = $MarginContainer/ScrollContainer/Content/EmptyMessage as MarginContainer
 
 var _deck_array : Array = []
 var _next_column_id : int = 0
@@ -27,6 +28,13 @@ func start() -> void:
 	_deck_array = _load_data()
 	_remove_all_decks()
 	_insert_deck_array("")
+	
+	if _deck_array.size() > 0:
+		_deck_columns.visible = true
+		_empty_message.visible = false
+	else:
+		_deck_columns.visible = false
+		_empty_message.visible = true
 
 func _load_data() -> Array:
 	var _result_array : Array
@@ -115,5 +123,3 @@ func _on_switch_box_to_front(_deck: Control) -> void:
 
 func _on_deck_pressed(_deck: Control, _screen: String) -> void:
 	emit_signal("go_to_" + _screen + "_screen_requested", _deck)
-
-

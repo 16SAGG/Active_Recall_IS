@@ -24,6 +24,8 @@ func start() -> void:
 	_insert_deck_array("")
 	if USERDATA.current_deck_data:
 		_search_line.text = USERDATA.current_deck_data["title"]
+	else:
+		_search_line.text = ""
 
 func _setget_showed(var _showed : bool) -> void:
 	showed = _showed

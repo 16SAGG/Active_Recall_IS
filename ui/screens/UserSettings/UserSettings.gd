@@ -36,29 +36,35 @@ func _on_Footer_edit_deck():
 	if _new_name_value != "":
 		_new_user_data["name"] = _new_name_value
 		_new_name_input.set_color("PRIMARY")
+		_new_name_input.restart()
 	
 	if _new_last_name_value != "":
 		_new_user_data["last_name"] = _new_last_name_value
 		_new_last_name_input.set_color("PRIMARY")
+		_new_last_name_input.restart()
 	
 	if _new_email_value != "":
 		var _email_format = TEXTFORMAT.email_format(_new_email_value)
 		if _email_format != "invalid_email":
 			_new_user_data["email"] = _email_format
 			_new_email_input.set_color("PRIMARY")
+			_new_email_input.restart()
 		else:
 			_new_email_input.set_color("DANGER")
+			print("EMAIL INVALIDO")
 	
 	if _new_password_value != "":
 		var _password_format = TEXTFORMAT.password_format(_new_password_value, _new_password_input.min_password)
 		if _password_format != "invalid_password":
 			_new_user_data["password"] = _password_format
 			_new_password_input.set_color("PRIMARY")
+			_new_password_input.restart()
 		else:
 			_new_password_input.set_color("DANGER")
+			print("CONTRASEÑA INVALIDO")
 	
 	emit_signal("edit_user", _new_user_data)
-	start()
+	_user_button.restart()
 
 func _on_Footer_go_to_deck_settings():
 	if USERDATA.current_deck_data:

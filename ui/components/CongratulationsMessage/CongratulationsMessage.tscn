@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H4_headline.tres" type="DynamicFont" id=1]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H55_sub_headline.tres" type="DynamicFont" id=1]
 [ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H1_headline.tres" type="DynamicFont" id=2]
 [ext_resource path="res://ui/components/CongratulationsMessage/CongratulationsMessage.gd" type="Script" id=3]
 [ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=4]
@@ -112,8 +112,8 @@ tracks/3/keys = {
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 2627.0
-margin_bottom = 1920.0
+margin_right = 3532.0
+margin_bottom = 2560.0
 rect_min_size = Vector2( 817, 640 )
 size_flags_horizontal = 0
 size_flags_vertical = 0

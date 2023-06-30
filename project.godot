@@ -30,6 +30,7 @@ USERDATA="*res://autoloads/UserData.gd"
 CARDCULATIONS="*res://autoloads/CardCalculations.gd"
 PRACTICEOPTIONS="*res://autoloads/PracticeOptions.gd"
 TEXTFORMAT="*res://autoloads/TextFormat.gd"
+MOVINGFILE="*res://autoloads/MovingFile.gd"
 
 [display]
 

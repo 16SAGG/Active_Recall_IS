@@ -77,27 +77,12 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="Circle" parent="Content/Style/Uncomplete" instance=ExtResource( 3 )]
-background_color = "GRAPH_ITEM_3"
+modulate = Color( 1, 1, 1, 0.498039 )
+background_color = "SHADOW"
 corner_radius = 40
 corner_detail = 6
-
-[node name="Rectangle" parent="Content/Style/Uncomplete" instance=ExtResource( 4 )]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -10.0
-margin_top = -2.5
-margin_right = 10.0
-margin_bottom = 2.5
-background_color = "SECONDARY"
 
 [node name="Next" type="Control" parent="Content/Style"]
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
-
-[node name="Circle" parent="Content/Style/Next" instance=ExtResource( 3 )]
-background_color = "SHADOW"
-corner_radius = 40
-corner_detail = 6

@@ -4,7 +4,7 @@
 [ext_resource path="res://ui/components/SelectTypeStudyPopUp/components/OptionPreview/components/EnterButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H6_headline.tres" type="DynamicFont" id=4]
-[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H4_headline.tres" type="DynamicFont" id=5]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H55_headline.tres" type="DynamicFont" id=5]
 [ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H2_headline.tres" type="DynamicFont" id=6]
 [ext_resource path="res://ui/components/SelectTypeStudyPopUp/components/OptionPreview/components/TypeOfStudy/components/CustomStudy/components/NumberControllersButton.tscn" type="PackedScene" id=7]
 
@@ -85,6 +85,7 @@ margin_bottom = 35.0
 
 [node name="Decrement" parent="CardNumer/NumberInput/Buttons" instance=ExtResource( 7 )]
 margin_top = 41.0
+_type = "DOWN"
 
 [node name="ButtonLayout" type="HBoxContainer" parent="."]
 margin_top = 202.0

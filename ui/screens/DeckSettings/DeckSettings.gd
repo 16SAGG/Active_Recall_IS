@@ -77,8 +77,6 @@ func _on_Footer_edit_deck() -> void:
 		_new_name_input.set_color("PRIMARY")
 	else:
 		_new_name_input.set_color("DANGER")
-	
-	start()
 
 # warning-ignore:unused_argument
 func _on_DangerousButton_front_flip(button):

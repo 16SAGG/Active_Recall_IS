@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H4_headline.tres" type="DynamicFont" id=1]
+[ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H55_headline.tres" type="DynamicFont" id=1]
 [ext_resource path="res://miscellaneous/fonts/dynamic_fonts/H6_headline.tres" type="DynamicFont" id=2]
 [ext_resource path="res://ui/screens/Home/components/Calendary/components/Day/Day.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=4]
@@ -41,13 +41,13 @@ custom_constants/separation = 0
 
 [node name="DaysStreak" type="HBoxContainer" parent="Pivot/Front/MarginContainer/Content" index="0"]
 margin_right = 440.0
-margin_bottom = 60.0
+margin_bottom = 54.0
 rect_min_size = Vector2( 0, 54 )
 custom_constants/separation = 0
 
 [node name="DaysCount" type="Label" parent="Pivot/Front/MarginContainer/Content/DaysStreak" index="0"]
-margin_right = 90.0
-margin_bottom = 60.0
+margin_right = 61.0
+margin_bottom = 54.0
 rect_min_size = Vector2( 28, 54 )
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 1 )
@@ -55,9 +55,9 @@ text = "100 "
 valign = 1
 
 [node name="Title" type="Label" parent="Pivot/Front/MarginContainer/Content/DaysStreak" index="1"]
-margin_left = 90.0
-margin_right = 405.0
-margin_bottom = 60.0
+margin_left = 61.0
+margin_right = 361.0
+margin_bottom = 54.0
 rect_min_size = Vector2( 300, 54 )
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 1 )
@@ -65,9 +65,9 @@ text = "Días en racha"
 valign = 1
 
 [node name="Message" type="Label" parent="Pivot/Front/MarginContainer/Content" index="1"]
-margin_top = 60.0
+margin_top = 54.0
 margin_right = 440.0
-margin_bottom = 85.0
+margin_bottom = 79.0
 rect_min_size = Vector2( 0, 25 )
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 2 )
@@ -75,15 +75,15 @@ text = " Buen trabajo!"
 valign = 1
 
 [node name="Space" type="Control" parent="Pivot/Front/MarginContainer/Content" index="2"]
-margin_top = 85.0
+margin_top = 79.0
 margin_right = 440.0
-margin_bottom = 162.0
+margin_bottom = 156.0
 rect_min_size = Vector2( 0, 77 )
 
 [node name="Weekdays" type="HBoxContainer" parent="Pivot/Front/MarginContainer/Content" index="3"]
-margin_top = 162.0
+margin_top = 156.0
 margin_right = 440.0
-margin_bottom = 230.0
+margin_bottom = 224.0
 rect_min_size = Vector2( 0, 68 )
 custom_constants/separation = 20
 alignment = 1

@@ -9,6 +9,8 @@ signal hit_order(orientation)
 # warning-ignore:unused_signal
 signal effectivity_order(orientation)
 
+onready var concept_button = $MarginContainer/Content/Concept as Control
+
 onready var _content = $MarginContainer/Content as Control
 
 func _ready() -> void: 

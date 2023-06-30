@@ -108,8 +108,8 @@ margin_right = 780.0
 margin_bottom = 616.0
 
 [node name="CongratulationsMessage" parent="." index="2"]
-margin_right = 49837.0
-margin_bottom = 39040.0
+margin_right = 52288.0
+margin_bottom = 40960.0
 
 [connection signal="front_flip" from="MarginContainer/Layout/ScrollContainer/Content/DeleteButton/DeleteButton" to="." method="_on_DangerousButton_front_flip"]
 [connection signal="edit_deck" from="MarginContainer/Layout/Footer" to="." method="_on_Footer_edit_deck"]

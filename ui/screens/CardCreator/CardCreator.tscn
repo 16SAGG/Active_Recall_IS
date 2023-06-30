@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ui/screens/ScreenBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/components/ChangeDeck/ChangeDeck.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/screens/CardCreator/CardCreator.gd" type="Script" id=3]
+[ext_resource path="res://ui/screens/CardCreator/components/AddImage.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/screens/CardCreator/components/Lines/BackLine/BackLine.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ui/screens/CardCreator/components/AddCard.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ui/screens/CardCreator/components/Delete.tscn" type="PackedScene" id=9]
@@ -14,11 +15,20 @@ script = ExtResource( 3 )
 [node name="MarginContainer" parent="." index="0"]
 custom_constants/margin_right = 37
 
-[node name="Content" type="VBoxContainer" parent="MarginContainer" index="0"]
+[node name="ImageDialog" type="FileDialog" parent="MarginContainer" index="0"]
 margin_left = 24.0
 margin_top = 24.0
 margin_right = 780.0
-margin_bottom = 640.0
+margin_bottom = 650.0
+window_title = "Open a File"
+mode = 0
+access = 2
+
+[node name="Content" type="VBoxContainer" parent="MarginContainer" index="1"]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 780.0
+margin_bottom = 650.0
 custom_constants/separation = 24
 
 [node name="ChangeDeck" parent="MarginContainer/Content" index="0" instance=ExtResource( 2 )]
@@ -28,10 +38,17 @@ margin_right = 756.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 
-[node name="LineBoxes" type="ScrollContainer" parent="MarginContainer/Content" index="1"]
+[node name="AddImage" parent="MarginContainer/Content" index="1" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 86.0
 margin_right = 756.0
-margin_bottom = 376.0
+margin_bottom = 148.0
+
+[node name="LineBoxes" type="ScrollContainer" parent="MarginContainer/Content" index="2"]
+margin_top = 172.0
+margin_right = 756.0
+margin_bottom = 462.0
 rect_min_size = Vector2( 756, 290 )
 
 [node name="Content" type="VBoxContainer" parent="MarginContainer/Content/LineBoxes" index="0"]
@@ -43,16 +60,16 @@ custom_constants/separation = 24
 
 [node name="BackLine" parent="MarginContainer/Content/LineBoxes/Content" index="1" instance=ExtResource( 5 )]
 
-[node name="Space" type="Control" parent="MarginContainer/Content" index="2"]
-margin_top = 400.0
+[node name="Space" type="Control" parent="MarginContainer/Content" index="3"]
+margin_top = 486.0
 margin_right = 756.0
-margin_bottom = 476.0
+margin_bottom = 486.0
 size_flags_vertical = 3
 
-[node name="Footer" type="MarginContainer" parent="MarginContainer/Content" index="3"]
-margin_top = 500.0
+[node name="Footer" type="MarginContainer" parent="MarginContainer/Content" index="4"]
+margin_top = 510.0
 margin_right = 756.0
-margin_bottom = 616.0
+margin_bottom = 626.0
 rect_min_size = Vector2( 0, 116 )
 size_flags_horizontal = 3
 custom_constants/margin_top = 30
@@ -87,5 +104,10 @@ margin_bottom = 56.0
 rect_min_size = Vector2( 0, 0 )
 
 [node name="CongratulationsMessage" parent="." index="2"]
-margin_right = 26144.0
-margin_bottom = 20480.0
+margin_right = 33497.0
+margin_bottom = 26240.0
+
+[connection signal="file_selected" from="MarginContainer/ImageDialog" to="." method="_on_ImageDialog_file_selected"]
+[connection signal="normal_flip" from="MarginContainer/Content/AddImage" to="." method="_on_AddImage_normal_flip"]
+[connection signal="front_line_hide" from="MarginContainer/Content/LineBoxes/Content/FrontLine" to="." method="_on_FrontLine_front_line_hide"]
+[connection signal="back_line_hide" from="MarginContainer/Content/LineBoxes/Content/BackLine" to="." method="_on_BackLine_back_line_hide"]

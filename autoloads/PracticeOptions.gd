@@ -11,7 +11,7 @@ var options_values : Array = [
 	{
 		"title": "Test",
 		"dir": "test",
-		"min_cards" : 10,
+		"min_cards" : 4,
 		"max_cards" : 99,
 	},
 ]

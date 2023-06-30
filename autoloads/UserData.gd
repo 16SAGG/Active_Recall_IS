@@ -102,10 +102,10 @@ func set_current_deck_data(_deck_id : int) -> void:
 		var _answer_id = _data['cards'][_c]['answer_id']
 		var _question_id = _data['cards'][_c]['question_id']
 		
-		var _da_q : String = "SELECT Answer.answer_id, Answer.title, Answer.description FROM Answer LEFT JOIN Card ON Answer.answer_id = Card.answer_id WHERE Answer.answer_id = " + str(_answer_id)
+		var _da_q : String = "SELECT Answer.answer_id, Answer.title, Answer.description, Answer.img_dir FROM Answer LEFT JOIN Card ON Answer.answer_id = Card.answer_id WHERE Answer.answer_id = " + str(_answer_id)
 		_data['cards'][_c]['answer'] = get_by_query(_da_q)[0]
 		
-		var _dq_q : String = "SELECT Question.question_id, Question.title FROM Question LEFT JOIN Card ON Question.question_id = Card.question_id WHERE Question.question_id = " + str(_question_id)
+		var _dq_q : String = "SELECT Question.question_id, Question.title, Question.img_dir FROM Question LEFT JOIN Card ON Question.question_id = Card.question_id WHERE Question.question_id = " + str(_question_id)
 		_data['cards'][_c]['question'] = get_by_query(_dq_q)[0]
 	
 	current_deck_data = _data

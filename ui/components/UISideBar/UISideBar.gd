@@ -5,7 +5,8 @@ signal show_action_pop_up_requested
 signal go_to_deck_screen_requested(deck)
 signal go_to_practice_screen_requested(deck)
 signal go_to_statistics_screen_requested(deck)
-signal go_to_settings_screen_requested(deck)
+signal go_to_user_settings_screen_requested(deck)
+signal go_to_deck_settings_screen_requested(deck)
 
 onready var _logo_button = $MarginController/Content/Logo/Button
 onready var _action_button = $MarginController/Content/Action/Button as Button
@@ -41,4 +42,7 @@ func _on_statistics_pressed() -> void:
 	emit_signal("go_to_statistics_screen_requested", null)
 
 func _on_settings_pressed() -> void:
-	emit_signal("go_to_settings_screen_requested", null)
+	if USERDATA.current_deck_data:
+		emit_signal("go_to_deck_settings_screen_requested", null)
+	else:
+		emit_signal("go_to_user_settings_screen_requested", null)
