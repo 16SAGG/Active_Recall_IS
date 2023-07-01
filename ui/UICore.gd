@@ -289,6 +289,11 @@ func _on_commit_edit_card(var _question : Dictionary, var _answer : Dictionary, 
 		if _answer.has("img_dir"):
 			if _answer["img_dir"] != "":
 				_answer["img_dir"] = MOVINGFILE.move_directory(_answer["img_dir"])
+			else: 
+				var _q_a : String = "SELECT img_dir FROM Answer WHERE answer_id = " + str(_card["answer"]["answer_id"])
+				var _img_dir : String = USERDATA.get_by_query(_q_a).pop_back()["img_dir"]
+				
+				MOVINGFILE.delete_file(_img_dir)
 		
 		USERDATA.update_data("Answer", "answer_id = " + str(_card["answer"]["answer_id"]), _answer)
 	if _question:

@@ -12,6 +12,7 @@ onready var _back_pending_cards = $Pivot/Back/MarginContainer/Layout/PendingCard
 var id : int
 var title : String
 var pending_cards_count : int
+var state : String
 
 var _screen = "practice"
 

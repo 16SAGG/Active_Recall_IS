@@ -193,8 +193,6 @@ margin_right = 378.0
 margin_bottom = 80.0
 
 [node name="FrontBox" parent="Style" instance=ExtResource( 4 )]
-margin_right = 756.0
-margin_bottom = 80.0
 background_color = "SECONDARY"
 border_color = "PRIMARY"
 border_width = [ 1, 1, 1, 1 ]
@@ -243,7 +241,7 @@ rect_min_size = Vector2( 0, 30 )
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "FRONT"
+text = "PREGUNTA"
 valign = 1
 
 [node name="Error" type="Label" parent="MarginContainer/Content/Head"]

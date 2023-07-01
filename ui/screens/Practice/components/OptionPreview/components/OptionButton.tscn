@@ -42,9 +42,7 @@ custom_fonts/font = SubResource( 1 )
 text = "NAME"
 align = 1
 valign = 1
-
-[node name="FrontTrigger" parent="Pivot/Front" index="2"]
-margin_bottom = 0.0
+autowrap = true
 
 [node name="Back" parent="Pivot" index="1"]
 visible = true
@@ -52,18 +50,3 @@ margin_left = -250.0
 margin_top = -171.0
 margin_right = 250.0
 margin_bottom = 249.0
-
-[node name="Style" parent="Pivot/Back" index="0"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 0.0
-margin_bottom = 0.0
-
-[node name="MarginContainer" parent="Pivot/Back" index="1"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 0.0
-margin_bottom = 0.0
-
-[node name="BackTrigger" parent="Pivot/Back" index="2"]
-margin_bottom = 0.0

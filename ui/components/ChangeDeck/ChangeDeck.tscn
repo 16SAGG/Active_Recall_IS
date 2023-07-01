@@ -46,7 +46,7 @@ margin_right = 732.0
 margin_bottom = 46.0
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 1 )
-text = "Deck"
+text = "Clic aquí"
 align = 1
 valign = 1
 

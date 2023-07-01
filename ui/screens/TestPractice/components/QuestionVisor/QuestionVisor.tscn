@@ -176,11 +176,12 @@ custom_constants/separation = 16
 [node name="Image" parent="Pivot/MarginContainer/Layout/QuestionLayout/ExtraContent" instance=ExtResource( 8 )]
 margin_left = 0.0
 margin_right = 436.0
-margin_bottom = 96.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 120 )
 size_flags_horizontal = 1
 
 [node name="Description" type="TextEdit" parent="Pivot/MarginContainer/Layout/QuestionLayout/ExtraContent"]
-margin_top = 112.0
+margin_top = 136.0
 margin_right = 436.0
 margin_bottom = 208.0
 rect_min_size = Vector2( 436, 0 )

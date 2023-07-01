@@ -45,7 +45,7 @@ func _load_data() -> Array:
 		
 		var _pending_cards : int = _new_cards + _due_cards
 		if _pending_cards > 0:
-			_result_array.append(_create_pending_deck(_d.deck_id, _d.title, _pending_cards))
+			_result_array.append(_create_pending_deck(_d.deck_id, _d.title, _pending_cards, _d.settings.state))
 	
 	return _result_array
 
@@ -64,12 +64,13 @@ func _create_deck_box(_id : int, _title: String, _new_cards: int, _due_cards: in
 	
 	return _deck_box
 
-func _create_pending_deck(_id : int, _title : String, _pending_cards : int) -> Control:
+func _create_pending_deck(_id : int, _title : String, _pending_cards : int, _state : String) -> Control:
 	var _pending_deck : Control = PENDING_DECK.instance()
 	
 	_pending_deck.id = _id
 	_pending_deck.title = _title
 	_pending_deck.pending_cards_count = _pending_cards
+	_pending_deck.state = _state
 	
 # warning-ignore:return_value_discarded
 	_pending_deck.connect("back_flip", self, "_on_switch_box_to_front")
@@ -87,7 +88,8 @@ func _set_deck_box_next_column() -> void:
 func _insert_one_deck(_deck : Control) -> void:
 	match _deck.is_in_group("PENDING"):
 		true:
-			_pending_column.add_child(_deck)
+			if _deck.state == "ACTIVE":
+				_pending_column.add_child(_deck)
 		false:
 			var _next_column : VBoxContainer = get_node("MarginContainer/ScrollContainer/Content/Columns/Column_" + str(_next_column_id))
 			_next_column.add_child(_deck)

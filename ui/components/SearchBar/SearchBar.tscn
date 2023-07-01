@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://miscellaneous/fonts/dynamic_fonts/body_1.tres" type="DynamicFont" id=2]
 [ext_resource path="res://ui/components/ButtonBase/ButtonBase.tscn" type="PackedScene" id=3]
+[ext_resource path="res://miscellaneous/image/SEARCH.png" type="Texture" id=4]
 [ext_resource path="res://ui/components/SearchBar/SearchBar.gd" type="Script" id=5]
 
 [sub_resource type="StyleBoxEmpty" id=1]
@@ -28,20 +29,23 @@ margin_bottom = 31.0
 
 [node name="BackgroundBox" parent="Pivot/Front/Style" index="0" instance=ExtResource( 1 )]
 
-[node name="FrontTrigger" parent="Pivot/Front" index="2"]
-margin_bottom = 0.0
+[node name="Icon" type="TextureRect" parent="Pivot/Front/Style" index="1"]
+modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -10.0
+margin_top = -18.0
+margin_right = 26.0
+margin_bottom = 18.0
+texture = ExtResource( 4 )
 
 [node name="Back" parent="Pivot" index="1"]
 margin_left = -122.0
 margin_top = -31.0
 margin_right = 122.0
 margin_bottom = 31.0
-
-[node name="Style" parent="Pivot/Back" index="0"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 0.0
-margin_bottom = 0.0
 
 [node name="BackgroundBox" parent="Pivot/Back/Style" index="0" instance=ExtResource( 1 )]
 
@@ -53,10 +57,6 @@ margin_bottom = -16.0
 background_color = "SECONDARY"
 
 [node name="MarginContainer" parent="Pivot/Back" index="1"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 0.0
-margin_bottom = 0.0
 custom_constants/margin_right = 16
 custom_constants/margin_top = 16
 custom_constants/margin_left = 16
@@ -76,6 +76,5 @@ align = 1
 
 [node name="BackTrigger" parent="Pivot/Back" index="2"]
 visible = false
-margin_bottom = 0.0
 
 [connection signal="text_changed" from="Pivot/Back/MarginContainer/SearchLine" to="." method="_on_SearchLine_text_changed"]
