@@ -1,23 +1,25 @@
 extends Node
 
-const IMAGE_PATH : String = "res://media/image/"
+const IMAGE_PATH : String = "/ARP/media/image/"
 
 onready var system_user : String = OS.get_environment("USERNAME")
 
-func _ready() -> void:
-	pass
-
 func move_directory(var _original_path : String):
+	var _abs_image_dir : String = "C:/Users/" + system_user + IMAGE_PATH
+	
 	var _dir : Directory = Directory.new()
 	var _file = File.new()
 	
 	var _file_name : String = "image_"
 	var _index : int = 0 
 	
-	while _file.file_exists(IMAGE_PATH + _file_name + str(_index) + ".png"):
+	if _dir.dir_exists(_abs_image_dir) == false:
+		_dir.make_dir_recursive(_abs_image_dir)
+	
+	while _file.file_exists(_abs_image_dir + _file_name + str(_index) + ".png"):
 		_index += 1
 	
-	var _file_dir : String = IMAGE_PATH + _file_name + str(_index) + ".png"
+	var _file_dir : String = _abs_image_dir + _file_name + str(_index) + ".png"
 	
 	_file.open(_file_dir, File.WRITE)
 	_file.close()

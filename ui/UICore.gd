@@ -352,6 +352,18 @@ func _on_commit_update_history(var _count_to_update : String) -> void:
 func _on_commit_delete_card(var _card : Dictionary) -> void:
 	var _deck_id : int = _card["deck_id"]
 	
+	if _card["question"]["img_dir"] != "":
+		var _q_q : String = "SELECT img_dir FROM Question WHERE question_id = " + str(_card["question"]["question_id"])
+		var _img_dir : String = USERDATA.get_by_query(_q_q).pop_back()["img_dir"]
+		
+		MOVINGFILE.delete_file(_img_dir)
+	
+	if _card["answer"]["img_dir"] != "":
+		var _q_a : String = "SELECT img_dir FROM Answer WHERE answer_id = " + str(_card["answer"]["answer_id"])
+		var _img_dir : String = USERDATA.get_by_query(_q_a).pop_back()["img_dir"]
+		
+		MOVINGFILE.delete_file(_img_dir)
+	
 	USERDATA.delete_data("Answer", "answer_id = " + str(_card["answer"]["answer_id"]))
 	USERDATA.delete_data("Question", "question_id = " + str(_card["question"]["question_id"]))
 	USERDATA.delete_data("Card", "card_id = " +  str(_card["card_id"]))
