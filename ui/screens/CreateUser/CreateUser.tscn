@@ -126,7 +126,7 @@ custom_constants/margin_right = 12
 custom_constants/margin_top = 0
 custom_constants/margin_left = 12
 custom_constants/margin_bottom = 0
-new_placeholder = "Ingresar contraseña (8 a 12 caract. Letras, números y símbolos)"
+new_placeholder = "Contraseña (8 a 12 crcts. Letras, números y símbolos)"
 password_mode = true
 
 [node name="Space2" type="Control" parent="MarginContainer/Content/Layout" index="6"]
@@ -177,8 +177,8 @@ margin_right = 892.0
 margin_right = 892.0
 
 [node name="CongratulationsMessage" parent="." index="3"]
-margin_right = 14769.0
-margin_bottom = 10880.0
+margin_right = 15674.0
+margin_bottom = 11520.0
 
 [connection signal="button_down" from="MarginContainer/Content/Layout/Footer/Layout/BackButton" to="." method="_on_BackButton_button_down"]
 [connection signal="normal_flip" from="MarginContainer/Content/Layout/Footer/Layout/CreateButton" to="." method="_on_CreateButton_normal_flip"]

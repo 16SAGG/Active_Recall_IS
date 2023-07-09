@@ -1,5 +1,9 @@
 extends "res://ui/components/ButtonBase/ButtonBase.gd"
 
+const H5_HEADLINE = preload("res://miscellaneous/fonts/dynamic_fonts/H5_headline.tres")
+const H6B_HEADLINE = preload("res://miscellaneous/fonts/dynamic_fonts/H6B_headline.tres")
+const H7_HEADLINE = preload("res://miscellaneous/fonts/dynamic_fonts/H7_headline.tres")
+
 onready var _front_actual_card = $Pivot/Front/MarginContainer/Content/ActualCard as Label
 onready var _front_title = $Pivot/Front/MarginContainer/Content/Title as Label
 onready var _front_extra = $Pivot/Front/MarginContainer/Content/ExtraContent as HBoxContainer
@@ -41,6 +45,7 @@ func set_values(var _front : Dictionary, var _back : Dictionary, var _current_ca
 			_front_extra.visible = true
 			_front_image.visible = true
 			_front_image.change_image(_front["img_dir"])
+		_text_supervisor(_front["title"], "FRONT")
 	
 	_back_actual_card.text = str(_current_card_index + 1) + "/" + str(_card_count)
 	if _back:
@@ -55,6 +60,20 @@ func set_values(var _front : Dictionary, var _back : Dictionary, var _current_ca
 			_back_extra.visible = true
 			_back_image.visible = true
 			_back_image.change_image(_back["img_dir"])
+		_text_supervisor(_back["title"], "BACK")
+
+func _text_supervisor(var _text : String, var _side : String) -> void:
+	match _side:
+		"FRONT":
+			if _text.length() < 12:
+				_front_title.add_font_override("font", H5_HEADLINE)
+			else:
+				_front_title.add_font_override("font", H6B_HEADLINE)
+		"BACK":
+			if _text.length() < 12:
+				_back_title.add_font_override("font", H5_HEADLINE)
+			else:
+				_back_title.add_font_override("font", H6B_HEADLINE)
 
 func _on_front_flip_button_pressed() -> void:
 	front_action()

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://miscellaneous/fonts/dynamic_fonts/body_1.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ui/stylized_shape/Rectangle.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/components/Forms/FormTextInput/FormTextInput.gd" type="Script" id=3]
+[ext_resource path="res://ui/components/Forms/FormTextInput/components/VisibilityButton/VisibilityButton.tscn" type="PackedScene" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -35,10 +36,16 @@ margin_bottom = 64.0
 custom_constants/margin_right = 16
 custom_constants/margin_left = 16
 
-[node name="Content" type="LineEdit" parent="Content"]
+[node name="Layout" type="HBoxContainer" parent="Content"]
 margin_left = 16.0
 margin_right = 548.0
 margin_bottom = 64.0
+custom_constants/separation = 8
+
+[node name="Content" type="LineEdit" parent="Content/Layout"]
+margin_right = 532.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
 custom_colors/selection_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_colors/cursor_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_colors/clear_button_color_pressed = Color( 0.172549, 0.172549, 0.172549, 1 )
@@ -55,4 +62,14 @@ secret_character = "#"
 placeholder_text = "Cambiar nombre"
 placeholder_alpha = 0.5
 
-[connection signal="text_changed" from="Content/Content" to="." method="_on_Content_text_changed"]
+[node name="VisibilityButton" parent="Content/Layout" instance=ExtResource( 4 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 468.0
+margin_right = 532.0
+margin_bottom = 64.0
+
+[connection signal="text_changed" from="Content/Layout/Content" to="." method="_on_Content_text_changed"]
+[connection signal="back_flip" from="Content/Layout/VisibilityButton" to="." method="_on_VisibilityButton_back_flip"]
+[connection signal="front_flip" from="Content/Layout/VisibilityButton" to="." method="_on_VisibilityButton_front_flip"]

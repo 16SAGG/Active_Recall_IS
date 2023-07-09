@@ -53,7 +53,7 @@ custom_constants/separation = 16
 
 [node name="Title" type="Label" parent="MarginContainer/Content/Layout" index="0"]
 margin_right = 652.0
-margin_bottom = 40.0
+margin_bottom = 60.0
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 3 )
 text = "Iniciar Sesión"
@@ -61,23 +61,23 @@ align = 1
 valign = 1
 
 [node name="Space" type="Control" parent="MarginContainer/Content/Layout" index="1"]
-margin_top = 56.0
+margin_top = 76.0
 margin_right = 652.0
-margin_bottom = 56.0
+margin_bottom = 76.0
 
 [node name="EmailInput" parent="MarginContainer/Content/Layout" index="2" instance=ExtResource( 4 )]
-margin_top = 72.0
+margin_top = 92.0
 margin_right = 652.0
-margin_bottom = 136.0
+margin_bottom = 156.0
 rect_min_size = Vector2( 652, 64 )
 custom_constants/margin_top = 0
 custom_constants/margin_bottom = 0
 new_placeholder = "Correo"
 
 [node name="PasswordInput" parent="MarginContainer/Content/Layout" index="3" instance=ExtResource( 4 )]
-margin_top = 152.0
+margin_top = 172.0
 margin_right = 652.0
-margin_bottom = 216.0
+margin_bottom = 236.0
 rect_min_size = Vector2( 652, 64 )
 custom_constants/margin_top = 0
 custom_constants/margin_bottom = 0
@@ -85,18 +85,18 @@ new_placeholder = "Contraseña"
 password_mode = true
 
 [node name="FormHeader" parent="MarginContainer/Content/Layout" index="4" instance=ExtResource( 5 )]
-margin_top = 232.0
+margin_top = 252.0
 margin_right = 652.0
-margin_bottom = 296.0
+margin_bottom = 316.0
 rect_min_size = Vector2( 652, 64 )
 custom_constants/margin_right = 116
 custom_constants/margin_left = 96
 new_title = ""
 
 [node name="CreateUserButton" type="MarginContainer" parent="MarginContainer/Content/Layout" index="5"]
-margin_top = 312.0
+margin_top = 332.0
 margin_right = 652.0
-margin_bottom = 368.0
+margin_bottom = 388.0
 custom_constants/margin_right = 96
 custom_constants/margin_left = 96
 
@@ -112,15 +112,15 @@ _new_size = Vector2( 460, 56 )
 activate_basic_border = true
 
 [node name="Space2" type="Control" parent="MarginContainer/Content/Layout" index="6"]
-margin_top = 384.0
+margin_top = 404.0
 margin_right = 652.0
-margin_bottom = 400.0
+margin_bottom = 420.0
 rect_min_size = Vector2( 0, 16 )
 
 [node name="EnterButton" type="MarginContainer" parent="MarginContainer/Content/Layout" index="7"]
-margin_top = 416.0
+margin_top = 436.0
 margin_right = 652.0
-margin_bottom = 472.0
+margin_bottom = 492.0
 custom_constants/margin_right = 96
 custom_constants/margin_left = 96
 
@@ -141,8 +141,8 @@ margin_right = 892.0
 margin_right = 892.0
 
 [node name="CongratulationsMessage" parent="." index="3"]
-margin_right = 15674.0
-margin_bottom = 11520.0
+margin_right = 16579.0
+margin_bottom = 12160.0
 
 [connection signal="normal_flip" from="MarginContainer/Content/Layout/CreateUserButton/CreateUserButton" to="." method="_on_CreateUserButton_normal_flip"]
 [connection signal="normal_flip" from="MarginContainer/Content/Layout/EnterButton/EnterButton" to="." method="_on_EnterButton_normal_flip"]

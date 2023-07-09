@@ -99,7 +99,7 @@ func _text_supervisor(var _text : String, var _side : String) -> void:
 				if _text.length() < 12:
 					_front_title.add_font_override("font", H2_HEADLINE)
 				else:
-					_front_title.add_font_override("font", H4_HEADLINE)
+					_front_title.add_font_override("font", H5_HEADLINE)
 		"COVER":
 			if _cover_image.visible: 
 				if _text.length() < 12:
@@ -110,7 +110,7 @@ func _text_supervisor(var _text : String, var _side : String) -> void:
 				if _text.length() < 12:
 					_cover_title.add_font_override("font", H2_HEADLINE)
 				else:
-					_cover_title.add_font_override("font", H4_HEADLINE)
+					_cover_title.add_font_override("font", H5_HEADLINE)
 		"BACK":
 			if _back_extra.visible:
 				if _text.length() < 12:
@@ -121,7 +121,7 @@ func _text_supervisor(var _text : String, var _side : String) -> void:
 				if _text.length() < 12:
 					_back_title.add_font_override("font", H2_HEADLINE)
 				else:
-					_back_title.add_font_override("font", H4_HEADLINE)
+					_back_title.add_font_override("font", H5_HEADLINE)
 
 func show_answer(var _answer: String) -> void:
 	if side == "FRONT":

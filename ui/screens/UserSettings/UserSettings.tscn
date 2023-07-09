@@ -68,7 +68,7 @@ new_placeholder = "Cambiar correo electrónico"
 margin_top = 320.0
 margin_right = 756.0
 margin_bottom = 384.0
-new_placeholder = "Nueva contraseña (8 a 12 caract. Letras, números y símbolos)"
+new_placeholder = "Contraseña (8 a 12 crcts. Letras, números y símbolos)"
 password_mode = true
 
 [node name="LineHeader" parent="MarginContainer/Layout/ScrollContainer/Content" index="5" instance=ExtResource( 6 )]
@@ -109,8 +109,8 @@ _left_direction = "deck_settings"
 _right_direction = "deck_settings"
 
 [node name="CongratulationsMessage" parent="." index="2"]
-margin_right = 33497.0
-margin_bottom = 26240.0
+margin_right = 34314.0
+margin_bottom = 26880.0
 
 [connection signal="front_flip" from="MarginContainer/Layout/UserButton" to="." method="_on_UserButton_front_flip"]
 [connection signal="front_flip" from="MarginContainer/Layout/ScrollContainer/Content/DeleteButton/DeleteButton" to="." method="_on_DeleteButton_front_flip"]
